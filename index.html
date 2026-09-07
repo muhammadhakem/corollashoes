@@ -12,10 +12,11 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
+            transition: background-color 0.3s ease;
         }
         .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 4px;
+            height: 4px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f5f9;
@@ -198,250 +199,447 @@
             border-radius: 12px;
             border: 1px solid #e8ddd0;
         }
+
+        /* Responsive card fixes */
+        .card-content {
+            min-width: 0;
+        }
+        .card-content .truncate {
+            max-width: 100%;
+        }
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        @media (min-width: 640px) {
+            .asset-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .asset-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+        @media (min-width: 768px) {
+            .schedule-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .schedule-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Asset card consistent sizing */
+        .asset-card {
+            width: 100%;
+            min-width: 0;
+        }
+        .asset-card .aspect-square {
+            aspect-ratio: 1/1;
+            width: 100%;
+        }
+        .asset-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Schedule card inner grid */
+        .deal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+        @media (max-width: 480px) {
+            .deal-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Header responsive */
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 0;
+        }
+        .header-brand .brand-text {
+            min-width: 0;
+        }
+        .header-brand .brand-text h1 {
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+        @media (min-width: 640px) {
+            .header-brand .brand-text h1 {
+                font-size: 1.25rem;
+            }
+        }
+
+        .platform-toggle-buttons {
+            display: flex;
+            gap: 0;
+            flex-wrap: nowrap;
+        }
+        .platform-toggle-buttons button {
+            font-size: 0.65rem;
+            padding: 0.375rem 0.75rem;
+            white-space: nowrap;
+        }
+        @media (min-width: 480px) {
+            .platform-toggle-buttons button {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        /* Badge text */
+        .badge-text {
+            font-size: 0.6rem;
+        }
+        @media (min-width: 480px) {
+            .badge-text {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* Filter bar responsive */
+        .filter-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        @media (min-width: 768px) {
+            .filter-bar {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        /* List items in cards */
+        .slot-list li {
+            font-size: 0.65rem;
+        }
+        @media (min-width: 480px) {
+            .slot-list li {
+                font-size: 0.7rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .slot-list li {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* GWP image in card */
+        .gwp-thumb {
+            width: 2.5rem;
+            height: 2.5rem;
+            flex-shrink: 0;
+        }
+        @media (min-width: 480px) {
+            .gwp-thumb {
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+
+        /* Card padding responsive */
+        .card-padding {
+            padding: 0.75rem;
+        }
+        @media (min-width: 480px) {
+            .card-padding {
+                padding: 1rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .card-padding {
+                padding: 1.25rem;
+            }
+        }
+
+        /* Header height responsive */
+        .header-height {
+            height: 4rem;
+        }
+        @media (min-width: 640px) {
+            .header-height {
+                height: 5rem;
+            }
+        }
+
+        /* Platform badge responsive */
+        .platform-badge {
+            font-size: 0.55rem;
+            padding: 0.125rem 0.5rem;
+        }
+        @media (min-width: 480px) {
+            .platform-badge {
+                font-size: 0.6rem;
+                padding: 0.125rem 0.625rem;
+            }
+        }
     </style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col antialiased">
 
     <!-- ========== HEADER ========== -->
-    <header id="main-header" class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <div class="h-12 w-12 rounded-xl border border-slate-200 p-1 bg-white shadow-xs flex items-center justify-center overflow-hidden shrink-0">
+    <header id="main-header" class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm transition-all duration-300 header-height">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-2">
+            <div class="header-brand flex items-center gap-2 sm:gap-4 min-w-0">
+                <div class="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-xl border border-slate-200 p-0.5 sm:p-1 bg-white shadow-xs flex items-center justify-center overflow-hidden shrink-0">
                     <img src="https://scontent.fkul8-4.fna.fbcdn.net/v/t39.30808-6/590563163_122152685126827852_1103710828564532184_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=geUC16ftifAQ7kNvwFQPFfp&_nc_oc=AdqLGs4rox0InU7QnuJNFj068yoylcOtMVR4Sl0teZ1rVk8W5V_6RcOOHQhAutrgguh9feBo31wkaLbGuq8iOnc5&_nc_zt=23&_nc_ht=scontent.fkul8-4.fna&_nc_gid=0cD0ldIB6w4LA0ks_iaUxw&_nc_ss=7b2a8&oh=00_AQI4kqfpPYQ8w_9w8t2y6OtCoESET61LQMd76r84J3hVCg&oe=6AA4B37A"
                     alt="Corolla Shoes Logo"
                     class="w-full h-full object-cover rounded-lg"
                     onerror="this.onerror=null; this.src='https://placehold.co/100x100/10b981/ffffff?text=Corolla';" />
                 </div>
-                <div>
-                    <div class="flex items-center gap-2">
-                        <h1 id="brand-name" class="text-xl font-black text-slate-900 tracking-tight transition-colors duration-300">COROLLA SHOES</h1>
-                        <span id="platform-badge" class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300">
-                            <i class="fa-solid fa-circle text-[6px] text-emerald-500 animate-pulse"></i>
-                            <span id="badge-text">TikTok Shop Hub</span>
+                <div class="brand-text min-w-0">
+                    <div class="flex items-center gap-1 sm:gap-2 flex-wrap">
+                        <h1 id="brand-name" class="text-sm sm:text-base md:text-xl font-black text-slate-900 tracking-tight transition-colors duration-300 truncate">COROLLA SHOES</h1>
+                        <span id="platform-badge" class="platform-badge bg-emerald-100 text-emerald-800 font-bold rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300 shrink-0">
+                            <i class="fa-solid fa-circle text-[4px] sm:text-[5px] text-emerald-500 animate-pulse"></i>
+                            <span id="badge-text" class="hidden sm:inline">TikTok Shop Hub</span>
+                            <span id="badge-text-short" class="sm:hidden">TikTok</span>
                         </span>
                     </div>
-                    <p class="text-xs text-slate-500 font-medium">9.9 Double Day Campaign Operations & Deal Mechanics</p>
+                    <p class="text-[0.5rem] sm:text-[0.6rem] md:text-xs text-slate-500 font-medium truncate hidden xs:block">9.9 Double Day Campaign Operations</p>
                 </div>
             </div>
 
-            <div id="platform-toggle-container" class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 transition-all duration-300">
-                <button id="btn-tiktok" onclick="switchPlatform('tiktok')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-white text-slate-900 shadow-xs flex items-center gap-2">
-                    <i class="fa-brands fa-tiktok"></i> TikTok Shop
+            <div id="platform-toggle-container" class="platform-toggle-buttons flex items-center bg-slate-100 p-0.5 sm:p-1 rounded-xl border border-slate-200 transition-all duration-300 shrink-0">
+                <button id="btn-tiktok" onclick="switchPlatform('tiktok')" class="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-bold transition-all bg-white text-slate-900 shadow-xs flex items-center gap-1 sm:gap-2">
+                    <i class="fa-brands fa-tiktok text-sm sm:text-base"></i>
+                    <span class="hidden xs:inline">TikTok Shop</span>
+                    <span class="xs:hidden">TikTok</span>
                 </button>
-                <button id="btn-shopee" onclick="switchPlatform('shopee')" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-bag-shopping"></i> Shopee Hub
+                <button id="btn-shopee" onclick="switchPlatform('shopee')" class="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1 sm:gap-2">
+                    <i class="fa-solid fa-bag-shopping text-sm sm:text-base"></i>
+                    <span class="hidden xs:inline">Shopee Hub</span>
+                    <span class="xs:hidden">Shopee</span>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- ==================== TIKTOK VIEW ==================== -->
-    <main id="view-tiktok" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 flex-1 w-full">
+    <main id="view-tiktok" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 flex-1 w-full">
 
         <!-- Campaign Assets -->
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4">
-            <div class="flex items-center justify-between">
+        <div class="bg-white p-3 sm:p-4 md:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3 sm:space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2">
                 <div>
-                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <h2 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
                         <i class="fa-solid fa-boxes-packing text-[#00f2ea]"></i>
-                        Campaign Physical Assets & Hero Products
+                        <span class="truncate">Campaign Assets</span>
                     </h2>
-                    <p class="text-xs text-slate-500">Provided image assets structured in sequence: GWP items → Flash Sale deals → Buy 1 Get 1 → Giveaway</p>
+                    <p class="text-[0.6rem] sm:text-xs text-slate-500 truncate">GWP → Flash Sale → B1G1 → Giveaway</p>
                 </div>
-                <span class="text-xs bg-slate-100 text-slate-600 font-medium px-2.5 py-1 rounded-lg">6 Media Assets</span>
+                <span class="text-[0.55rem] sm:text-xs bg-slate-100 text-slate-600 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">6 Media</span>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+            <div class="asset-grid">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
                         alt="Socks GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/10b981/ffffff?text=Socks+GWP';" />
-                        <span class="absolute top-1 left-1 bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Corolla Socks</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Corolla Socks</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
                 </div>
 
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839"
                         alt="Gift Bag GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/10b981/ffffff?text=Gift+Bag+GWP';" />
-                        <span class="absolute top-1 left-1 bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Premium Gift Bag</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Premium Gift Bag</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
                 </div>
 
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839"
                         alt="Rain Cover GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/10b981/ffffff?text=Rain+Cover+GWP';" />
-                        <span class="absolute top-1 left-1 bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Shoe Rain Cover</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Shoe Rain Cover</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
                 </div>
 
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c92821a9255b4117b677ce2e6114f221~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
                         alt="Flash Sale" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/2563eb/ffffff?text=Flash+Sale+RM39';" />
-                        <span class="absolute top-1 left-1 bg-[#fe2c55] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">RM39 FLASH</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">RM39</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Flash Sale</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Timed 10-Min Drops</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Flash Sale</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">10-Min Drops</p>
                 </div>
 
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/77fb78f84a0948f287dbf5cc9fb31d74~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
                         alt="Buy 1 Get 1 Deals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/d97706/ffffff?text=Buy+1+Get+1';" />
-                        <span class="absolute top-1 left-1 bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">B1G1 DEALS</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">B1G1</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Buy 1 Get 1</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Alternating Windows</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Buy 1 Get 1</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Alternating</p>
                 </div>
 
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/249e9fea4ab4467886dd375c12f8834d~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
                         alt="Corolla Shoe Giveaway" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/f43f5e/ffffff?text=Giveaway+Shoe';" />
-                        <span class="absolute top-1 left-1 bg-[#fe2c55] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">GIVEAWAY</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GIVEAWAY</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Corolla Shoes</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Corolla Ease (size 36 only)</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Corolla Shoes</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Size 36 only</p>
                 </div>
             </div>
         </div>
 
         <!-- Filter bar - TikTok themed -->
-        <div class="bg-black p-4 rounded-2xl border border-[#2a2a3a] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="filter-bar bg-black p-3 sm:p-4 rounded-2xl border border-[#2a2a3a] shadow-xs">
             <div>
-                <h2 class="text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
+                <h2 class="text-sm sm:text-base md:text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
                     <i class="fa-brands fa-tiktok text-[#00f2ea]"></i>
-                    TikTok Shop Live Schedule & Deal Breakdown
+                    <span class="truncate">TikTok Shop Live Schedule</span>
                 </h2>
-                <p class="text-xs text-[#888]">Master schedule breakdown: GWP → Flash Sale → Buy 1 Get 1 → Giveaway</p>
+                <p class="text-[0.55rem] sm:text-xs text-[#666] truncate">GWP → Flash Sale → B1G1 → Giveaway</p>
             </div>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 shrink-0">
                 <div class="relative">
-                    <select id="filter-host" onchange="filterSchedule()" class="bg-[#0a0a0a] border border-[#2a2a3a] text-white text-xs font-semibold rounded-xl px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-[#00f2ea] appearance-none">
+                    <select id="filter-host" onchange="filterSchedule()" class="bg-[#0a0a0a] border border-[#2a2a3a] text-white text-[0.6rem] sm:text-xs font-semibold rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 pr-6 sm:pr-8 focus:outline-none focus:ring-2 focus:ring-[#00f2ea] appearance-none min-w-[80px] sm:min-w-[100px]">
                         <option value="ALL">All Hosts</option>
                         <option value="Zaiffa">Zaiffa</option>
                         <option value="Qys">Qys</option>
                         <option value="Nurul">Nurul</option>
                         <option value="Mar">Mar</option>
                     </select>
-                    <i class="fa-solid fa-chevron-down text-[10px] text-[#555] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                    <i class="fa-solid fa-chevron-down text-[8px] sm:text-[10px] text-[#555] absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                 </div>
-                <button onclick="resetFilters()" class="p-2 bg-[#1a1a2a] hover:bg-[#2a2a3a] text-[#888] hover:text-white rounded-xl text-xs font-semibold transition-all border border-[#2a2a3a]" title="Reset Filters">
+                <button onclick="resetFilters()" class="p-1.5 sm:p-2 bg-[#1a1a2a] hover:bg-[#2a2a3a] text-[#666] hover:text-white rounded-xl text-[0.6rem] sm:text-xs font-semibold transition-all border border-[#2a2a3a]" title="Reset Filters">
                     <i class="fa-solid fa-rotate-left"></i>
                 </button>
             </div>
         </div>
 
         <!-- TikTok cards grid -->
-        <div id="tiktok-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        <div id="tiktok-grid" class="schedule-grid"></div>
 
     </main>
 
     <!-- ==================== SHOPEE VIEW ==================== -->
-    <main id="view-shopee" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 flex-1 w-full hidden">
+    <main id="view-shopee" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 flex-1 w-full hidden">
 
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4">
-            <div class="flex items-center justify-between">
+        <div class="bg-white p-3 sm:p-4 md:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3 sm:space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2">
                 <div>
-                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <h2 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
                         <i class="fa-solid fa-boxes-packing text-[#ee4d2d]"></i>
-                        Campaign Physical Assets & Hero Products
+                        <span class="truncate">Campaign Assets</span>
                     </h2>
-                    <p class="text-xs text-slate-500">Provided image assets structured in sequence: GWP items → Flash Sale deals → Buy 1 Get 1 → LIMITED OFFER (50% OFF)</p>
+                    <p class="text-[0.6rem] sm:text-xs text-slate-500 truncate">GWP → Flash Sale → B1G1 → 50% OFF</p>
                 </div>
-                <span class="text-xs bg-slate-100 text-slate-600 font-medium px-2.5 py-1 rounded-lg">5 Media Assets</span>
+                <span class="text-[0.55rem] sm:text-xs bg-slate-100 text-slate-600 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">5 Media</span>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+            <div class="asset-grid">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687" alt="Socks GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Socks+GWP';" />
-                        <span class="absolute top-1 left-1 bg-[#ee4d2d] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Corolla Socks</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Corolla Socks</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
                 </div>
 
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Gift Bag GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Gift+Bag+GWP';" />
-                        <span class="absolute top-1 left-1 bg-[#ee4d2d] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Premium Gift Bag</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Premium Gift Bag</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
                 </div>
 
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c92821a9255b4117b677ce2e6114f221~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687" alt="Shopee Flash Sale Asset" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/2563eb/ffffff?text=Flash+Sale+RM39';" />
-                        <span class="absolute top-1 left-1 bg-[#ffb800] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">RM39 FLASH</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#ffb800] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">RM39</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Flash Sale</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Timed 10-Min Drops</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Flash Sale</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">10-Min Drops</p>
                 </div>
 
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/77fb78f84a0948f287dbf5cc9fb31d74~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687" alt="Buy 1 Get 1 Deals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/d97706/ffffff?text=Buy+1+Get+1';" />
-                        <span class="absolute top-1 left-1 bg-[#ee4d2d] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">B1G1 DEALS</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">B1G1</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Buy 1 Get 1</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Alternating Windows</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Buy 1 Get 1</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Alternating</p>
                 </div>
 
-                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/9cba0ecd1dca4409a61812123a989411~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Limited Offer Asset" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/6366f1/ffffff?text=Limited+Offer';" />
-                        <span class="absolute top-1 left-1 bg-[#ffb800] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">50% OFF</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#ffb800] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">50%</span>
                     </div>
-                    <p class="text-xs font-bold text-slate-800 truncate">Limited Offer</p>
-                    <p class="text-[10px] text-slate-500 font-medium">LIMITED OFFER (50% OFF) RM59.9</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Limited Offer</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">RM59.9</p>
                 </div>
             </div>
         </div>
 
         <!-- Filter bar - Shopee themed -->
-        <div class="bg-[#ee4d2d] p-4 rounded-2xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="filter-bar bg-[#ee4d2d] p-3 sm:p-4 rounded-2xl shadow-xs">
             <div>
-                <h2 class="text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
+                <h2 class="text-sm sm:text-base md:text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
                     <i class="fa-solid fa-bag-shopping text-[#ffb800]"></i>
-                    Shopee Hub Live Schedule & Deal Breakdown
+                    <span class="truncate">Shopee Hub Live Schedule</span>
                 </h2>
-                <p class="text-xs text-[#fde0d5]">Master schedule breakdown: GWP → Flash Sale → Buy 1 Get 1 → LIMITED OFFER (50% OFF)</p>
+                <p class="text-[0.55rem] sm:text-xs text-[#fde0d5] truncate">GWP → Flash Sale → B1G1 → 50% OFF</p>
             </div>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 shrink-0">
                 <div class="relative">
-                    <select id="filter-shopee-host" onchange="filterShopeeSchedule()" class="bg-white border border-[#d93d1e] text-slate-700 text-xs font-semibold rounded-xl px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-[#ffb800] appearance-none">
+                    <select id="filter-shopee-host" onchange="filterShopeeSchedule()" class="bg-white border border-[#d93d1e] text-slate-700 text-[0.6rem] sm:text-xs font-semibold rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 pr-6 sm:pr-8 focus:outline-none focus:ring-2 focus:ring-[#ffb800] appearance-none min-w-[80px] sm:min-w-[100px]">
                         <option value="ALL">All Hosts</option>
                         <option value="Nureen">Nureen</option>
                         <option value="Azmira">Azmira</option>
                         <option value="Anis">Anis</option>
                     </select>
-                    <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                    <i class="fa-solid fa-chevron-down text-[8px] sm:text-[10px] text-slate-400 absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                 </div>
-                <button onclick="resetShopeeFilters()" class="p-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-xs font-semibold transition-all border border-white/30" title="Reset Filters">
+                <button onclick="resetShopeeFilters()" class="p-1.5 sm:p-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-[0.6rem] sm:text-xs font-semibold transition-all border border-white/30" title="Reset Filters">
                     <i class="fa-solid fa-rotate-left"></i>
                 </button>
             </div>
         </div>
 
-        <div id="shopee-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        <div id="shopee-grid" class="schedule-grid"></div>
     </main>
 
     <script>
@@ -520,13 +718,13 @@
             giveaways: ["8:30 PM Drop", "9:30 PM Drop", "10:30 PM Drop"]
         }];
 
-        // ========== UPDATED SHOPEE SCHEDULE ==========
+        // ========== SHOPEE SCHEDULE ==========
         let shopeeCardsData = [{
             date: "Sep 8",
             time: "8:00 PM - 11:00 PM",
             host: "Azmira",
             tag: "Prime Night",
-            tagBg: "bg-[#ffb800]/20 text-[#b8860b] border-[#ffb800]/30",
+            tagBg: "bg-white/20 text-white border-white/30",
             gwpItem: "Socks",
             gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
             flashSlots: ["8:00 - 8:10 PM", "9:00 - 9:10 PM"],
@@ -537,7 +735,7 @@
             time: "11:30 PM - 2:30 AM",
             host: "Anis",
             tag: "Midnight",
-            tagBg: "bg-[#ee4d2d]/20 text-[#ee4d2d] border-[#ee4d2d]/30",
+            tagBg: "bg-white/20 text-white border-white/30",
             gwpItem: "Gift Bag",
             gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
             flashSlots: ["11:30 - 11:40 PM"],
@@ -548,7 +746,7 @@
             time: "9:00 AM - 12:00 PM",
             host: "Nureen",
             tag: "Morning",
-            tagBg: "bg-[#ffb800]/20 text-[#b8860b] border-[#ffb800]/30",
+            tagBg: "bg-white/20 text-white border-white/30",
             gwpItem: "Socks",
             gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
             flashSlots: ["9:00 - 9:10 AM", "10:00 - 10:10 AM"],
@@ -559,7 +757,7 @@
             time: "12:30 PM - 3:30 PM",
             host: "Nureen",
             tag: "Noon",
-            tagBg: "bg-[#ee4d2d]/20 text-[#ee4d2d] border-[#ee4d2d]/30",
+            tagBg: "bg-white/20 text-white border-white/30",
             gwpItem: "Socks",
             gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
             flashSlots: ["12:30 - 12:40 PM", "2:00 - 2:10 PM", "3:00 - 3:10 PM"],
@@ -570,7 +768,7 @@
             time: "4:00 PM - 7:00 PM",
             host: "Azmira",
             tag: "Afternoon",
-            tagBg: "bg-[#ffb800]/20 text-[#b8860b] border-[#ffb800]/30",
+            tagBg: "bg-white/20 text-white border-white/30",
             gwpItem: "Socks",
             gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
             flashSlots: ["4:00 - 4:10 PM", "5:00 - 5:10 PM"],
@@ -581,7 +779,7 @@
             time: "8:00 PM - 11:00 PM",
             host: "Azmira",
             tag: "Peak Night",
-            tagBg: "bg-[#ee4d2d]/20 text-[#ee4d2d] border-[#ee4d2d]/30",
+            tagBg: "bg-white/20 text-white border-white/30",
             gwpItem: "Gift Bag",
             gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
             flashSlots: ["8:00 - 8:10 PM", "10:00 - 10:10 PM"],
@@ -596,35 +794,50 @@
             const viewTiktok = document.getElementById('view-tiktok');
             const viewShopee = document.getElementById('view-shopee');
             const badgeText = document.getElementById('badge-text');
+            const badgeTextShort = document.getElementById('badge-text-short');
             const badgeContainer = document.getElementById('platform-badge');
             const header = document.getElementById('main-header');
             const toggleContainer = document.getElementById('platform-toggle-container');
             const brandName = document.getElementById('brand-name');
 
             if (platform === 'tiktok') {
-                // TikTok active
-                btnTiktok.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-black text-white shadow-xs flex items-center gap-2 border border-[#00f2ea]";
-                btnShopee.className = "px-4 py-2 rounded-lg text-xs font-semibold text-[#888] hover:text-white transition-all flex items-center gap-2";
+                btnTiktok.className =
+                    "px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-bold transition-all bg-black text-white shadow-xs flex items-center gap-1 sm:gap-2 border border-[#00f2ea]";
+                btnShopee.className =
+                    "px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-semibold text-[#888] hover:text-white transition-all flex items-center gap-1 sm:gap-2";
                 viewTiktok.classList.remove('hidden');
                 viewShopee.classList.add('hidden');
                 badgeText.textContent = "TikTok Shop Hub";
-                badgeContainer.className = "bg-[#00f2ea] text-black text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300";
-                header.className = "bg-black border-b border-[#2a2a3a] sticky top-0 z-40 shadow-sm transition-all duration-300";
-                toggleContainer.className = "flex items-center bg-[#1a1a2a] p-1 rounded-xl border border-[#2a2a3a] transition-all duration-300";
-                brandName.className = "text-xl font-black text-white tracking-tight transition-colors duration-300";
+                badgeTextShort.textContent = "TikTok";
+                badgeContainer.className =
+                    "platform-badge bg-[#00f2ea] text-black font-bold rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300 shrink-0";
+                header.className =
+                    "bg-black border-b border-[#2a2a3a] sticky top-0 z-40 shadow-sm transition-all duration-300 header-height";
+                toggleContainer.className =
+                    "platform-toggle-buttons flex items-center bg-[#1a1a2a] p-0.5 sm:p-1 rounded-xl border border-[#2a2a3a] transition-all duration-300 shrink-0";
+                brandName.className =
+                    "text-sm sm:text-base md:text-xl font-black text-white tracking-tight transition-colors duration-300 truncate";
                 document.querySelector('body').style.backgroundColor = '#0a0a0a';
+                document.querySelector('body').style.color = '#e0e0e0';
             } else {
-                // Shopee active
-                btnShopee.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-[#ee4d2d] text-white shadow-xs flex items-center gap-2 border border-[#ee4d2d]";
-                btnTiktok.className = "px-4 py-2 rounded-lg text-xs font-semibold text-[#888] hover:text-[#ee4d2d] transition-all flex items-center gap-2";
+                btnShopee.className =
+                    "px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-bold transition-all bg-[#ee4d2d] text-white shadow-xs flex items-center gap-1 sm:gap-2 border border-[#ee4d2d]";
+                btnTiktok.className =
+                    "px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-semibold text-[#888] hover:text-[#ee4d2d] transition-all flex items-center gap-1 sm:gap-2";
                 viewShopee.classList.remove('hidden');
                 viewTiktok.classList.add('hidden');
                 badgeText.textContent = "Shopee Hub";
-                badgeContainer.className = "bg-[#ee4d2d] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300";
-                header.className = "bg-white border-b border-[#e8ddd0] sticky top-0 z-40 shadow-sm transition-all duration-300";
-                toggleContainer.className = "flex items-center bg-[#f5f0eb] p-1 rounded-xl border border-[#e8ddd0] transition-all duration-300";
-                brandName.className = "text-xl font-black text-[#ee4d2d] tracking-tight transition-colors duration-300";
+                badgeTextShort.textContent = "Shopee";
+                badgeContainer.className =
+                    "platform-badge bg-[#ee4d2d] text-white font-bold rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300 shrink-0";
+                header.className =
+                    "bg-white border-b border-[#e8ddd0] sticky top-0 z-40 shadow-sm transition-all duration-300 header-height";
+                toggleContainer.className =
+                    "platform-toggle-buttons flex items-center bg-[#f5f0eb] p-0.5 sm:p-1 rounded-xl border border-[#e8ddd0] transition-all duration-300 shrink-0";
+                brandName.className =
+                    "text-sm sm:text-base md:text-xl font-black text-[#ee4d2d] tracking-tight transition-colors duration-300 truncate";
                 document.querySelector('body').style.backgroundColor = '#f8fafc';
+                document.querySelector('body').style.color = '#1e293b';
                 renderShopeeCards(shopeeCardsData);
             }
         }
@@ -636,9 +849,9 @@
 
             if (filteredData.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full bg-black p-8 rounded-2xl border border-[#2a2a3a] text-center py-12">
-                        <i class="fa-solid fa-filter-circle-xmark text-4xl text-[#555] mb-3"></i>
-                        <p class="text-sm font-bold text-white">No shift slots match your selected filter.</p>
+                    <div class="col-span-full bg-black p-6 sm:p-8 rounded-2xl border border-[#2a2a3a] text-center py-8 sm:py-12">
+                        <i class="fa-solid fa-filter-circle-xmark text-3xl sm:text-4xl text-[#555] mb-2 sm:mb-3"></i>
+                        <p class="text-sm sm:text-base font-bold text-white">No shifts match your filter.</p>
                         <p class="text-xs text-[#666]">Try resetting your host filters.</p>
                     </div>
                 `;
@@ -647,69 +860,70 @@
 
             filteredData.forEach(item => {
                 const card = document.createElement('div');
-                card.className = "bg-black rounded-2xl border border-[#2a2a3a] shadow-sm overflow-hidden flex flex-col hover:shadow-[0_0_30px_rgba(0,242,234,0.08)] transition-all";
+                card.className =
+                    "bg-black rounded-2xl border border-[#2a2a3a] shadow-sm overflow-hidden flex flex-col hover:shadow-[0_0_30px_rgba(0,242,234,0.08)] transition-all min-w-0";
 
                 const flashList = item.flashSlots.map(s =>
-                    `<li class="flex items-center gap-1 text-[#ccc]"><i class="fa-solid fa-bolt text-[#fe2c55] text-[10px]"></i> ${s}</li>`
+                    `<li class="flex items-center gap-1 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-bolt text-[#fe2c55] text-[8px] sm:text-[10px]"></i> ${s}</li>`
                 ).join('');
                 const b1g1List = item.b1g1Slots.map(s =>
-                    `<li class="flex items-center gap-1 text-[#ccc]"><i class="fa-solid fa-tags text-[#00f2ea] text-[10px]"></i> ${s}</li>`
+                    `<li class="flex items-center gap-1 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tags text-[#00f2ea] text-[8px] sm:text-[10px]"></i> ${s}</li>`
                 ).join('');
                 const giveawayList = item.giveaways.map(g =>
-                    `<li class="flex items-center gap-1.5 text-[#ccc]"><i class="fa-solid fa-gift text-[#fe2c55] text-[10px]"></i> ${g}</li>`
+                    `<li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-gift text-[#fe2c55] text-[8px] sm:text-[10px]"></i> ${g}</li>`
                 ).join('');
 
                 card.innerHTML = `
-                    <div class="bg-gradient-to-br from-[#0a0a0a] to-[#1a1a2e] text-white p-4 border-b-2 border-[#00f2ea]">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-bold bg-[#00f2ea]/20 text-[#00f2ea] border border-[#00f2ea]/30 px-2.5 py-1 rounded-lg">${item.date}</span>
-                            <span class="text-[11px] font-semibold text-[#888]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
+                    <div class="bg-gradient-to-br from-[#0a0a0a] to-[#1a1a2e] text-white p-3 sm:p-4 border-b-2 border-[#00f2ea]">
+                        <div class="flex items-center justify-between mb-1.5 sm:mb-2 flex-wrap gap-1">
+                            <span class="text-[0.55rem] sm:text-xs font-bold bg-[#00f2ea]/20 text-[#00f2ea] border border-[#00f2ea]/30 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg">${item.date}</span>
+                            <span class="text-[0.5rem] sm:text-[11px] font-semibold text-[#888]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between flex-wrap gap-1">
                             <div class="flex items-center gap-2">
-                                <span class="font-black text-lg text-white tracking-wide">Host: ${item.host}</span>
+                                <span class="font-black text-sm sm:text-base md:text-lg text-white tracking-wide">Host: ${item.host}</span>
                             </div>
-                            <span class="text-[10px] font-extrabold border px-2 py-0.5 rounded-full uppercase ${item.tagBg}">${item.tag}</span>
+                            <span class="text-[0.5rem] sm:text-[10px] font-extrabold border px-1.5 sm:px-2 py-0.5 rounded-full uppercase ${item.tagBg}">${item.tag}</span>
                         </div>
                     </div>
 
-                    <div class="p-4 space-y-3 flex-1 flex flex-col justify-between bg-[#0d0d1a]">
-                        <div class="bg-[#00f2ea]/10 p-3 rounded-xl border border-[#00f2ea]/20 flex items-center justify-between">
-                            <div>
-                                <div class="flex items-center gap-1.5 mb-1">
-                                    <span class="text-[10px] font-extrabold uppercase text-[#00f2ea]">GWP for every order</span>
-                                    <span class="bg-[#00f2ea] text-black text-[8px] font-black px-1.5 py-0.2 rounded">FREE GIFT</span>
+                    <div class="card-padding space-y-2 sm:space-y-3 flex-1 flex flex-col justify-between bg-[#0d0d1a]">
+                        <div class="bg-[#00f2ea]/10 p-2 sm:p-3 rounded-xl border border-[#00f2ea]/20 flex items-center justify-between gap-2">
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-1 mb-0.5 sm:mb-1 flex-wrap">
+                                    <span class="text-[0.5rem] sm:text-[10px] font-extrabold uppercase text-[#00f2ea]">GWP</span>
+                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.25 rounded">FREE</span>
                                 </div>
-                                <p class="text-xs font-bold text-white">${item.gwpItem}</p>
-                                <p class="text-[10px] text-[#666] font-medium">${item.time}</p>
+                                <p class="text-[0.6rem] sm:text-xs font-bold text-white truncate">${item.gwpItem}</p>
+                                <p class="text-[0.45rem] sm:text-[10px] text-[#666] font-medium truncate">${item.time}</p>
                             </div>
-                            <img src="${item.gwpImage}" alt="${item.gwpItem}" class="w-10 h-10 object-cover rounded-lg border border-[#2a2a3a] bg-black"
+                            <img src="${item.gwpImage}" alt="${item.gwpItem}" class="gwp-thumb object-cover rounded-lg border border-[#2a2a3a] bg-black shrink-0"
                                  onerror="this.onerror=null; this.src='https://placehold.co/100x100/00f2ea/000000?text=GWP';">
                         </div>
 
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="bg-[#fe2c55]/10 p-2.5 rounded-xl border border-[#fe2c55]/20">
-                                <div class="flex items-center justify-between mb-1.5">
-                                    <span class="font-extrabold text-[#fe2c55] text-[11px]">FLASH SALE</span>
-                                    <span class="bg-[#fe2c55] text-white text-[9px] font-extrabold px-1 py-0.5 rounded">RM39</span>
+                        <div class="deal-grid">
+                            <div class="bg-[#fe2c55]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#fe2c55]/20 min-w-0">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-extrabold text-[#fe2c55] text-[0.55rem] sm:text-[11px]">FLASH</span>
+                                    <span class="bg-[#fe2c55] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">RM39</span>
                                 </div>
-                                <ul class="space-y-1 font-medium text-[11px]">${flashList}</ul>
+                                <ul class="slot-list space-y-0.5 font-medium">${flashList}</ul>
                             </div>
-                            <div class="bg-[#00f2ea]/10 p-2.5 rounded-xl border border-[#00f2ea]/20">
-                                <div class="flex items-center justify-between mb-1.5">
-                                    <span class="font-extrabold text-[#00f2ea] text-[11px]">BUY 1 GET 1</span>
-                                    <span class="bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">PROMO</span>
+                            <div class="bg-[#00f2ea]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#00f2ea]/20 min-w-0">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-extrabold text-[#00f2ea] text-[0.55rem] sm:text-[11px]">B1G1</span>
+                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">PROMO</span>
                                 </div>
-                                <ul class="space-y-1 font-medium text-[11px]">${b1g1List}</ul>
+                                <ul class="slot-list space-y-0.5 font-medium">${b1g1List}</ul>
                             </div>
                         </div>
 
-                        <div class="bg-[#fe2c55]/10 p-2.5 rounded-xl border border-[#fe2c55]/20">
-                            <div class="flex items-center justify-between mb-1.5">
-                                <span class="text-[10px] font-extrabold uppercase text-[#fe2c55]">Corolla Ease (size 36 only)</span>
-                                <span class="bg-[#fe2c55] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded shrink-0">HOURLY</span>
+                        <div class="bg-[#fe2c55]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#fe2c55]/20 min-w-0">
+                            <div class="flex items-center justify-between mb-1 flex-wrap gap-1">
+                                <span class="text-[0.45rem] sm:text-[10px] font-extrabold uppercase text-[#fe2c55] truncate">Corolla Ease (size 36)</span>
+                                <span class="bg-[#fe2c55] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded shrink-0">HOURLY</span>
                             </div>
-                            <ul class="space-y-1 font-medium text-[11px]">${giveawayList}</ul>
+                            <ul class="slot-list space-y-0.5 font-medium">${giveawayList}</ul>
                         </div>
                     </div>
                 `;
@@ -725,9 +939,9 @@
 
             if (filteredData.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full bg-white p-8 rounded-2xl border border-slate-200 text-center py-12">
-                        <i class="fa-solid fa-filter-circle-xmark text-4xl text-slate-300 mb-3"></i>
-                        <p class="text-sm font-bold text-slate-700">No shift slots match your selected filter.</p>
+                    <div class="col-span-full bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 text-center py-8 sm:py-12">
+                        <i class="fa-solid fa-filter-circle-xmark text-3xl sm:text-4xl text-slate-300 mb-2 sm:mb-3"></i>
+                        <p class="text-sm sm:text-base font-bold text-slate-700">No shifts match your filter.</p>
                         <p class="text-xs text-slate-400">Try resetting your host filters.</p>
                     </div>
                 `;
@@ -736,65 +950,66 @@
 
             filteredData.forEach(item => {
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl border border-orange-200/80 shadow-sm overflow-hidden flex flex-col hover:shadow-md transition-all";
+                card.className =
+                    "bg-white rounded-2xl border border-orange-200/80 shadow-sm overflow-hidden flex flex-col hover:shadow-md transition-all min-w-0";
 
                 card.innerHTML = `
-                    <div class="bg-gradient-to-br from-[#ee4d2d] to-[#d93d1e] text-white p-4 border-b-2 border-[#ffb800]">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-bold bg-white/20 text-white border border-white/30 px-2.5 py-1 rounded-lg">${item.date}</span>
-                            <span class="text-[11px] font-semibold text-[#fde0d5]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
+                    <div class="bg-gradient-to-br from-[#ee4d2d] to-[#d93d1e] text-white p-3 sm:p-4 border-b-2 border-[#ffb800]">
+                        <div class="flex items-center justify-between mb-1.5 sm:mb-2 flex-wrap gap-1">
+                            <span class="text-[0.55rem] sm:text-xs font-bold bg-white/20 text-white border border-white/30 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg">${item.date}</span>
+                            <span class="text-[0.5rem] sm:text-[11px] font-semibold text-[#fde0d5]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between flex-wrap gap-1">
                             <div class="flex items-center gap-2">
-                                <span class="font-black text-lg text-white tracking-wide">Host: ${item.host}</span>
+                                <span class="font-black text-sm sm:text-base md:text-lg text-white tracking-wide">Host: ${item.host}</span>
                             </div>
-                            <span class="text-[10px] font-extrabold border px-2 py-0.5 rounded-full uppercase ${item.tagBg}">${item.tag}</span>
+                            <span class="text-[0.5rem] sm:text-[10px] font-extrabold border px-1.5 sm:px-2 py-0.5 rounded-full uppercase ${item.tagBg}">${item.tag}</span>
                         </div>
                     </div>
 
-                    <div class="p-4 space-y-3 flex-1 flex flex-col justify-between bg-orange-50/20">
-                        <div class="bg-orange-50/70 p-3 rounded-xl border border-orange-200/80 flex items-center justify-between">
-                            <div>
-                                <div class="flex items-center gap-1.5 mb-1">
-                                    <span class="text-[10px] font-extrabold uppercase text-[#ee4d2d]">GWP for every order</span>
-                                    <span class="bg-[#ee4d2d] text-white text-[8px] font-black px-1.5 py-0.2 rounded">FREE GIFT</span>
+                    <div class="card-padding space-y-2 sm:space-y-3 flex-1 flex flex-col justify-between bg-orange-50/20">
+                        <div class="bg-orange-50/70 p-2 sm:p-3 rounded-xl border border-orange-200/80 flex items-center justify-between gap-2">
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-1 mb-0.5 sm:mb-1 flex-wrap">
+                                    <span class="text-[0.5rem] sm:text-[10px] font-extrabold uppercase text-[#ee4d2d]">GWP</span>
+                                    <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.25 rounded">FREE</span>
                                 </div>
-                                <p class="text-xs font-bold text-slate-800">${item.gwpItem}</p>
-                                <p class="text-[10px] text-slate-500 font-medium">${item.time}</p>
+                                <p class="text-[0.6rem] sm:text-xs font-bold text-slate-800 truncate">${item.gwpItem}</p>
+                                <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">${item.time}</p>
                             </div>
-                            <img src="${item.gwpImage}" alt="GWP" class="w-10 h-10 object-cover rounded-lg border border-orange-200 bg-white"
+                            <img src="${item.gwpImage}" alt="GWP" class="gwp-thumb object-cover rounded-lg border border-orange-200 bg-white shrink-0"
                                  onerror="this.onerror=null; this.src='https://placehold.co/100x100/ea580c/ffffff?text=GWP';">
                         </div>
 
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="bg-[#ffb800]/10 p-2.5 rounded-xl border border-[#ffb800]/30">
-                                <div class="flex items-center justify-between mb-1.5">
-                                    <span class="font-extrabold text-[#b8860b] text-[11px]">FLASH SALE</span>
-                                    <span class="bg-[#ffb800] text-black text-[9px] font-extrabold px-1 py-0.5 rounded">RM39</span>
+                        <div class="deal-grid">
+                            <div class="bg-[#ffb800]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#ffb800]/30 min-w-0">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-extrabold text-[#b8860b] text-[0.55rem] sm:text-[11px]">FLASH</span>
+                                    <span class="bg-[#ffb800] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">RM39</span>
                                 </div>
-                                <ul class="space-y-1 text-slate-700 font-medium text-[11px] max-h-28 overflow-y-auto custom-scrollbar">
-                                    ${item.flashSlots.map(s => `<li class="flex items-center gap-1"><i class="fa-solid fa-bolt text-[#ffb800] text-[10px]"></i> ${s}</li>`).join('')}
+                                <ul class="slot-list space-y-0.5 font-medium max-h-20 sm:max-h-28 overflow-y-auto custom-scrollbar">
+                                    ${item.flashSlots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-bolt text-[#ffb800] text-[8px] sm:text-[10px]"></i> ${s}</li>`).join('')}
                                 </ul>
                             </div>
 
-                            <div class="bg-[#ee4d2d]/10 p-2.5 rounded-xl border border-[#ee4d2d]/20">
-                                <div class="flex items-center justify-between mb-1.5">
-                                    <span class="font-extrabold text-[#ee4d2d] text-[11px]">BUY 1 GET 1</span>
-                                    <span class="bg-[#ee4d2d] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">B1G1</span>
+                            <div class="bg-[#ee4d2d]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#ee4d2d]/20 min-w-0">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-extrabold text-[#ee4d2d] text-[0.55rem] sm:text-[11px]">B1G1</span>
+                                    <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">PROMO</span>
                                 </div>
-                                <ul class="space-y-1 text-slate-700 font-medium text-[11px] max-h-28 overflow-y-auto custom-scrollbar">
-                                    ${item.b1g1Slots.map(s => `<li class="flex items-center gap-1"><i class="fa-solid fa-gift text-[#ee4d2d] text-[10px]"></i> ${s}</li>`).join('')}
+                                <ul class="slot-list space-y-0.5 font-medium max-h-20 sm:max-h-28 overflow-y-auto custom-scrollbar">
+                                    ${item.b1g1Slots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-gift text-[#ee4d2d] text-[8px] sm:text-[10px]"></i> ${s}</li>`).join('')}
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="bg-[#ffb800]/10 p-2.5 rounded-xl border border-[#ffb800]/30">
-                            <div class="flex items-center justify-between mb-1.5">
-                                <span class="text-[10px] font-extrabold uppercase text-[#b8860b]">LIMITED OFFER (50% OFF)</span>
-                                <span class="bg-[#ffb800] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded shrink-0">RM59.9</span>
+                        <div class="bg-[#ffb800]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#ffb800]/30 min-w-0">
+                            <div class="flex items-center justify-between mb-1 flex-wrap gap-1">
+                                <span class="text-[0.45rem] sm:text-[10px] font-extrabold uppercase text-[#b8860b] truncate">50% OFF</span>
+                                <span class="bg-[#ffb800] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded shrink-0">RM59.9</span>
                             </div>
-                            <ul class="space-y-1 text-slate-700 font-medium text-[11px] max-h-28 overflow-y-auto custom-scrollbar">
-                                ${item.promosiSlots.map(s => `<li class="flex items-center gap-1"><i class="fa-solid fa-tag text-[#ffb800] text-[10px]"></i> ${s}</li>`).join('')}
+                            <ul class="slot-list space-y-0.5 font-medium max-h-20 sm:max-h-28 overflow-y-auto custom-scrollbar">
+                                ${item.promosiSlots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tag text-[#ffb800] text-[8px] sm:text-[10px]"></i> ${s}</li>`).join('')}
                             </ul>
                         </div>
                     </div>
@@ -831,7 +1046,6 @@
         window.onload = function() {
             renderTikTokCards(shiftData);
             renderShopeeCards(shopeeCardsData);
-            // Default to TikTok
             switchPlatform('tiktok');
         };
     </script>
