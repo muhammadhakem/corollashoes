@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Corolla Shoes</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* TikTok Theme */
+        .tiktok-gradient {
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
+        }
+        .tiktok-accent {
+            color: #00f2ea;
+        }
+        .tiktok-accent-bg {
+            background: #00f2ea;
+        }
+        .tiktok-pink {
+            color: #fe2c55;
+        }
+        .tiktok-pink-bg {
+            background: #fe2c55;
+        }
+        .tiktok-border {
+            border-color: #2a2a3a;
+        }
+        .tiktok-card-header {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            border-bottom: 2px solid #00f2ea;
+        }
+        .tiktok-card-gwp {
+            background: rgba(0, 242, 234, 0.08);
+            border-color: rgba(0, 242, 234, 0.25);
+        }
+        .tiktok-card-flash {
+            background: rgba(254, 44, 85, 0.08);
+            border-color: rgba(254, 44, 85, 0.2);
+        }
+        .tiktok-card-b1g1 {
+            background: rgba(0, 242, 234, 0.08);
+            border-color: rgba(0, 242, 234, 0.2);
+        }
+        .tiktok-card-giveaway {
+            background: rgba(254, 44, 85, 0.08);
+            border-color: rgba(254, 44, 85, 0.2);
+        }
+        .tiktok-btn-active {
+            background: #000000;
+            color: white;
+            border: 1px solid #00f2ea;
+        }
+        .tiktok-btn-inactive {
+            background: transparent;
+            color: #888;
+            border: 1px solid transparent;
+        }
+        .tiktok-btn-inactive:hover {
+            color: white;
+            border-color: #333;
+        }
+        .tiktok-tag {
+            background: rgba(0, 242, 234, 0.15);
+            color: #00f2ea;
+            border: 1px solid rgba(0, 242, 234, 0.3);
+        }
+        .tiktok-tag-pink {
+            background: rgba(254, 44, 85, 0.15);
+            color: #fe2c55;
+            border: 1px solid rgba(254, 44, 85, 0.3);
+        }
+        .tiktok-badge {
+            background: #00f2ea;
+            color: #000;
+        }
+        .tiktok-badge-pink {
+            background: #fe2c55;
+            color: #fff;
+        }
+        .tiktok-filter-select {
+            background: #0a0a0a;
+            color: #fff;
+            border-color: #2a2a3a;
+        }
+        .tiktok-filter-select option {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Shopee Theme */
+        .shopee-gradient {
+            background: linear-gradient(135deg, #ee4d2d 0%, #d93d1e 100%);
+        }
+        .shopee-accent {
+            color: #ee4d2d;
+        }
+        .shopee-accent-bg {
+            background: #ee4d2d;
+        }
+        .shopee-border {
+            border-color: #f5d5c0;
+        }
+        .shopee-card-header {
+            background: linear-gradient(135deg, #ee4d2d 0%, #d93d1e 100%);
+            border-bottom: 2px solid #ffb800;
+        }
+        .shopee-card-gwp {
+            background: rgba(238, 77, 45, 0.08);
+            border-color: rgba(238, 77, 45, 0.2);
+        }
+        .shopee-card-flash {
+            background: rgba(255, 184, 0, 0.08);
+            border-color: rgba(255, 184, 0, 0.2);
+        }
+        .shopee-card-b1g1 {
+            background: rgba(238, 77, 45, 0.08);
+            border-color: rgba(238, 77, 45, 0.2);
+        }
+        .shopee-card-promo {
+            background: rgba(255, 184, 0, 0.08);
+            border-color: rgba(255, 184, 0, 0.2);
+        }
+        .shopee-btn-active {
+            background: #ee4d2d;
+            color: white;
+            border: 1px solid #ee4d2d;
+        }
+        .shopee-btn-inactive {
+            background: transparent;
+            color: #888;
+            border: 1px solid transparent;
+        }
+        .shopee-btn-inactive:hover {
+            color: #ee4d2d;
+            border-color: #ee4d2d;
+        }
+        .shopee-tag {
+            background: rgba(238, 77, 45, 0.12);
+            color: #ee4d2d;
+            border: 1px solid rgba(238, 77, 45, 0.25);
+        }
+        .shopee-tag-yellow {
+            background: rgba(255, 184, 0, 0.12);
+            color: #b8860b;
+            border: 1px solid rgba(255, 184, 0, 0.25);
+        }
+        .shopee-badge {
+            background: #ee4d2d;
+            color: #fff;
+        }
+        .shopee-badge-yellow {
+            background: #ffb800;
+            color: #000;
+        }
+        .shopee-filter-select {
+            background: #fff;
+            color: #333;
+            border-color: #e0d5c8;
+        }
+        .shopee-filter-select option {
+            background: #fff;
+            color: #333;
+        }
+
+        /* Platform toggle wrapper */
+        .platform-toggle {
+            background: #1a1a2a;
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid #2a2a3a;
+        }
+        .platform-toggle-shopee {
+            background: #f5f0eb;
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid #e8ddd0;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col antialiased">
+
+    <!-- ========== HEADER ========== -->
+    <header id="main-header" class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="h-12 w-12 rounded-xl border border-slate-200 p-1 bg-white shadow-xs flex items-center justify-center overflow-hidden shrink-0">
+                    <img src="https://scontent.fkul8-4.fna.fbcdn.net/v/t39.30808-6/590563163_122152685126827852_1103710828564532184_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=geUC16ftifAQ7kNvwFQPFfp&_nc_oc=AdqLGs4rox0InU7QnuJNFj068yoylcOtMVR4Sl0teZ1rVk8W5V_6RcOOHQhAutrgguh9feBo31wkaLbGuq8iOnc5&_nc_zt=23&_nc_ht=scontent.fkul8-4.fna&_nc_gid=0cD0ldIB6w4LA0ks_iaUxw&_nc_ss=7b2a8&oh=00_AQI4kqfpPYQ8w_9w8t2y6OtCoESET61LQMd76r84J3hVCg&oe=6AA4B37A"
+                    alt="Corolla Shoes Logo"
+                    class="w-full h-full object-cover rounded-lg"
+                    onerror="this.onerror=null; this.src='https://placehold.co/100x100/10b981/ffffff?text=Corolla';" />
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 id="brand-name" class="text-xl font-black text-slate-900 tracking-tight transition-colors duration-300">COROLLA SHOES</h1>
+                        <span id="platform-badge" class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300">
+                            <i class="fa-solid fa-circle text-[6px] text-emerald-500 animate-pulse"></i>
+                            <span id="badge-text">TikTok Shop Hub</span>
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-500 font-medium">9.9 Double Day Campaign Operations & Deal Mechanics</p>
+                </div>
+            </div>
+
+            <div id="platform-toggle-container" class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 transition-all duration-300">
+                <button id="btn-tiktok" onclick="switchPlatform('tiktok')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-white text-slate-900 shadow-xs flex items-center gap-2">
+                    <i class="fa-brands fa-tiktok"></i> TikTok Shop
+                </button>
+                <button id="btn-shopee" onclick="switchPlatform('shopee')" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-bag-shopping"></i> Shopee Hub
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== TIKTOK VIEW ==================== -->
+    <main id="view-tiktok" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 flex-1 w-full">
+
+        <!-- Campaign Assets -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-boxes-packing text-[#00f2ea]"></i>
+                        Campaign Physical Assets & Hero Products
+                    </h2>
+                    <p class="text-xs text-slate-500">Provided image assets structured in sequence: GWP items → Flash Sale deals → Buy 1 Get 1 → Giveaway</p>
+                </div>
+                <span class="text-xs bg-slate-100 text-slate-600 font-medium px-2.5 py-1 rounded-lg">6 Media Assets</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
+                        alt="Socks GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/10b981/ffffff?text=Socks+GWP';" />
+                        <span class="absolute top-1 left-1 bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Corolla Socks</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                </div>
+
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839"
+                        alt="Gift Bag GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/10b981/ffffff?text=Gift+Bag+GWP';" />
+                        <span class="absolute top-1 left-1 bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Premium Gift Bag</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                </div>
+
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839"
+                        alt="Rain Cover GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/10b981/ffffff?text=Rain+Cover+GWP';" />
+                        <span class="absolute top-1 left-1 bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Shoe Rain Cover</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                </div>
+
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c92821a9255b4117b677ce2e6114f221~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
+                        alt="Flash Sale" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/2563eb/ffffff?text=Flash+Sale+RM39';" />
+                        <span class="absolute top-1 left-1 bg-[#fe2c55] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">RM39 FLASH</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Flash Sale</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Timed 10-Min Drops</p>
+                </div>
+
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/77fb78f84a0948f287dbf5cc9fb31d74~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
+                        alt="Buy 1 Get 1 Deals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/d97706/ffffff?text=Buy+1+Get+1';" />
+                        <span class="absolute top-1 left-1 bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">B1G1 DEALS</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Buy 1 Get 1</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Alternating Windows</p>
+                </div>
+
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/249e9fea4ab4467886dd375c12f8834d~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
+                        alt="Corolla Shoe Giveaway" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/f43f5e/ffffff?text=Giveaway+Shoe';" />
+                        <span class="absolute top-1 left-1 bg-[#fe2c55] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">GIVEAWAY</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Corolla Shoes</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Corolla Ease (size 36 only)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter bar - TikTok themed -->
+        <div class="bg-black p-4 rounded-2xl border border-[#2a2a3a] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <h2 class="text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
+                    <i class="fa-brands fa-tiktok text-[#00f2ea]"></i>
+                    TikTok Shop Live Schedule & Deal Breakdown
+                </h2>
+                <p class="text-xs text-[#888]">Master schedule breakdown: GWP → Flash Sale → Buy 1 Get 1 → Giveaway</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <div class="relative">
+                    <select id="filter-host" onchange="filterSchedule()" class="bg-[#0a0a0a] border border-[#2a2a3a] text-white text-xs font-semibold rounded-xl px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-[#00f2ea] appearance-none">
+                        <option value="ALL">All Hosts</option>
+                        <option value="Zaiffa">Zaiffa</option>
+                        <option value="Qys">Qys</option>
+                        <option value="Nurul">Nurul</option>
+                        <option value="Mar">Mar</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-[#555] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                </div>
+                <button onclick="resetFilters()" class="p-2 bg-[#1a1a2a] hover:bg-[#2a2a3a] text-[#888] hover:text-white rounded-xl text-xs font-semibold transition-all border border-[#2a2a3a]" title="Reset Filters">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- TikTok cards grid -->
+        <div id="tiktok-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+    </main>
+
+    <!-- ==================== SHOPEE VIEW ==================== -->
+    <main id="view-shopee" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 flex-1 w-full hidden">
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-boxes-packing text-[#ee4d2d]"></i>
+                        Campaign Physical Assets & Hero Products
+                    </h2>
+                    <p class="text-xs text-slate-500">Provided image assets structured in sequence: GWP items → Flash Sale deals → Buy 1 Get 1 → LIMITED OFFER (50% OFF)</p>
+                </div>
+                <span class="text-xs bg-slate-100 text-slate-600 font-medium px-2.5 py-1 rounded-lg">5 Media Assets</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687" alt="Socks GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Socks+GWP';" />
+                        <span class="absolute top-1 left-1 bg-[#ee4d2d] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Corolla Socks</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                </div>
+
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Gift Bag GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Gift+Bag+GWP';" />
+                        <span class="absolute top-1 left-1 bg-[#ee4d2d] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">GWP GIFT</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Premium Gift Bag</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Free with Every Order</p>
+                </div>
+
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c92821a9255b4117b677ce2e6114f221~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687" alt="Shopee Flash Sale Asset" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/2563eb/ffffff?text=Flash+Sale+RM39';" />
+                        <span class="absolute top-1 left-1 bg-[#ffb800] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">RM39 FLASH</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Flash Sale</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Timed 10-Min Drops</p>
+                </div>
+
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/77fb78f84a0948f287dbf5cc9fb31d74~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687" alt="Buy 1 Get 1 Deals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/d97706/ffffff?text=Buy+1+Get+1';" />
+                        <span class="absolute top-1 left-1 bg-[#ee4d2d] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">B1G1 DEALS</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Buy 1 Get 1</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Alternating Windows</p>
+                </div>
+
+                <div class="group border border-slate-200 rounded-xl p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-2 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/9cba0ecd1dca4409a61812123a989411~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Limited Offer Asset" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/6366f1/ffffff?text=Limited+Offer';" />
+                        <span class="absolute top-1 left-1 bg-[#ffb800] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">50% OFF</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800 truncate">Limited Offer</p>
+                    <p class="text-[10px] text-slate-500 font-medium">LIMITED OFFER (50% OFF) RM59.9</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter bar - Shopee themed -->
+        <div class="bg-[#ee4d2d] p-4 rounded-2xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <h2 class="text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-bag-shopping text-[#ffb800]"></i>
+                    Shopee Hub Live Schedule & Deal Breakdown
+                </h2>
+                <p class="text-xs text-[#fde0d5]">Master schedule breakdown: GWP → Flash Sale → Buy 1 Get 1 → LIMITED OFFER (50% OFF)</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <div class="relative">
+                    <select id="filter-shopee-host" onchange="filterShopeeSchedule()" class="bg-white border border-[#d93d1e] text-slate-700 text-xs font-semibold rounded-xl px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-[#ffb800] appearance-none">
+                        <option value="ALL">All Hosts</option>
+                        <option value="Nureen">Nureen</option>
+                        <option value="Azmira">Azmira</option>
+                        <option value="Anis">Anis</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                </div>
+                <button onclick="resetShopeeFilters()" class="p-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-xs font-semibold transition-all border border-white/30" title="Reset Filters">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="shopee-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    </main>
+
+    <script>
+        // ========== TIKTOK SCHEDULE ==========
+        let shiftData = [{
+            id: 1,
+            date: "Sep 8",
+            time: "8:00 PM - 11:00 PM",
+            host: "Qys",
+            tag: "Prime Night",
+            tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
+            gwpItem: "Socks",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
+            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
+            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"],
+            giveaways: ["8:30 PM Drop", "9:30 PM Drop", "10:30 PM Drop"]
+        }, {
+            id: 2,
+            date: "Sep 8-9",
+            time: "11:30 PM - 2:30 AM",
+            host: "Nurul",
+            tag: "Midnight",
+            tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
+            gwpItem: "Rain Cover",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
+            flashSlots: ["11:30-11:40 PM", "12:30-12:40 AM", "1:30-1:40 AM"],
+            b1g1Slots: ["11:40-11:50 PM", "12:40-12:50 AM", "1:40-1:50 AM"],
+            giveaways: ["12:00 AM Drop", "1:00 AM Drop", "2:00 AM Drop"]
+        }, {
+            id: 3,
+            date: "Sep 9",
+            time: "9:00 AM - 12:00 PM",
+            host: "Zaiffa",
+            tag: "Morning",
+            tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
+            gwpItem: "Gift Bag",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
+            flashSlots: ["9:00-9:10 AM", "10:00-10:10 AM", "11:00-11:10 AM"],
+            b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"],
+            giveaways: ["9:30 AM Drop", "10:30 AM Drop", "11:30 AM Drop"]
+        }, {
+            id: 4,
+            date: "Sep 9",
+            time: "12:30 PM - 3:30 PM",
+            host: "Zaiffa",
+            tag: "Noon",
+            tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
+            gwpItem: "Socks",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
+            flashSlots: ["12:30-12:40 PM", "1:30-1:40 PM", "2:30-2:40 PM"],
+            b1g1Slots: ["12:40-12:50 PM", "1:40-1:50 PM", "2:40-2:50 PM"],
+            giveaways: ["1:00 PM Drop", "2:00 PM Drop", "3:00 PM Drop"]
+        }, {
+            id: 5,
+            date: "Sep 9",
+            time: "4:00 PM - 7:00 PM",
+            host: "Qys",
+            tag: "Afternoon",
+            tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
+            gwpItem: "Rain Cover",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
+            flashSlots: ["4:00-4:10 PM", "5:00-5:10 PM", "6:00-6:10 PM"],
+            b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"],
+            giveaways: ["4:30 PM Drop", "5:30 PM Drop", "6:30 PM Drop"]
+        }, {
+            id: 6,
+            date: "Sep 9",
+            time: "8:00 PM - 11:00 PM",
+            host: "Mar",
+            tag: "Peak Night",
+            tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
+            gwpItem: "Socks",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
+            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
+            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"],
+            giveaways: ["8:30 PM Drop", "9:30 PM Drop", "10:30 PM Drop"]
+        }];
+
+        // ========== UPDATED SHOPEE SCHEDULE ==========
+        let shopeeCardsData = [{
+            date: "Sep 8",
+            time: "8:00 PM - 11:00 PM",
+            host: "Azmira",
+            tag: "Prime Night",
+            tagBg: "bg-[#ffb800]/20 text-[#b8860b] border-[#ffb800]/30",
+            gwpItem: "Socks",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
+            flashSlots: ["8:00 - 8:10 PM", "9:00 - 9:10 PM"],
+            b1g1Slots: ["8:30 - 8:50 PM", "9:20 - 9:30 PM", "10:00 - 10:10 PM"],
+            promosiSlots: ["8:10 - 8:30 PM", "9:10 - 9:20 PM", "10:10 - 10:30 PM"]
+        }, {
+            date: "Sep 8-9",
+            time: "11:30 PM - 2:30 AM",
+            host: "Anis",
+            tag: "Midnight",
+            tagBg: "bg-[#ee4d2d]/20 text-[#ee4d2d] border-[#ee4d2d]/30",
+            gwpItem: "Gift Bag",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
+            flashSlots: ["11:30 - 11:40 PM"],
+            b1g1Slots: ["12:00 - 12:10 AM"],
+            promosiSlots: ["12:10 - 12:20 AM"]
+        }, {
+            date: "Sep 9",
+            time: "9:00 AM - 12:00 PM",
+            host: "Nureen",
+            tag: "Morning",
+            tagBg: "bg-[#ffb800]/20 text-[#b8860b] border-[#ffb800]/30",
+            gwpItem: "Socks",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
+            flashSlots: ["9:00 - 9:10 AM", "10:00 - 10:10 AM"],
+            b1g1Slots: ["9:20 - 9:30 AM", "10:20 - 10:30 AM"],
+            promosiSlots: ["9:10 - 9:20 AM", "10:10 - 10:20 AM", "11:00 - 11:20 AM"]
+        }, {
+            date: "Sep 9",
+            time: "12:30 PM - 3:30 PM",
+            host: "Nureen",
+            tag: "Noon",
+            tagBg: "bg-[#ee4d2d]/20 text-[#ee4d2d] border-[#ee4d2d]/30",
+            gwpItem: "Socks",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
+            flashSlots: ["12:30 - 12:40 PM", "2:00 - 2:10 PM", "3:00 - 3:10 PM"],
+            b1g1Slots: ["12:50 - 1:00 PM", "2:20 - 2:30 PM", "3:20 - 3:30 PM"],
+            promosiSlots: ["12:40 - 12:50 PM", "1:10 - 1:20 PM", "2:10 - 2:20 PM", "3:10 - 3:20 PM"]
+        }, {
+            date: "Sep 9",
+            time: "4:00 PM - 7:00 PM",
+            host: "Azmira",
+            tag: "Afternoon",
+            tagBg: "bg-[#ffb800]/20 text-[#b8860b] border-[#ffb800]/30",
+            gwpItem: "Socks",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
+            flashSlots: ["4:00 - 4:10 PM", "5:00 - 5:10 PM"],
+            b1g1Slots: ["4:30 - 4:40 PM"],
+            promosiSlots: ["4:10 - 4:20 PM", "5:10 - 5:20 PM", "6:10 - 6:20 PM"]
+        }, {
+            date: "Sep 9",
+            time: "8:00 PM - 11:00 PM",
+            host: "Azmira",
+            tag: "Peak Night",
+            tagBg: "bg-[#ee4d2d]/20 text-[#ee4d2d] border-[#ee4d2d]/30",
+            gwpItem: "Gift Bag",
+            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
+            flashSlots: ["8:00 - 8:10 PM", "10:00 - 10:10 PM"],
+            b1g1Slots: ["8:20 - 8:30 PM", "10:20 - 10:30 PM"],
+            promosiSlots: ["8:10 - 8:20 PM", "9:00 - 9:10 PM", "10:10 - 10:20 PM"]
+        }];
+
+        // ========== PLATFORM SWITCH ==========
+        function switchPlatform(platform) {
+            const btnTiktok = document.getElementById('btn-tiktok');
+            const btnShopee = document.getElementById('btn-shopee');
+            const viewTiktok = document.getElementById('view-tiktok');
+            const viewShopee = document.getElementById('view-shopee');
+            const badgeText = document.getElementById('badge-text');
+            const badgeContainer = document.getElementById('platform-badge');
+            const header = document.getElementById('main-header');
+            const toggleContainer = document.getElementById('platform-toggle-container');
+            const brandName = document.getElementById('brand-name');
+
+            if (platform === 'tiktok') {
+                // TikTok active
+                btnTiktok.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-black text-white shadow-xs flex items-center gap-2 border border-[#00f2ea]";
+                btnShopee.className = "px-4 py-2 rounded-lg text-xs font-semibold text-[#888] hover:text-white transition-all flex items-center gap-2";
+                viewTiktok.classList.remove('hidden');
+                viewShopee.classList.add('hidden');
+                badgeText.textContent = "TikTok Shop Hub";
+                badgeContainer.className = "bg-[#00f2ea] text-black text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300";
+                header.className = "bg-black border-b border-[#2a2a3a] sticky top-0 z-40 shadow-sm transition-all duration-300";
+                toggleContainer.className = "flex items-center bg-[#1a1a2a] p-1 rounded-xl border border-[#2a2a3a] transition-all duration-300";
+                brandName.className = "text-xl font-black text-white tracking-tight transition-colors duration-300";
+                document.querySelector('body').style.backgroundColor = '#0a0a0a';
+            } else {
+                // Shopee active
+                btnShopee.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-[#ee4d2d] text-white shadow-xs flex items-center gap-2 border border-[#ee4d2d]";
+                btnTiktok.className = "px-4 py-2 rounded-lg text-xs font-semibold text-[#888] hover:text-[#ee4d2d] transition-all flex items-center gap-2";
+                viewShopee.classList.remove('hidden');
+                viewTiktok.classList.add('hidden');
+                badgeText.textContent = "Shopee Hub";
+                badgeContainer.className = "bg-[#ee4d2d] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300";
+                header.className = "bg-white border-b border-[#e8ddd0] sticky top-0 z-40 shadow-sm transition-all duration-300";
+                toggleContainer.className = "flex items-center bg-[#f5f0eb] p-1 rounded-xl border border-[#e8ddd0] transition-all duration-300";
+                brandName.className = "text-xl font-black text-[#ee4d2d] tracking-tight transition-colors duration-300";
+                document.querySelector('body').style.backgroundColor = '#f8fafc';
+                renderShopeeCards(shopeeCardsData);
+            }
+        }
+
+        // ========== RENDER TIKTOK CARDS ==========
+        function renderTikTokCards(filteredData = shiftData) {
+            const grid = document.getElementById('tiktok-grid');
+            grid.innerHTML = '';
+
+            if (filteredData.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-black p-8 rounded-2xl border border-[#2a2a3a] text-center py-12">
+                        <i class="fa-solid fa-filter-circle-xmark text-4xl text-[#555] mb-3"></i>
+                        <p class="text-sm font-bold text-white">No shift slots match your selected filter.</p>
+                        <p class="text-xs text-[#666]">Try resetting your host filters.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-black rounded-2xl border border-[#2a2a3a] shadow-sm overflow-hidden flex flex-col hover:shadow-[0_0_30px_rgba(0,242,234,0.08)] transition-all";
+
+                const flashList = item.flashSlots.map(s =>
+                    `<li class="flex items-center gap-1 text-[#ccc]"><i class="fa-solid fa-bolt text-[#fe2c55] text-[10px]"></i> ${s}</li>`
+                ).join('');
+                const b1g1List = item.b1g1Slots.map(s =>
+                    `<li class="flex items-center gap-1 text-[#ccc]"><i class="fa-solid fa-tags text-[#00f2ea] text-[10px]"></i> ${s}</li>`
+                ).join('');
+                const giveawayList = item.giveaways.map(g =>
+                    `<li class="flex items-center gap-1.5 text-[#ccc]"><i class="fa-solid fa-gift text-[#fe2c55] text-[10px]"></i> ${g}</li>`
+                ).join('');
+
+                card.innerHTML = `
+                    <div class="bg-gradient-to-br from-[#0a0a0a] to-[#1a1a2e] text-white p-4 border-b-2 border-[#00f2ea]">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold bg-[#00f2ea]/20 text-[#00f2ea] border border-[#00f2ea]/30 px-2.5 py-1 rounded-lg">${item.date}</span>
+                            <span class="text-[11px] font-semibold text-[#888]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-lg text-white tracking-wide">Host: ${item.host}</span>
+                            </div>
+                            <span class="text-[10px] font-extrabold border px-2 py-0.5 rounded-full uppercase ${item.tagBg}">${item.tag}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 space-y-3 flex-1 flex flex-col justify-between bg-[#0d0d1a]">
+                        <div class="bg-[#00f2ea]/10 p-3 rounded-xl border border-[#00f2ea]/20 flex items-center justify-between">
+                            <div>
+                                <div class="flex items-center gap-1.5 mb-1">
+                                    <span class="text-[10px] font-extrabold uppercase text-[#00f2ea]">GWP for every order</span>
+                                    <span class="bg-[#00f2ea] text-black text-[8px] font-black px-1.5 py-0.2 rounded">FREE GIFT</span>
+                                </div>
+                                <p class="text-xs font-bold text-white">${item.gwpItem}</p>
+                                <p class="text-[10px] text-[#666] font-medium">${item.time}</p>
+                            </div>
+                            <img src="${item.gwpImage}" alt="${item.gwpItem}" class="w-10 h-10 object-cover rounded-lg border border-[#2a2a3a] bg-black"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/00f2ea/000000?text=GWP';">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-[#fe2c55]/10 p-2.5 rounded-xl border border-[#fe2c55]/20">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-extrabold text-[#fe2c55] text-[11px]">FLASH SALE</span>
+                                    <span class="bg-[#fe2c55] text-white text-[9px] font-extrabold px-1 py-0.5 rounded">RM39</span>
+                                </div>
+                                <ul class="space-y-1 font-medium text-[11px]">${flashList}</ul>
+                            </div>
+                            <div class="bg-[#00f2ea]/10 p-2.5 rounded-xl border border-[#00f2ea]/20">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-extrabold text-[#00f2ea] text-[11px]">BUY 1 GET 1</span>
+                                    <span class="bg-[#00f2ea] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded">PROMO</span>
+                                </div>
+                                <ul class="space-y-1 font-medium text-[11px]">${b1g1List}</ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#fe2c55]/10 p-2.5 rounded-xl border border-[#fe2c55]/20">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <span class="text-[10px] font-extrabold uppercase text-[#fe2c55]">Corolla Ease (size 36 only)</span>
+                                <span class="bg-[#fe2c55] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded shrink-0">HOURLY</span>
+                            </div>
+                            <ul class="space-y-1 font-medium text-[11px]">${giveawayList}</ul>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // ========== RENDER SHOPEE CARDS ==========
+        function renderShopeeCards(filteredData = shopeeCardsData) {
+            const grid = document.getElementById('shopee-grid');
+            grid.innerHTML = '';
+
+            if (filteredData.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-white p-8 rounded-2xl border border-slate-200 text-center py-12">
+                        <i class="fa-solid fa-filter-circle-xmark text-4xl text-slate-300 mb-3"></i>
+                        <p class="text-sm font-bold text-slate-700">No shift slots match your selected filter.</p>
+                        <p class="text-xs text-slate-400">Try resetting your host filters.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl border border-orange-200/80 shadow-sm overflow-hidden flex flex-col hover:shadow-md transition-all";
+
+                card.innerHTML = `
+                    <div class="bg-gradient-to-br from-[#ee4d2d] to-[#d93d1e] text-white p-4 border-b-2 border-[#ffb800]">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold bg-white/20 text-white border border-white/30 px-2.5 py-1 rounded-lg">${item.date}</span>
+                            <span class="text-[11px] font-semibold text-[#fde0d5]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-lg text-white tracking-wide">Host: ${item.host}</span>
+                            </div>
+                            <span class="text-[10px] font-extrabold border px-2 py-0.5 rounded-full uppercase ${item.tagBg}">${item.tag}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 space-y-3 flex-1 flex flex-col justify-between bg-orange-50/20">
+                        <div class="bg-orange-50/70 p-3 rounded-xl border border-orange-200/80 flex items-center justify-between">
+                            <div>
+                                <div class="flex items-center gap-1.5 mb-1">
+                                    <span class="text-[10px] font-extrabold uppercase text-[#ee4d2d]">GWP for every order</span>
+                                    <span class="bg-[#ee4d2d] text-white text-[8px] font-black px-1.5 py-0.2 rounded">FREE GIFT</span>
+                                </div>
+                                <p class="text-xs font-bold text-slate-800">${item.gwpItem}</p>
+                                <p class="text-[10px] text-slate-500 font-medium">${item.time}</p>
+                            </div>
+                            <img src="${item.gwpImage}" alt="GWP" class="w-10 h-10 object-cover rounded-lg border border-orange-200 bg-white"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/ea580c/ffffff?text=GWP';">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-[#ffb800]/10 p-2.5 rounded-xl border border-[#ffb800]/30">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-extrabold text-[#b8860b] text-[11px]">FLASH SALE</span>
+                                    <span class="bg-[#ffb800] text-black text-[9px] font-extrabold px-1 py-0.5 rounded">RM39</span>
+                                </div>
+                                <ul class="space-y-1 text-slate-700 font-medium text-[11px] max-h-28 overflow-y-auto custom-scrollbar">
+                                    ${item.flashSlots.map(s => `<li class="flex items-center gap-1"><i class="fa-solid fa-bolt text-[#ffb800] text-[10px]"></i> ${s}</li>`).join('')}
+                                </ul>
+                            </div>
+
+                            <div class="bg-[#ee4d2d]/10 p-2.5 rounded-xl border border-[#ee4d2d]/20">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-extrabold text-[#ee4d2d] text-[11px]">BUY 1 GET 1</span>
+                                    <span class="bg-[#ee4d2d] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded">B1G1</span>
+                                </div>
+                                <ul class="space-y-1 text-slate-700 font-medium text-[11px] max-h-28 overflow-y-auto custom-scrollbar">
+                                    ${item.b1g1Slots.map(s => `<li class="flex items-center gap-1"><i class="fa-solid fa-gift text-[#ee4d2d] text-[10px]"></i> ${s}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#ffb800]/10 p-2.5 rounded-xl border border-[#ffb800]/30">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <span class="text-[10px] font-extrabold uppercase text-[#b8860b]">LIMITED OFFER (50% OFF)</span>
+                                <span class="bg-[#ffb800] text-black text-[9px] font-extrabold px-1.5 py-0.5 rounded shrink-0">RM59.9</span>
+                            </div>
+                            <ul class="space-y-1 text-slate-700 font-medium text-[11px] max-h-28 overflow-y-auto custom-scrollbar">
+                                ${item.promosiSlots.map(s => `<li class="flex items-center gap-1"><i class="fa-solid fa-tag text-[#ffb800] text-[10px]"></i> ${s}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // ========== FILTER FUNCTIONS ==========
+        function filterSchedule() {
+            const selectedHost = document.getElementById('filter-host').value;
+            let filtered = shiftData.filter(item => (selectedHost === 'ALL') || (item.host === selectedHost));
+            renderTikTokCards(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-host').value = 'ALL';
+            renderTikTokCards(shiftData);
+        }
+
+        function filterShopeeSchedule() {
+            const selectedHost = document.getElementById('filter-shopee-host').value;
+            let filtered = shopeeCardsData.filter(item => (selectedHost === 'ALL') || (item.host === selectedHost));
+            renderShopeeCards(filtered);
+        }
+
+        function resetShopeeFilters() {
+            document.getElementById('filter-shopee-host').value = 'ALL';
+            renderShopeeCards(shopeeCardsData);
+        }
+
+        // ========== INIT ==========
+        window.onload = function() {
+            renderTikTokCards(shiftData);
+            renderShopeeCards(shopeeCardsData);
+            // Default to TikTok
+            switchPlatform('tiktok');
+        };
+    </script>
+
+</body>
+</html>
