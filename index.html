@@ -869,9 +869,13 @@
                 const b1g1List = item.b1g1Slots.map(s =>
                     `<li class="flex items-center gap-1 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tags text-[#00f2ea] text-[8px] sm:text-[10px]"></i> ${s}</li>`
                 ).join('');
-                const giveawayList = item.giveaways.map(g =>
-                    `<li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-gift text-[#fe2c55] text-[8px] sm:text-[10px]"></i> ${g}</li>`
-                ).join('');
+
+                // Giveaway list: hourly drops + task terms
+                const giveawayList = `
+                    ${item.giveaways.map(g => `<li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-gift text-[#fe2c55] text-[8px] sm:text-[10px]"></i> ${g}</li>`).join('')}
+                    <li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-check-circle text-[#00f2ea] text-[8px] sm:text-[10px]"></i> Task 1: Follow host</li>
+                    <li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-check-circle text-[#00f2ea] text-[8px] sm:text-[10px]"></i> Task 2: Place order during LIVE</li>
+                `;
 
                 card.innerHTML = `
                     <div class="bg-gradient-to-br from-[#0a0a0a] to-[#1a1a2e] text-white p-3 sm:p-4 border-b-2 border-[#00f2ea]">
