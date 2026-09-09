@@ -573,7 +573,44 @@
                 font-size: 0.55rem;
             }
         }
-        
+        /* Embed mode – preserve desktop layout, scale to fit */
+body.embed-mode {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    overflow: hidden !important;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body.embed-mode .tracker-wrapper {
+    /* Desktop size – adjust these to match your actual tracker size */
+    width: 480px;
+    height: 620px;
+    transform-origin: center center;
+    flex-shrink: 0;
+}
+body.embed-mode .tracker-card {
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body.embed-mode #tiktok-tracker,
+body.embed-mode #shopee-tracker {
+    height: 100%;
+}
+/* Hide everything else */
+body.embed-mode header,
+body.embed-mode .asset-grid,
+body.embed-mode .filter-bar,
+body.embed-mode .schedule-grid {
+    display: none !important;
+}
     </style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col antialiased">
@@ -1952,27 +1989,35 @@
     const platform = urlParams.get('platform') || 'tiktok';
 
     if (embedMode) {
-        // Hide header
-        document.querySelector('header').style.display = 'none';
+        document.body.classList.add('embed-mode');
 
-        // Hide everything inside both views except the tracker cards themselves
-        const views = ['view-tiktok', 'view-shopee'];
-        views.forEach(viewId => {
-            const view = document.getElementById(viewId);
-            if (!view) return;
-            // Hide all direct children of the view except the tracker card
-            Array.from(view.children).forEach(child => {
-                if (!child.id || (child.id !== 'tiktok-tracker' && child.id !== 'shopee-tracker')) {
-                    child.style.display = 'none';
-                }
-            });
-            // Ensure the tracker card itself is visible (in case it was hidden)
-            const tracker = view.querySelector('.tracker-card');
-            if (tracker) tracker.style.display = 'block';
+        // Wrap each tracker in a .tracker-wrapper div and scale to fit viewport
+        ['tiktok-tracker', 'shopee-tracker'].forEach(id => {
+            const tracker = document.getElementById(id);
+            if (!tracker) return;
+            const wrapper = document.createElement('div');
+            wrapper.className = 'tracker-wrapper';
+            tracker.parentNode.insertBefore(wrapper, tracker);
+            wrapper.appendChild(tracker);
         });
 
-        // Also hide any other stray elements (e.g., if the tracker is not direct child)
-        // Already handled above.
+        function scaleTrackers() {
+            const wrappers = document.querySelectorAll('.tracker-wrapper');
+            if (!wrappers.length) return;
+            // Use the first visible wrapper for sizing
+            const wrapper = wrappers[0];
+            const baseWidth = 480;   // adjust to match your tracker's natural width
+            const baseHeight = 620;  // adjust to match your tracker's natural height
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            const scaleX = vw / baseWidth;
+            const scaleY = vh / baseHeight;
+            const scale = Math.min(scaleX, scaleY, 1); // never scale up beyond 1×
+            wrapper.style.transform = `scale(${scale})`;
+        }
+
+        scaleTrackers();
+        window.addEventListener('resize', scaleTrackers);
     }
 
     renderTikTokCards(shiftData);
