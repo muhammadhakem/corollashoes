@@ -573,7 +573,7 @@
                 font-size: 0.55rem;
             }
         }
-        /* Embed mode – preserve desktop layout, scale to fit */
+/* ========== EMBED MODE – preserve desktop layout, scale to fit ========== */
 body.embed-mode {
     margin: 0 !important;
     padding: 0 !important;
@@ -586,9 +586,8 @@ body.embed-mode {
     justify-content: center;
 }
 body.embed-mode .tracker-wrapper {
-    /* Desktop size – adjust these to match your actual tracker size */
-    width: 480px;
-    height: 620px;
+    width: 480px;          /* adjust to your tracker's natural width */
+    height: 620px;         /* adjust to your tracker's natural height */
     transform-origin: center center;
     flex-shrink: 0;
 }
@@ -604,7 +603,31 @@ body.embed-mode #tiktok-tracker,
 body.embed-mode #shopee-tracker {
     height: 100%;
 }
-/* Hide everything else */
+/* Force desktop layout – prevent stacking */
+body.embed-mode .tracker-wrapper .deal-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+}
+body.embed-mode .tracker-wrapper .flex-wrap {
+    flex-wrap: nowrap !important;
+}
+body.embed-mode .tracker-wrapper .tracker-item {
+    padding: 0.6rem 0.8rem !important;
+}
+body.embed-mode .tracker-wrapper .tracker-label {
+    font-size: 0.55rem !important;
+}
+body.embed-mode .tracker-wrapper .tracker-value {
+    font-size: 0.8rem !important;
+}
+body.embed-mode .tracker-wrapper .slot-list li {
+    font-size: 0.65rem !important;
+}
+body.embed-mode .tracker-wrapper .gwp-thumb {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+}
+/* Hide everything except the tracker */
 body.embed-mode header,
 body.embed-mode .asset-grid,
 body.embed-mode .filter-bar,
@@ -1991,7 +2014,11 @@ body.embed-mode .schedule-grid {
     if (embedMode) {
         document.body.classList.add('embed-mode');
 
-        // Wrap each tracker in a .tracker-wrapper div and scale to fit viewport
+        // Hide header (already hidden by CSS, but this catches extra elements)
+        const header = document.querySelector('header');
+        if (header) header.style.display = 'none';
+
+        // Wrap each tracker in a .tracker-wrapper for scaling
         ['tiktok-tracker', 'shopee-tracker'].forEach(id => {
             const tracker = document.getElementById(id);
             if (!tracker) return;
@@ -2006,13 +2033,13 @@ body.embed-mode .schedule-grid {
             if (!wrappers.length) return;
             // Use the first visible wrapper for sizing
             const wrapper = wrappers[0];
-            const baseWidth = 480;   // adjust to match your tracker's natural width
-            const baseHeight = 620;  // adjust to match your tracker's natural height
+            const baseWidth = 480;   // match the CSS width
+            const baseHeight = 620;  // match the CSS height
             const vw = window.innerWidth;
             const vh = window.innerHeight;
             const scaleX = vw / baseWidth;
             const scaleY = vh / baseHeight;
-            const scale = Math.min(scaleX, scaleY, 1); // never scale up beyond 1×
+            const scale = Math.min(scaleX, scaleY, 1); // never scale up beyond 1x
             wrapper.style.transform = `scale(${scale})`;
         }
 
