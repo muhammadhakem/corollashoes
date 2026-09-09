@@ -1947,23 +1947,13 @@
 
         // ========== INIT ==========
         window.onload = function() {
-    // Check if we're in embed mode
     const urlParams = new URLSearchParams(window.location.search);
     const embedMode = urlParams.get('embed') === 'tracker';
     const platform = urlParams.get('platform') || 'tiktok';
 
-    // If embed mode, hide everything except the tracker
     if (embedMode) {
-        document.getElementById('view-tiktok').querySelectorAll('.asset-grid, .filter-bar, .schedule-grid').forEach(el => {
-            if (el.closest('#view-tiktok')) el.style.display = 'none';
-        });
-        document.getElementById('view-shopee').querySelectorAll('.asset-grid, .filter-bar, .schedule-grid').forEach(el => {
-            if (el.closest('#view-shopee')) el.style.display = 'none';
-        });
         // Hide header
         document.querySelector('header').style.display = 'none';
-        // Only show the tracker container
-        document.querySelectorAll('.tracker-card').forEach(el => el.style.display = 'block');
 
         // Hide everything inside both views except the tracker cards themselves
         const views = ['view-tiktok', 'view-shopee'];
@@ -1988,8 +1978,6 @@
     renderTikTokCards(shiftData);
     renderShopeeCards(shopeeCardsData);
     switchPlatform(platform);
-            
-        };
 };
     </script>
 
