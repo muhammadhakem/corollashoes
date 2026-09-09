@@ -89,9 +89,9 @@
             border: 1px solid rgba(0, 242, 234, 0.3);
         }
         .tiktok-tag-pink {
-            background: rgba(254, 44, 85, 0.15);
+            background: rgba(254, 44, 55, 0.15);
             color: #fe2c55;
-            border: 1px solid rgba(254, 44, 85, 0.3);
+            border: 1px solid rgba(254, 44, 55, 0.3);
         }
         .tiktok-badge {
             background: #00f2ea;
@@ -391,6 +391,158 @@
                 padding: 0.125rem 0.625rem;
             }
         }
+
+        /* Tracker styles - stacked layout */
+        .tracker-card {
+            transition: all 0.3s ease;
+        }
+        .tracker-item {
+            padding: 0.6rem 0.8rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        /* TikTok tracker items */
+        .tracker-item-active {
+            background: rgba(0, 242, 234, 0.12);
+            border: 1px solid rgba(0, 242, 234, 0.3);
+        }
+        .tracker-item-upcoming {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid #2a2a3a;
+        }
+        .tracker-item-idle {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid #1a1a2a;
+            opacity: 0.5;
+        }
+        /* Shopee tracker items */
+        .tracker-item-shopee-active {
+            background: rgba(238, 77, 45, 0.10);
+            border: 1px solid rgba(238, 77, 45, 0.35);
+        }
+        .tracker-item-shopee-upcoming {
+            background: rgba(238, 77, 45, 0.04);
+            border: 1px solid #e8ddd0;
+        }
+        .tracker-item-shopee-idle {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid #f0ebe6;
+            opacity: 0.5;
+        }
+        .tracker-countdown {
+            font-variant-numeric: tabular-nums;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            padding: 2px 9px;
+            border-radius: 999px;
+            background: color-mix(in srgb, currentColor 14%, transparent);
+            border: 1px solid color-mix(in srgb, currentColor 38%, transparent);
+            box-shadow: 0 0 6px color-mix(in srgb, currentColor 25%, transparent);
+        }
+        .tracker-activity-countdown {
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            font-weight: 800;
+        }
+        @media (min-width: 640px) {
+            .tracker-activity-countdown {
+                font-size: 0.85rem;
+                padding: 3px 11px;
+            }
+        }
+        .tracker-status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 4px;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
+        .tracker-stacked {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .tracker-label {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 600;
+        }
+        @media (min-width: 480px) {
+            .tracker-label {
+                font-size: 0.6rem;
+            }
+        }
+        .tracker-value {
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        @media (min-width: 480px) {
+            .tracker-value {
+                font-size: 0.95rem;
+            }
+        }
+        .tracker-sub {
+            font-size: 0.5rem;
+            opacity: 0.6;
+        }
+        @media (min-width: 480px) {
+            .tracker-sub {
+                font-size: 0.55rem;
+            }
+        }
+        .tracker-no-session {
+            padding: 1.2rem;
+            text-align: center;
+            color: #666;
+        }
+        .tracker-badge {
+            font-size: 0.45rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+        @media (min-width: 480px) {
+            .tracker-badge {
+                font-size: 0.5rem;
+            }
+        }
+        .tracker-divider {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            margin: 0.25rem 0;
+        }
+        .tracker-divider-shopee {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            margin: 0.25rem 0;
+        }
+        .tracker-section-label {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            opacity: 0.4;
+        }
+        @media (min-width: 480px) {
+            .tracker-section-label {
+                font-size: 0.55rem;
+            }
+        }
     </style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col antialiased">
@@ -435,6 +587,13 @@
 
     <!-- ==================== TIKTOK VIEW ==================== -->
     <main id="view-tiktok" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 flex-1 w-full">
+
+        <!-- ====== TIKTOK TRACKER ====== -->
+        <div id="tiktok-tracker" class="tracker-card bg-black rounded-2xl border border-[#2a2a3a] shadow-sm overflow-hidden">
+            <div id="tiktok-tracker-content" class="p-3 sm:p-4 md:p-5">
+                <!-- Rendered by JavaScript -->
+            </div>
+        </div>
 
         <!-- Campaign Assets -->
         <div class="bg-white p-3 sm:p-4 md:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3 sm:space-y-4">
@@ -553,6 +712,13 @@
     <!-- ==================== SHOPEE VIEW ==================== -->
     <main id="view-shopee" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 flex-1 w-full hidden">
 
+        <!-- ====== SHOPEE TRACKER (Shopee theme) ====== -->
+        <div id="shopee-tracker" class="tracker-card bg-white rounded-2xl border border-orange-200/80 shadow-sm overflow-hidden">
+            <div id="shopee-tracker-content" class="p-3 sm:p-4 md:p-5">
+                <!-- Rendered by JavaScript -->
+            </div>
+        </div>
+
         <div class="bg-white p-3 sm:p-4 md:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3 sm:space-y-4">
             <div class="flex items-center justify-between flex-wrap gap-2">
                 <div>
@@ -643,6 +809,293 @@
     </main>
 
     <script>
+        // ========== UTILITY FUNCTIONS ==========
+
+        function getCurrentYear() {
+            return new Date().getFullYear();
+        }
+
+        function parseMonth(monthStr) {
+            const months = { 'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5, 'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9,
+                'Nov': 10, 'Dec': 11 };
+            return months[monthStr] !== undefined ? months[monthStr] : -1;
+        }
+
+        function parseDateStr(dateStr) {
+            const parts = dateStr.split('-');
+            const firstPart = parts[0].trim();
+            const monthMatch = firstPart.match(/^([A-Za-z]{3})\s+(\d+)$/);
+            if (!monthMatch) return null;
+            const month = parseMonth(monthMatch[1]);
+            const day = parseInt(monthMatch[2]);
+            if (month === -1) return null;
+            const year = getCurrentYear();
+            const startDate = new Date(year, month, day);
+            let endDate = new Date(year, month, day);
+            if (parts.length > 1) {
+                const endDay = parseInt(parts[1].trim());
+                if (!isNaN(endDay)) {
+                    endDate = new Date(year, month, endDay);
+                }
+            }
+            return { start: startDate, end: endDate };
+        }
+
+        function parseTimeStr(timeStr) {
+            const parts = timeStr.split('-').map(s => s.trim());
+            if (parts.length !== 2) return null;
+            return { start: parts[0], end: parts[1] };
+        }
+
+        function timeToMinutes(timeStr) {
+            const match = timeStr.match(/^(\d+):(\d+)\s*(AM|PM)$/i);
+            if (!match) return null;
+            let hours = parseInt(match[1]);
+            const minutes = parseInt(match[2]);
+            const ampm = match[3].toUpperCase();
+            if (ampm === 'PM' && hours !== 12) hours += 12;
+            if (ampm === 'AM' && hours === 12) hours = 0;
+            return hours * 60 + minutes;
+        }
+
+        function parseSlotTime(slotStr) {
+            let clean = slotStr.replace(' Drop', '').trim();
+            const rangeMatch = clean.match(/^(\d+:\d+)\s*-\s*(\d+:\d+)\s*(AM|PM)$/i);
+            if (rangeMatch) {
+                const startTime = rangeMatch[1] + ' ' + rangeMatch[3];
+                const endTime = rangeMatch[2] + ' ' + rangeMatch[3];
+                return { start: startTime, end: endTime, type: 'range' };
+            }
+            const singleMatch = clean.match(/^(\d+:\d+)\s*(AM|PM)$/i);
+            if (singleMatch) {
+                const time = singleMatch[1] + ' ' + singleMatch[2];
+                return { start: time, end: null, type: 'single' };
+            }
+            return null;
+        }
+
+        function combineDateAndTime(dateObj, timeStr) {
+            const mins = timeToMinutes(timeStr);
+            if (mins === null) return null;
+            const result = new Date(dateObj);
+            result.setHours(0, 0, 0, 0);
+            result.setMinutes(mins);
+            return result;
+        }
+
+        function getSessionStartEnd(session) {
+            const dateInfo = parseDateStr(session.date);
+            if (!dateInfo) return null;
+            const timeInfo = parseTimeStr(session.time);
+            if (!timeInfo) return null;
+
+            const startDate = new Date(dateInfo.start);
+            const endDate = new Date(dateInfo.end);
+
+            const startMins = timeToMinutes(timeInfo.start);
+            const endMins = timeToMinutes(timeInfo.end);
+
+            if (startMins === null || endMins === null) return null;
+
+            let sessionStart = new Date(startDate);
+            sessionStart.setHours(0, 0, 0, 0);
+            sessionStart.setMinutes(startMins);
+
+            let sessionEnd = new Date(endDate);
+            sessionEnd.setHours(0, 0, 0, 0);
+            sessionEnd.setMinutes(endMins);
+
+            const isSameDay = dateInfo.start.getFullYear() === dateInfo.end.getFullYear() &&
+                dateInfo.start.getMonth() === dateInfo.end.getMonth() &&
+                dateInfo.start.getDate() === dateInfo.end.getDate();
+
+            if (endMins <= startMins && isSameDay) {
+                sessionEnd.setDate(sessionEnd.getDate() + 1);
+            }
+
+            return { start: sessionStart, end: sessionEnd };
+        }
+
+        function isSessionActive(session) {
+            const se = getSessionStartEnd(session);
+            if (!se) return false;
+            const now = new Date();
+            return now >= se.start && now <= se.end;
+        }
+
+        function getCurrentSession(sessions) {
+            for (const session of sessions) {
+                if (isSessionActive(session)) {
+                    return session;
+                }
+            }
+            return null;
+        }
+
+        function getNextSession(sessions) {
+            const now = new Date();
+            let next = null;
+            let nextStart = null;
+            for (const session of sessions) {
+                const se = getSessionStartEnd(session);
+                if (!se) continue;
+                if (se.start > now) {
+                    if (!nextStart || se.start < nextStart) {
+                        nextStart = se.start;
+                        next = session;
+                    }
+                }
+            }
+            return next;
+        }
+
+        function getSlotStatus(slotTime, sessionDate) {
+            const parsed = parseSlotTime(slotTime);
+            if (!parsed) return { status: 'unknown', startTime: null, endTime: null };
+            const now = new Date();
+
+            if (parsed.type === 'single') {
+                const dt = combineDateAndTime(sessionDate, parsed.start);
+                if (!dt) return { status: 'unknown', startTime: null, endTime: null };
+                // Giveaway: 10 minutes window (changed from 5 minutes)
+                const diff = now - dt;
+                if (diff >= 0 && diff < 10 * 60 * 1000) {
+                    return { status: 'active', startTime: dt, endTime: new Date(dt.getTime() + 10 * 60 * 1000) };
+                } else if (diff < 0) {
+                    return { status: 'upcoming', startTime: dt, endTime: new Date(dt.getTime() + 10 * 60 * 1000) };
+                } else {
+                    return { status: 'completed', startTime: dt, endTime: new Date(dt.getTime() + 10 * 60 * 1000) };
+                }
+            } else if (parsed.type === 'range') {
+                const startDt = combineDateAndTime(sessionDate, parsed.start);
+                const endDt = combineDateAndTime(sessionDate, parsed.end);
+                if (!startDt || !endDt) return { status: 'unknown', startTime: null, endTime: null };
+                if (endDt < startDt) {
+                    endDt.setDate(endDt.getDate() + 1);
+                }
+                if (now >= startDt && now <= endDt) {
+                    return { status: 'active', startTime: startDt, endTime: endDt };
+                } else if (now < startDt) {
+                    return { status: 'upcoming', startTime: startDt, endTime: endDt };
+                } else {
+                    return { status: 'completed', startTime: startDt, endTime: endDt };
+                }
+            }
+            return { status: 'unknown', startTime: null, endTime: null };
+        }
+
+        function getActivityStatus(slots, sessionDate) {
+            let bestActive = null;
+            let bestActiveStatus = null;
+            let bestUpcoming = null;
+            let bestUpcomingStatus = null;
+
+            for (const slot of slots) {
+                const status = getSlotStatus(slot, sessionDate);
+                if (status.status === 'active') {
+                    if (!bestActive || status.startTime < bestActiveStatus.startTime) {
+                        bestActive = slot;
+                        bestActiveStatus = status;
+                    }
+                }
+                if (status.status === 'upcoming') {
+                    if (!bestUpcoming || status.startTime < bestUpcomingStatus.startTime) {
+                        bestUpcoming = slot;
+                        bestUpcomingStatus = status;
+                    }
+                }
+            }
+
+            if (bestActive) {
+                return { status: 'active', slot: bestActive, slotStatus: bestActiveStatus };
+            }
+            if (bestUpcoming) {
+                return { status: 'upcoming', slot: bestUpcoming, slotStatus: bestUpcomingStatus };
+            }
+            return { status: 'completed', slot: null, slotStatus: null };
+        }
+
+        function getNextActivityStatus(slots, sessionDate, afterTime) {
+            const now = afterTime || new Date();
+            let best = null;
+            let bestStatus = null;
+
+            for (const slot of slots) {
+                const status = getSlotStatus(slot, sessionDate);
+                if (status.status === 'upcoming') {
+                    if (status.startTime > now) {
+                        if (!best || status.startTime < bestStatus.startTime) {
+                            best = slot;
+                            bestStatus = status;
+                        }
+                    }
+                }
+                if (status.status === 'active') {
+                    if (status.startTime > now) {
+                        if (!best || status.startTime < bestStatus.startTime) {
+                            best = slot;
+                            bestStatus = status;
+                        }
+                    }
+                }
+            }
+
+            if (!best) {
+                for (const slot of slots) {
+                    const status = getSlotStatus(slot, sessionDate);
+                    if (status.status === 'active' && status.startTime > now) {
+                        if (!best || status.startTime < bestStatus.startTime) {
+                            best = slot;
+                            bestStatus = status;
+                        }
+                    }
+                }
+            }
+
+            if (best) {
+                return { status: bestStatus.status, slot: best, slotStatus: bestStatus };
+            }
+
+            let allCompleted = true;
+            for (const slot of slots) {
+                const status = getSlotStatus(slot, sessionDate);
+                if (status.status !== 'completed') {
+                    allCompleted = false;
+                    break;
+                }
+            }
+            if (allCompleted) {
+                return { status: 'all_completed', slot: null, slotStatus: null };
+            }
+
+            return { status: 'none', slot: null, slotStatus: null };
+        }
+
+        function formatCountdown(ms) {
+            if (ms < 0) return '00:00:00';
+            const totalSec = Math.floor(ms / 1000);
+            const h = Math.floor(totalSec / 3600);
+            const m = Math.floor((totalSec % 3600) / 60);
+            const s = totalSec % 60;
+            if (h > 0) {
+                return `${h}h ${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
+            }
+            return `${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
+        }
+
+        function getSessionDisplayDate(session) {
+            const dateInfo = parseDateStr(session.date);
+            if (!dateInfo) return session.date;
+            const start = dateInfo.start;
+            const end = dateInfo.end;
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            if (start.getDate() === end.getDate()) {
+                return `${monthNames[start.getMonth()]} ${start.getDate()}`;
+            } else {
+                return `${monthNames[start.getMonth()]} ${start.getDate()}-${monthNames[end.getMonth()]} ${end.getDate()}`;
+            }
+        }
+
         // ========== TIKTOK SCHEDULE ==========
         let shiftData = [{
             id: 1,
@@ -787,6 +1240,567 @@
             promosiSlots: ["8:10 - 8:20 PM", "9:00 - 9:10 PM", "10:10 - 10:20 PM"]
         }];
 
+        // ========== TRACKER RENDER FUNCTIONS ==========
+
+        function renderTikTokTracker() {
+            const container = document.getElementById('tiktok-tracker-content');
+            if (!container) return;
+
+            const now = new Date();
+            const currentSession = getCurrentSession(shiftData);
+            const nextSession = getNextSession(shiftData);
+
+            let html = '';
+
+            // Header
+            html += `
+                <div class="flex items-center gap-2 mb-3">
+                    <i class="fa-solid fa-satellite-dish text-[#00f2ea] text-lg"></i>
+                    <span class="text-white font-bold text-sm sm:text-base">📡 LIVE TRACKER</span>
+                    <span class="text-[10px] text-[#666] ml-auto tracker-countdown" id="tiktok-tracker-time">${now.toLocaleTimeString()}</span>
+                </div>
+                <div class="border-b border-[#2a2a3a] mb-3"></div>
+            `;
+
+            if (currentSession) {
+                const se = getSessionStartEnd(currentSession);
+                const dateDisplay = getSessionDisplayDate(currentSession);
+
+                // Session info
+                html += `
+                    <div class="flex flex-wrap items-center gap-2 mb-3 text-sm text-white">
+                        <span class="font-bold text-[#00f2ea]">🔴 LIVE NOW</span>
+                        <span class="text-[#888]">|</span>
+                        <span class="font-semibold">📅 ${dateDisplay}</span>
+                        <span class="text-[#888]">|</span>
+                        <span class="font-semibold">👤 ${currentSession.host}</span>
+                        <span class="text-[#888]">|</span>
+                        <span class="text-[#888]">⏰ ${currentSession.time}</span>
+                        <span class="text-[10px] text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
+                    </div>
+                `;
+
+                // STACKED LAYOUT: GWP first, then Active, then Next
+                html += `<div class="tracker-stacked">`;
+
+                // ---- 1. GWP ----
+                const gwpEnd = se ? se.end : null;
+                const gwpActive = se && now >= se.start && now <= se.end;
+                const gwpClass = gwpActive ? 'tracker-item-active' : (se && now < se.start ? 'tracker-item-upcoming' :
+                    'tracker-item-idle');
+                const gwpLabel = gwpActive ? '🔴 ACTIVE' : (se && now < se.start ? '⏳ UPCOMING' : '✅ COMPLETED');
+                const gwpCountdown = gwpActive && se ? formatCountdown(se.end - now) : (se && now < se.start ? formatCountdown(
+                    se.start - now) : '—');
+
+                html += `
+                    <div class="tracker-item ${gwpClass}">
+                        <div class="flex items-center gap-1.5 mb-0.5">
+                            <i class="fa-solid fa-gift text-[#00f2ea]"></i>
+                            <span class="tracker-label text-[#00f2ea]">GWP</span>
+                            <span class="tracker-badge bg-[#00f2ea]/20 text-[#00f2ea] border border-[#00f2ea]/30 ml-auto">${gwpLabel}</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="tracker-value text-white">${currentSession.gwpItem}</div>
+                            <span class="tracker-countdown tracker-activity-countdown" style="color:#00f2ea;">${gwpCountdown}</span>
+                        </div>
+                    </div>
+                `;
+
+                // Determine activities
+                const activities = [
+                    { type: 'flash', slots: currentSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt', color: '#fe2c55' },
+                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags', color: '#00f2ea' },
+                    { type: 'giveaway', slots: currentSession.giveaways, label: 'GIVEAWAY', icon: 'fa-gift', color: '#fe2c55' }
+                ];
+
+                let currentActivity = null;
+                let currentActivityStatus = null;
+                let nextActivity = null;
+                let nextActivityStatus = null;
+
+                // Find current active activity
+                for (const act of activities) {
+                    const status = getActivityStatus(act.slots, se ? se.start : new Date());
+                    if (status.status === 'active') {
+                        currentActivity = act;
+                        currentActivityStatus = status;
+                        break;
+                    }
+                }
+
+                // If no active, find the next upcoming
+                if (!currentActivity) {
+                    let bestUpcoming = null;
+                    let bestUpcomingStatus = null;
+                    for (const act of activities) {
+                        const status = getActivityStatus(act.slots, se ? se.start : new Date());
+                        if (status.status === 'upcoming') {
+                            if (!bestUpcoming || status.slotStatus.startTime < bestUpcomingStatus.slotStatus.startTime) {
+                                bestUpcoming = act;
+                                bestUpcomingStatus = status;
+                            }
+                        }
+                    }
+                    if (bestUpcoming) {
+                        currentActivity = bestUpcoming;
+                        currentActivityStatus = bestUpcomingStatus;
+                        currentActivityStatus._displayStatus = 'upcoming';
+                    }
+                }
+
+                // Find next activity after current
+                if (currentActivity && currentActivityStatus) {
+                    const afterTime = currentActivityStatus.slotStatus ? currentActivityStatus.slotStatus.endTime : now;
+                    let bestNext = null;
+                    let bestNextStatus = null;
+                    for (const act of activities) {
+                        if (act.type === currentActivity.type) continue;
+                        const status = getNextActivityStatus(act.slots, se ? se.start : new Date(), afterTime);
+                        if (status.status === 'upcoming' || status.status === 'active') {
+                            if (!bestNext || status.slotStatus.startTime < bestNextStatus.slotStatus.startTime) {
+                                bestNext = act;
+                                bestNextStatus = status;
+                            }
+                        }
+                    }
+                    if (bestNext) {
+                        nextActivity = bestNext;
+                        nextActivityStatus = bestNextStatus;
+                    }
+                }
+
+                if (!currentActivity) {
+                    let firstUpcoming = null;
+                    let firstUpcomingStatus = null;
+                    for (const act of activities) {
+                        const status = getActivityStatus(act.slots, se ? se.start : new Date());
+                        if (status.status === 'upcoming') {
+                            if (!firstUpcoming || status.slotStatus.startTime < firstUpcomingStatus.slotStatus.startTime) {
+                                firstUpcoming = act;
+                                firstUpcomingStatus = status;
+                            }
+                        }
+                    }
+                    if (firstUpcoming) {
+                        currentActivity = firstUpcoming;
+                        currentActivityStatus = firstUpcomingStatus;
+                        currentActivityStatus._displayStatus = 'upcoming';
+                    }
+                }
+
+                // ---- 2. Current Activity ----
+                html += `<div class="tracker-divider"></div>`;
+                if (currentActivity && currentActivityStatus) {
+                    const isActive = currentActivityStatus._displayStatus !== 'upcoming' && currentActivityStatus.status ===
+                        'active';
+                    const displayStatus = currentActivityStatus._displayStatus || currentActivityStatus.status;
+                    const actClass = isActive ? 'tracker-item-active' : (displayStatus === 'upcoming' ?
+                        'tracker-item-upcoming' : 'tracker-item-idle');
+                    const actLabel = isActive ? '🔴 ACTIVE' : (displayStatus === 'upcoming' ? '⏳ UPCOMING' : '✅ COMPLETED');
+                    const countdown = isActive && currentActivityStatus.slotStatus ?
+                        formatCountdown(currentActivityStatus.slotStatus.endTime - now) :
+                        (displayStatus === 'upcoming' && currentActivityStatus.slotStatus ?
+                            formatCountdown(currentActivityStatus.slotStatus.startTime - now) :
+                            '—');
+                    const slotDisplay = currentActivityStatus.slot || '—';
+                    const color = currentActivity.color;
+
+                    html += `
+                        <div class="tracker-item ${actClass}">
+                            <div class="flex items-center gap-1.5 mb-0.5">
+                                <i class="fa-solid ${currentActivity.icon}" style="color:${color}"></i>
+                                <span class="tracker-label" style="color:${color}">${currentActivity.label}</span>
+                                <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="tracker-value text-white">${slotDisplay}</div>
+                                <span class="tracker-countdown tracker-activity-countdown" style="color:${color};">${countdown}</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="tracker-item tracker-item-idle">
+                            <div class="flex items-center gap-1.5 mb-0.5">
+                                <i class="fa-solid fa-clock text-[#555]"></i>
+                                <span class="tracker-label text-[#555]">No Active Promotion</span>
+                            </div>
+                            <div class="tracker-value text-[#666] text-sm">—</div>
+                            <div class="tracker-sub text-[#444]">Waiting for next slot</div>
+                        </div>
+                    `;
+                }
+
+                // ---- 3. Next Activity ----
+                html += `<div class="tracker-divider"></div>`;
+                if (nextActivity && nextActivityStatus) {
+                    const isActive = nextActivityStatus.status === 'active';
+                    const actClass = isActive ? 'tracker-item-active' : 'tracker-item-upcoming';
+                    const actLabel = isActive ? '🔴 ACTIVE' : '⏳ UPCOMING';
+                    const countdown = isActive && nextActivityStatus.slotStatus ?
+                        formatCountdown(nextActivityStatus.slotStatus.endTime - now) :
+                        (nextActivityStatus.slotStatus ?
+                            formatCountdown(nextActivityStatus.slotStatus.startTime - now) :
+                            '—');
+                    const slotDisplay = nextActivityStatus.slot || '—';
+                    const color = nextActivity.color;
+
+                    html += `
+                        <div class="tracker-item ${actClass}">
+                            <div class="flex items-center gap-1.5 mb-0.5">
+                                <i class="fa-solid ${nextActivity.icon}" style="color:${color}"></i>
+                                <span class="tracker-label" style="color:${color}">NEXT: ${nextActivity.label}</span>
+                                <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="tracker-value text-white">${slotDisplay}</div>
+                                <span class="tracker-countdown tracker-activity-countdown" style="color:${color};">${countdown}</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="tracker-item tracker-item-idle">
+                            <div class="flex items-center gap-1.5 mb-0.5">
+                                <i class="fa-solid fa-check-circle text-[#444]"></i>
+                                <span class="tracker-label text-[#555]">All Activities Completed</span>
+                            </div>
+                            <div class="tracker-value text-[#666] text-sm">—</div>
+                            <div class="tracker-sub text-[#444]">Session ending soon</div>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`;
+
+            } else if (nextSession) {
+                const nextSe = getSessionStartEnd(nextSession);
+                const nextDateDisplay = getSessionDisplayDate(nextSession);
+
+                html += `
+                    <div class="flex flex-wrap items-center gap-2 mb-3 text-sm text-white">
+                        <span class="font-bold text-[#ffb800]">⏳ UPCOMING</span>
+                        <span class="text-[#888]">|</span>
+                        <span class="font-semibold">📅 ${nextDateDisplay}</span>
+                        <span class="text-[#888]">|</span>
+                        <span class="font-semibold">👤 ${nextSession.host}</span>
+                        <span class="text-[#888]">|</span>
+                        <span class="text-[#888]">⏰ ${nextSession.time}</span>
+                        <span class="text-[10px] text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                    </div>
+                    <div class="tracker-item tracker-item-upcoming">
+                        <div class="flex items-center gap-2 text-[#888]">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>No live session at the moment. Next session starts in </span>
+                            <span class="text-[#00f2ea] font-mono tracker-countdown">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                        </div>
+                    </div>
+                `;
+
+            } else {
+                html += `
+                    <div class="tracker-no-session">
+                        <i class="fa-solid fa-calendar-xmark text-3xl text-[#555] mb-2"></i>
+                        <p class="text-white text-sm">No upcoming sessions found.</p>
+                        <p class="text-[#666] text-xs">All campaign sessions have ended.</p>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+            setTimeout(renderTikTokTracker, 1000);
+        }
+
+        // ========== SHOPEE TRACKER - Shopee theme ==========
+        function renderShopeeTracker() {
+            const container = document.getElementById('shopee-tracker-content');
+            if (!container) return;
+
+            const now = new Date();
+            const currentSession = getCurrentSession(shopeeCardsData);
+            const nextSession = getNextSession(shopeeCardsData);
+
+            let html = '';
+
+            // Header - Shopee theme
+            html += `
+                <div class="flex items-center gap-2 mb-3">
+                    <i class="fa-solid fa-satellite-dish text-[#ee4d2d] text-lg"></i>
+                    <span class="text-[#ee4d2d] font-bold text-sm sm:text-base">📡 LIVE TRACKER</span>
+                    <span class="text-[10px] text-slate-400 ml-auto tracker-countdown" id="shopee-tracker-time">${now.toLocaleTimeString()}</span>
+                </div>
+                <div class="border-b border-orange-200/50 mb-3"></div>
+            `;
+
+            if (currentSession) {
+                const se = getSessionStartEnd(currentSession);
+                const dateDisplay = getSessionDisplayDate(currentSession);
+
+                // Session info - Shopee theme
+                html += `
+                    <div class="flex flex-wrap items-center gap-2 mb-3 text-sm text-slate-800">
+                        <span class="font-bold text-[#ee4d2d]">🔴 LIVE NOW</span>
+                        <span class="text-slate-400">|</span>
+                        <span class="font-semibold">📅 ${dateDisplay}</span>
+                        <span class="text-slate-400">|</span>
+                        <span class="font-semibold">👤 ${currentSession.host}</span>
+                        <span class="text-slate-400">|</span>
+                        <span class="text-slate-500">⏰ ${currentSession.time}</span>
+                        <span class="text-[10px] text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
+                    </div>
+                `;
+
+                // STACKED LAYOUT: GWP first, then Active, then Next
+                html += `<div class="tracker-stacked">`;
+
+                // ---- 1. GWP - Shopee theme ----
+                const gwpEnd = se ? se.end : null;
+                const gwpActive = se && now >= se.start && now <= se.end;
+                const gwpClass = gwpActive ? 'tracker-item-shopee-active' : (se && now < se.start ?
+                    'tracker-item-shopee-upcoming' : 'tracker-item-shopee-idle');
+                const gwpLabel = gwpActive ? '🔴 ACTIVE' : (se && now < se.start ? '⏳ UPCOMING' : '✅ COMPLETED');
+                const gwpCountdown = gwpActive && se ? formatCountdown(se.end - now) : (se && now < se.start ? formatCountdown(
+                    se.start - now) : '—');
+
+                html += `
+                    <div class="tracker-item ${gwpClass}">
+                        <div class="flex items-center gap-1.5 mb-0.5">
+                            <i class="fa-solid fa-gift text-[#ee4d2d]"></i>
+                            <span class="tracker-label text-[#ee4d2d]">GWP</span>
+                            <span class="tracker-badge" style="background:#ee4d2d20;color:#ee4d2d;border:1px solid #ee4d2d40;margin-left:auto;">${gwpLabel}</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="tracker-value text-slate-800">${currentSession.gwpItem}</div>
+                            <span class="tracker-countdown tracker-activity-countdown" style="color:#ee4d2d;">${gwpCountdown}</span>
+                        </div>
+                    </div>
+                `;
+
+                // Shopee activities
+                const activities = [
+                    { type: 'flash', slots: currentSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt',
+                    color: '#b8860b' },
+                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags',
+                    color: '#ee4d2d' },
+                    { type: 'promosi', slots: currentSession.promosiSlots, label: 'LIMITED OFFER (50% OFF)',
+                        icon: 'fa-percent', color: '#b8860b' }
+                ];
+
+                let currentActivity = null;
+                let currentActivityStatus = null;
+                let nextActivity = null;
+                let nextActivityStatus = null;
+
+                for (const act of activities) {
+                    const status = getActivityStatus(act.slots, se ? se.start : new Date());
+                    if (status.status === 'active') {
+                        currentActivity = act;
+                        currentActivityStatus = status;
+                        break;
+                    }
+                }
+
+                if (!currentActivity) {
+                    let bestUpcoming = null;
+                    let bestUpcomingStatus = null;
+                    for (const act of activities) {
+                        const status = getActivityStatus(act.slots, se ? se.start : new Date());
+                        if (status.status === 'upcoming') {
+                            if (!bestUpcoming || status.slotStatus.startTime < bestUpcomingStatus.slotStatus.startTime) {
+                                bestUpcoming = act;
+                                bestUpcomingStatus = status;
+                            }
+                        }
+                    }
+                    if (bestUpcoming) {
+                        currentActivity = bestUpcoming;
+                        currentActivityStatus = bestUpcomingStatus;
+                        currentActivityStatus._displayStatus = 'upcoming';
+                    }
+                }
+
+                if (currentActivity && currentActivityStatus) {
+                    const afterTime = currentActivityStatus.slotStatus ? currentActivityStatus.slotStatus.endTime : now;
+                    let bestNext = null;
+                    let bestNextStatus = null;
+                    for (const act of activities) {
+                        if (act.type === currentActivity.type) continue;
+                        const status = getNextActivityStatus(act.slots, se ? se.start : new Date(), afterTime);
+                        if (status.status === 'upcoming' || status.status === 'active') {
+                            if (!bestNext || status.slotStatus.startTime < bestNextStatus.slotStatus.startTime) {
+                                bestNext = act;
+                                bestNextStatus = status;
+                            }
+                        }
+                    }
+                    if (bestNext) {
+                        nextActivity = bestNext;
+                        nextActivityStatus = bestNextStatus;
+                    }
+                }
+
+                if (!currentActivity) {
+                    let firstUpcoming = null;
+                    let firstUpcomingStatus = null;
+                    for (const act of activities) {
+                        const status = getActivityStatus(act.slots, se ? se.start : new Date());
+                        if (status.status === 'upcoming') {
+                            if (!firstUpcoming || status.slotStatus.startTime < firstUpcomingStatus.slotStatus.startTime) {
+                                firstUpcoming = act;
+                                firstUpcomingStatus = status;
+                            }
+                        }
+                    }
+                    if (firstUpcoming) {
+                        currentActivity = firstUpcoming;
+                        currentActivityStatus = firstUpcomingStatus;
+                        currentActivityStatus._displayStatus = 'upcoming';
+                    }
+                }
+
+                // ---- 2. Current Activity - Shopee theme ----
+                html += `<div class="tracker-divider-shopee"></div>`;
+                if (currentActivity && currentActivityStatus) {
+                    const isActive = currentActivityStatus._displayStatus !== 'upcoming' && currentActivityStatus.status ===
+                        'active';
+                    const displayStatus = currentActivityStatus._displayStatus || currentActivityStatus.status;
+                    const actClass = isActive ? 'tracker-item-shopee-active' : (displayStatus === 'upcoming' ?
+                        'tracker-item-shopee-upcoming' : 'tracker-item-shopee-idle');
+                    const actLabel = isActive ? '🔴 ACTIVE' : (displayStatus === 'upcoming' ? '⏳ UPCOMING' : '✅ COMPLETED');
+                    const countdown = isActive && currentActivityStatus.slotStatus ?
+                        formatCountdown(currentActivityStatus.slotStatus.endTime - now) :
+                        (displayStatus === 'upcoming' && currentActivityStatus.slotStatus ?
+                            formatCountdown(currentActivityStatus.slotStatus.startTime - now) :
+                            '—');
+                    const slotDisplay = currentActivityStatus.slot || '—';
+                    const color = currentActivity.color;
+
+                    html += `
+                        <div class="tracker-item ${actClass}">
+                            <div class="flex items-center gap-1.5 mb-0.5">
+                                <i class="fa-solid ${currentActivity.icon}" style="color:${color}"></i>
+                                <span class="tracker-label" style="color:${color}">${currentActivity.label}</span>
+                                <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="tracker-value text-slate-800">${slotDisplay}</div>
+                                <span class="tracker-countdown tracker-activity-countdown" style="color:${color};">${countdown}</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="tracker-item tracker-item-shopee-idle">
+                            <div class="flex items-center gap-1.5 mb-0.5">
+                                <i class="fa-solid fa-clock text-slate-400"></i>
+                                <span class="tracker-label text-slate-400">No Active Promotion</span>
+                            </div>
+                            <div class="tracker-value text-slate-500 text-sm">—</div>
+                            <div class="tracker-sub text-slate-400">Waiting for next slot</div>
+                        </div>
+                    `;
+                }
+
+                // ---- 3. Next Activity - Shopee theme ----
+                html += `<div class="tracker-divider-shopee"></div>`;
+                if (nextActivity && nextActivityStatus) {
+                    const isActive = nextActivityStatus.status === 'active';
+                    const actClass = isActive ? 'tracker-item-shopee-active' : 'tracker-item-shopee-upcoming';
+                    const actLabel = isActive ? '🔴 ACTIVE' : '⏳ UPCOMING';
+                    const countdown = isActive && nextActivityStatus.slotStatus ?
+                        formatCountdown(nextActivityStatus.slotStatus.endTime - now) :
+                        (nextActivityStatus.slotStatus ?
+                            formatCountdown(nextActivityStatus.slotStatus.startTime - now) :
+                            '—');
+                    const slotDisplay = nextActivityStatus.slot || '—';
+                    const color = nextActivity.color;
+
+                    html += `
+                        <div class="tracker-item ${actClass}">
+                            <div class="flex items-center gap-1.5 mb-0.5">
+                                <i class="fa-solid ${nextActivity.icon}" style="color:${color}"></i>
+                                <span class="tracker-label" style="color:${color}">NEXT: ${nextActivity.label}</span>
+                                <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="tracker-value text-slate-800">${slotDisplay}</div>
+                                <span class="tracker-countdown tracker-activity-countdown" style="color:${color};">${countdown}</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="tracker-item tracker-item-shopee-idle">
+                            <div class="flex items-center gap-1.5 mb-0.5">
+                                <i class="fa-solid fa-check-circle text-slate-400"></i>
+                                <span class="tracker-label text-slate-400">All Activities Completed</span>
+                            </div>
+                            <div class="tracker-value text-slate-500 text-sm">—</div>
+                            <div class="tracker-sub text-slate-400">Session ending soon</div>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`;
+
+                // Next session teaser - Shopee theme
+                if (nextSession && nextSession.id !== currentSession.id) {
+                    const nextSe = getSessionStartEnd(nextSession);
+                    const nextDateDisplay = getSessionDisplayDate(nextSession);
+                    html += `
+                        <div class="border-t border-orange-200/50 pt-3 mt-3">
+                            <div class="flex items-center gap-2 text-xs text-slate-500">
+                                <i class="fa-solid fa-arrow-right text-[#ee4d2d]"></i>
+                                <span>Next Session: </span>
+                                <span class="font-semibold text-slate-800">${nextDateDisplay}</span>
+                                <span class="text-slate-400">|</span>
+                                <span class="text-slate-800">${nextSession.host}</span>
+                                <span class="text-slate-400">|</span>
+                                <span class="text-slate-500">${nextSession.time}</span>
+                                <span class="text-[10px] text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+
+            } else if (nextSession) {
+                const nextSe = getSessionStartEnd(nextSession);
+                const nextDateDisplay = getSessionDisplayDate(nextSession);
+
+                html += `
+                    <div class="flex flex-wrap items-center gap-2 mb-3 text-sm text-slate-800">
+                        <span class="font-bold text-[#ffb800]">⏳ UPCOMING</span>
+                        <span class="text-slate-400">|</span>
+                        <span class="font-semibold">📅 ${nextDateDisplay}</span>
+                        <span class="text-slate-400">|</span>
+                        <span class="font-semibold">👤 ${nextSession.host}</span>
+                        <span class="text-slate-400">|</span>
+                        <span class="text-slate-500">⏰ ${nextSession.time}</span>
+                        <span class="text-[10px] text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                    </div>
+                    <div class="tracker-item tracker-item-shopee-upcoming">
+                        <div class="flex items-center gap-2 text-slate-500">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>No live session at the moment. Next session starts in </span>
+                            <span class="text-[#ee4d2d] font-mono tracker-countdown">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                        </div>
+                    </div>
+                `;
+
+            } else {
+                html += `
+                    <div class="tracker-no-session text-slate-500">
+                        <i class="fa-solid fa-calendar-xmark text-3xl text-slate-300 mb-2"></i>
+                        <p class="text-slate-700 text-sm">No upcoming sessions found.</p>
+                        <p class="text-slate-400 text-xs">All campaign sessions have ended.</p>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+            setTimeout(renderShopeeTracker, 1000);
+        }
+
         // ========== PLATFORM SWITCH ==========
         function switchPlatform(platform) {
             const btnTiktok = document.getElementById('btn-tiktok');
@@ -819,6 +1833,7 @@
                     "text-sm sm:text-base md:text-xl font-black text-white tracking-tight transition-colors duration-300 truncate";
                 document.querySelector('body').style.backgroundColor = '#0a0a0a';
                 document.querySelector('body').style.color = '#e0e0e0';
+                renderTikTokTracker();
             } else {
                 btnShopee.className =
                     "px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-bold transition-all bg-[#ee4d2d] text-white shadow-xs flex items-center gap-1 sm:gap-2 border border-[#ee4d2d]";
@@ -838,6 +1853,7 @@
                     "text-sm sm:text-base md:text-xl font-black text-[#ee4d2d] tracking-tight transition-colors duration-300 truncate";
                 document.querySelector('body').style.backgroundColor = '#f8fafc';
                 document.querySelector('body').style.color = '#1e293b';
+                renderShopeeTracker();
                 renderShopeeCards(shopeeCardsData);
             }
         }
@@ -870,7 +1886,6 @@
                     `<li class="flex items-center gap-1 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tags text-[#00f2ea] text-[8px] sm:text-[10px]"></i> ${s}</li>`
                 ).join('');
 
-                // Giveaway list: hourly drops + task terms
                 const giveawayList = `
                     ${item.giveaways.map(g => `<li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-gift text-[#fe2c55] text-[8px] sm:text-[10px]"></i> ${g}</li>`).join('')}
                     <li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-check-circle text-[#00f2ea] text-[8px] sm:text-[10px]"></i> Task 1: Follow host</li>
