@@ -506,6 +506,36 @@
                 font-size: 0.55rem;
             }
         }
+        .tracker-gwp-label {
+            font-size: 0.85rem !important;
+        }
+        @media (min-width: 480px) {
+            .tracker-gwp-label {
+                font-size: 1rem !important;
+            }
+        }
+        .tracker-gwp-value {
+            font-size: 1rem !important;
+            font-weight: 800 !important;
+        }
+        @media (min-width: 480px) {
+            .tracker-gwp-value {
+                font-size: 1.15rem !important;
+            }
+        }
+        .tracker-subtitle {
+            font-size: 0.85rem;
+            font-style: italic;
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0.01em;
+            opacity: 0.85;
+        }
+        @media (min-width: 480px) {
+            .tracker-subtitle {
+                font-size: 1rem;
+            }
+        }
         .tracker-no-session {
             padding: 1.2rem;
             text-align: center;
@@ -1296,11 +1326,11 @@
                     <div class="tracker-item ${gwpClass}">
                         <div class="flex items-center gap-1.5 mb-0.5">
                             <i class="fa-solid fa-gift text-[#00f2ea]"></i>
-                            <span class="tracker-label text-[#00f2ea]">GWP</span>
+                            <span class="tracker-label tracker-gwp-label text-[#00f2ea]">Gift with Purchase</span>
                             <span class="tracker-badge bg-[#00f2ea]/20 text-[#00f2ea] border border-[#00f2ea]/30 ml-auto">${gwpLabel}</span>
                         </div>
                         <div class="flex items-center justify-between gap-2">
-                            <div class="tracker-value text-white">${currentSession.gwpItem}</div>
+                            <div class="tracker-value tracker-gwp-value text-white">${currentSession.gwpItem}</div>
                             <span class="tracker-countdown tracker-activity-countdown" style="color:#00f2ea;">${gwpCountdown}</span>
                         </div>
                     </div>
@@ -1390,27 +1420,20 @@
 
                 // ---- 2. Current Activity ----
                 html += `<div class="tracker-divider"></div>`;
-                if (currentActivity && currentActivityStatus) {
-                    const isActive = currentActivityStatus._displayStatus !== 'upcoming' && currentActivityStatus.status ===
-                        'active';
-                    const displayStatus = currentActivityStatus._displayStatus || currentActivityStatus.status;
-                    const actClass = isActive ? 'tracker-item-active' : (displayStatus === 'upcoming' ?
-                        'tracker-item-upcoming' : 'tracker-item-idle');
-                    const actLabel = isActive ? '🔴 ACTIVE' : (displayStatus === 'upcoming' ? '⏳ UPCOMING' : '✅ COMPLETED');
-                    const countdown = isActive && currentActivityStatus.slotStatus ?
-                        formatCountdown(currentActivityStatus.slotStatus.endTime - now) :
-                        (displayStatus === 'upcoming' && currentActivityStatus.slotStatus ?
-                            formatCountdown(currentActivityStatus.slotStatus.startTime - now) :
-                            '—');
+                const isOngoingActive = currentActivity && currentActivityStatus &&
+                    currentActivityStatus._displayStatus !== 'upcoming' && currentActivityStatus.status === 'active';
+                if (isOngoingActive) {
+                    const countdown = currentActivityStatus.slotStatus ?
+                        formatCountdown(currentActivityStatus.slotStatus.endTime - now) : '—';
                     const slotDisplay = currentActivityStatus.slot || '—';
                     const color = currentActivity.color;
 
                     html += `
-                        <div class="tracker-item ${actClass}">
+                        <div class="tracker-item tracker-item-active">
                             <div class="flex items-center gap-1.5 mb-0.5">
                                 <i class="fa-solid ${currentActivity.icon}" style="color:${color}"></i>
-                                <span class="tracker-label" style="color:${color}">${currentActivity.label}</span>
-                                <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
+                                <span class="tracker-subtitle" style="color:${color}">Ongoing Activity : ${currentActivity.label}</span>
+                                <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">🔴 ACTIVE</span>
                             </div>
                             <div class="flex items-center justify-between gap-2">
                                 <div class="tracker-value text-white">${slotDisplay}</div>
@@ -1423,7 +1446,7 @@
                         <div class="tracker-item tracker-item-idle">
                             <div class="flex items-center gap-1.5 mb-0.5">
                                 <i class="fa-solid fa-clock text-[#555]"></i>
-                                <span class="tracker-label text-[#555]">No Active Promotion</span>
+                                <span class="tracker-label text-[#555]">No Activity</span>
                             </div>
                             <div class="tracker-value text-[#666] text-sm">—</div>
                             <div class="tracker-sub text-[#444]">Waiting for next slot</div>
@@ -1449,7 +1472,7 @@
                         <div class="tracker-item ${actClass}">
                             <div class="flex items-center gap-1.5 mb-0.5">
                                 <i class="fa-solid ${nextActivity.icon}" style="color:${color}"></i>
-                                <span class="tracker-label" style="color:${color}">NEXT: ${nextActivity.label}</span>
+                                <span class="tracker-subtitle" style="color:${color}">Next Activity: ${nextActivity.label}</span>
                                 <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
                             </div>
                             <div class="flex items-center justify-between gap-2">
@@ -1566,11 +1589,11 @@
                     <div class="tracker-item ${gwpClass}">
                         <div class="flex items-center gap-1.5 mb-0.5">
                             <i class="fa-solid fa-gift text-[#ee4d2d]"></i>
-                            <span class="tracker-label text-[#ee4d2d]">GWP</span>
+                            <span class="tracker-label tracker-gwp-label text-[#ee4d2d]">Gift with Purchase</span>
                             <span class="tracker-badge" style="background:#ee4d2d20;color:#ee4d2d;border:1px solid #ee4d2d40;margin-left:auto;">${gwpLabel}</span>
                         </div>
                         <div class="flex items-center justify-between gap-2">
-                            <div class="tracker-value text-slate-800">${currentSession.gwpItem}</div>
+                            <div class="tracker-value tracker-gwp-value text-slate-800">${currentSession.gwpItem}</div>
                             <span class="tracker-countdown tracker-activity-countdown" style="color:#ee4d2d;">${gwpCountdown}</span>
                         </div>
                     </div>
@@ -1660,27 +1683,20 @@
 
                 // ---- 2. Current Activity - Shopee theme ----
                 html += `<div class="tracker-divider-shopee"></div>`;
-                if (currentActivity && currentActivityStatus) {
-                    const isActive = currentActivityStatus._displayStatus !== 'upcoming' && currentActivityStatus.status ===
-                        'active';
-                    const displayStatus = currentActivityStatus._displayStatus || currentActivityStatus.status;
-                    const actClass = isActive ? 'tracker-item-shopee-active' : (displayStatus === 'upcoming' ?
-                        'tracker-item-shopee-upcoming' : 'tracker-item-shopee-idle');
-                    const actLabel = isActive ? '🔴 ACTIVE' : (displayStatus === 'upcoming' ? '⏳ UPCOMING' : '✅ COMPLETED');
-                    const countdown = isActive && currentActivityStatus.slotStatus ?
-                        formatCountdown(currentActivityStatus.slotStatus.endTime - now) :
-                        (displayStatus === 'upcoming' && currentActivityStatus.slotStatus ?
-                            formatCountdown(currentActivityStatus.slotStatus.startTime - now) :
-                            '—');
+                const isOngoingActiveShopee = currentActivity && currentActivityStatus &&
+                    currentActivityStatus._displayStatus !== 'upcoming' && currentActivityStatus.status === 'active';
+                if (isOngoingActiveShopee) {
+                    const countdown = currentActivityStatus.slotStatus ?
+                        formatCountdown(currentActivityStatus.slotStatus.endTime - now) : '—';
                     const slotDisplay = currentActivityStatus.slot || '—';
                     const color = currentActivity.color;
 
                     html += `
-                        <div class="tracker-item ${actClass}">
+                        <div class="tracker-item tracker-item-shopee-active">
                             <div class="flex items-center gap-1.5 mb-0.5">
                                 <i class="fa-solid ${currentActivity.icon}" style="color:${color}"></i>
-                                <span class="tracker-label" style="color:${color}">${currentActivity.label}</span>
-                                <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
+                                <span class="tracker-subtitle" style="color:${color}">Ongoing Activity : ${currentActivity.label}</span>
+                                <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">🔴 ACTIVE</span>
                             </div>
                             <div class="flex items-center justify-between gap-2">
                                 <div class="tracker-value text-slate-800">${slotDisplay}</div>
@@ -1693,7 +1709,7 @@
                         <div class="tracker-item tracker-item-shopee-idle">
                             <div class="flex items-center gap-1.5 mb-0.5">
                                 <i class="fa-solid fa-clock text-slate-400"></i>
-                                <span class="tracker-label text-slate-400">No Active Promotion</span>
+                                <span class="tracker-label text-slate-400">No Activity</span>
                             </div>
                             <div class="tracker-value text-slate-500 text-sm">—</div>
                             <div class="tracker-sub text-slate-400">Waiting for next slot</div>
@@ -1719,7 +1735,7 @@
                         <div class="tracker-item ${actClass}">
                             <div class="flex items-center gap-1.5 mb-0.5">
                                 <i class="fa-solid ${nextActivity.icon}" style="color:${color}"></i>
-                                <span class="tracker-label" style="color:${color}">NEXT: ${nextActivity.label}</span>
+                                <span class="tracker-subtitle" style="color:${color}">Next Activity: ${nextActivity.label}</span>
                                 <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
                             </div>
                             <div class="flex items-center justify-between gap-2">
