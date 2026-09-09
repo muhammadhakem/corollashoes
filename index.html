@@ -1951,39 +1951,27 @@
     const platform = urlParams.get('platform') || 'tiktok';
 
     if (embedMode) {
-        document.body.classList.add('embed-mode');
+        // Hide header
+        document.querySelector('header').style.display = 'none';
 
-        // Hide header (already hidden by CSS, but this catches extra elements)
-        const header = document.querySelector('header');
-        if (header) header.style.display = 'none';
-
-        // Wrap each tracker in a .tracker-wrapper for scaling
-        ['tiktok-tracker', 'shopee-tracker'].forEach(id => {
-            const tracker = document.getElementById(id);
-            if (!tracker) return;
-            const wrapper = document.createElement('div');
-            wrapper.className = 'tracker-wrapper';
-            tracker.parentNode.insertBefore(wrapper, tracker);
-            wrapper.appendChild(tracker);
+        // Hide everything inside both views except the tracker cards themselves
+        const views = ['view-tiktok', 'view-shopee'];
+        views.forEach(viewId => {
+            const view = document.getElementById(viewId);
+            if (!view) return;
+            // Hide all direct children of the view except the tracker card
+            Array.from(view.children).forEach(child => {
+                if (!child.id || (child.id !== 'tiktok-tracker' && child.id !== 'shopee-tracker')) {
+                    child.style.display = 'none';
+                }
+            });
+            // Ensure the tracker card itself is visible (in case it was hidden)
+            const tracker = view.querySelector('.tracker-card');
+            if (tracker) tracker.style.display = 'block';
         });
 
-        function scaleTrackers() {
-            const wrappers = document.querySelectorAll('.tracker-wrapper');
-            if (!wrappers.length) return;
-            // Use the first visible wrapper for sizing
-            const wrapper = wrappers[0];
-            const baseWidth = 480;   // match the CSS width
-            const baseHeight = 620;  // match the CSS height
-            const vw = window.innerWidth;
-            const vh = window.innerHeight;
-            const scaleX = vw / baseWidth;
-            const scaleY = vh / baseHeight;
-            const scale = Math.min(scaleX, scaleY, 1); // never scale up beyond 1x
-            wrapper.style.transform = `scale(${scale})`;
-        }
-
-        scaleTrackers();
-        window.addEventListener('resize', scaleTrackers);
+        // Also hide any other stray elements (e.g., if the tracker is not direct child)
+        // Already handled above.
     }
 
     renderTikTokCards(shiftData);
