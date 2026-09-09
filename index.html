@@ -573,6 +573,58 @@
                 font-size: 0.55rem;
             }
         }
+        /* Embed mode: clean widget, no scroll, adapts to any size */
+body.embed-mode {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    overflow: hidden !important;
+    height: 100vh;
+    width: 100vw;
+}
+body.embed-mode .tracker-card {
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+body.embed-mode .tracker-card > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem !important;  /* reduced padding */
+}
+body.embed-mode .tracker-item {
+    padding: 0.3rem 0.5rem !important;
+}
+body.embed-mode .tracker-gwp-label,
+body.embed-mode .tracker-subtitle {
+    font-size: clamp(0.6rem, 2.5vw, 0.9rem) !important;
+}
+body.embed-mode .tracker-value {
+    font-size: clamp(0.7rem, 2.5vw, 1rem) !important;
+}
+body.embed-mode .tracker-countdown {
+    font-size: clamp(0.6rem, 2vw, 0.8rem) !important;
+    padding: 1px 6px !important;
+}
+body.embed-mode .tracker-badge {
+    font-size: 0.45rem !important;
+    padding: 0.1rem 0.4rem !important;
+}
+body.embed-mode .tracker-divider,
+body.embed-mode .tracker-divider-shopee {
+    margin: 0.1rem 0 !important;
+}
+body.embed-mode .tracker-stacked {
+    gap: 0.25rem !important;
+}
+/* Hide the header and everything else in embed mode – already handled by JS */
+        
     </style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col antialiased">
@@ -1950,30 +2002,29 @@
     const embedMode = urlParams.get('embed') === 'tracker';
     const platform = urlParams.get('platform') || 'tiktok';
 
+    // If embed mode, add class to body and hide everything except the tracker
     if (embedMode) {
-        // Hide header
-        document.querySelector('header').style.display = 'none';
+        document.body.classList.add('embed-mode');
 
-        // Hide everything inside both views except the tracker cards themselves
-        const views = ['view-tiktok', 'view-shopee'];
-        views.forEach(viewId => {
+        // Hide header
+        const header = document.querySelector('header');
+        if (header) header.style.display = 'none';
+
+        // Hide all content inside views except the tracker cards
+        ['view-tiktok', 'view-shopee'].forEach(viewId => {
             const view = document.getElementById(viewId);
             if (!view) return;
-            // Hide all direct children of the view except the tracker card
             Array.from(view.children).forEach(child => {
                 if (!child.id || (child.id !== 'tiktok-tracker' && child.id !== 'shopee-tracker')) {
                     child.style.display = 'none';
                 }
             });
-            // Ensure the tracker card itself is visible (in case it was hidden)
             const tracker = view.querySelector('.tracker-card');
-            if (tracker) tracker.style.display = 'block';
+            if (tracker) tracker.style.display = 'flex';
         });
-
-        // Also hide any other stray elements (e.g., if the tracker is not direct child)
-        // Already handled above.
     }
 
+    // Render everything (tracks will be visible according to platform)
     renderTikTokCards(shiftData);
     renderShopeeCards(shopeeCardsData);
     switchPlatform(platform);
