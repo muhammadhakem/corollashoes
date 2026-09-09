@@ -573,67 +573,6 @@
                 font-size: 0.55rem;
             }
         }
-/* ========== EMBED MODE – preserve desktop layout, scale to fit ========== */
-body.embed-mode {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    overflow: hidden !important;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-body.embed-mode .tracker-wrapper {
-    width: 480px;          /* adjust to your tracker's natural width */
-    height: 620px;         /* adjust to your tracker's natural height */
-    transform-origin: center center;
-    flex-shrink: 0;
-}
-body.embed-mode .tracker-card {
-    border-radius: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-body.embed-mode #tiktok-tracker,
-body.embed-mode #shopee-tracker {
-    height: 100%;
-}
-/* Force desktop layout – prevent stacking */
-body.embed-mode .tracker-wrapper .deal-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 0.5rem !important;
-}
-body.embed-mode .tracker-wrapper .flex-wrap {
-    flex-wrap: nowrap !important;
-}
-body.embed-mode .tracker-wrapper .tracker-item {
-    padding: 0.6rem 0.8rem !important;
-}
-body.embed-mode .tracker-wrapper .tracker-label {
-    font-size: 0.55rem !important;
-}
-body.embed-mode .tracker-wrapper .tracker-value {
-    font-size: 0.8rem !important;
-}
-body.embed-mode .tracker-wrapper .slot-list li {
-    font-size: 0.65rem !important;
-}
-body.embed-mode .tracker-wrapper .gwp-thumb {
-    width: 2.5rem !important;
-    height: 2.5rem !important;
-}
-/* Hide everything except the tracker */
-body.embed-mode header,
-body.embed-mode .asset-grid,
-body.embed-mode .filter-bar,
-body.embed-mode .schedule-grid {
-    display: none !important;
-}
     </style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col antialiased">
