@@ -979,6 +979,7 @@
             return next;
         }
 
+        // ===== CORE: getSlotStatus — returns status for a single slot =====
         function getSlotStatus(slotTime, sessionDate) {
             const parsed = parseSlotTime(slotTime);
             if (!parsed) return { status: 'unknown', startTime: null, endTime: null };
@@ -987,7 +988,6 @@
             if (parsed.type === 'single') {
                 const dt = combineDateAndTime(sessionDate, parsed.start);
                 if (!dt) return { status: 'unknown', startTime: null, endTime: null };
-                // Giveaway: 10 minutes window (changed from 5 minutes)
                 const diff = now - dt;
                 if (diff >= 0 && diff < 10 * 60 * 1000) {
                     return { status: 'active', startTime: dt, endTime: new Date(dt.getTime() + 10 * 60 * 1000) };
@@ -1014,116 +1014,73 @@
             return { status: 'unknown', startTime: null, endTime: null };
         }
 
-        function getActivityStatus(slots, sessionDate) {
-            let bestActive = null;
-            let bestActiveStatus = null;
-            let bestUpcoming = null;
-            let bestUpcomingStatus = null;
+        // ===== CORE: flatten all slots for a session with their status =====
+        function flattenSlots(session, activityDefs) {
+            const result = [];
+            const now = new Date();
+            const se = getSessionStartEnd(session);
+            if (!se) return result;
+            const sessionStart = se.start;
 
-            for (const slot of slots) {
-                const status = getSlotStatus(slot, sessionDate);
-                if (status.status === 'active') {
-                    if (!bestActive || status.startTime < bestActiveStatus.startTime) {
-                        bestActive = slot;
-                        bestActiveStatus = status;
-                    }
-                }
-                if (status.status === 'upcoming') {
-                    if (!bestUpcoming || status.startTime < bestUpcomingStatus.startTime) {
-                        bestUpcoming = slot;
-                        bestUpcomingStatus = status;
-                    }
+            for (const def of activityDefs) {
+                const slots = def.slots || [];
+                for (const slot of slots) {
+                    const status = getSlotStatus(slot, sessionStart);
+                    result.push({
+                        type: def.type,
+                        label: def.label,
+                        icon: def.icon,
+                        color: def.color,
+                        slot: slot,
+                        status: status,
+                        sortTime: status.startTime || new Date(0)
+                    });
                 }
             }
 
-            if (bestActive) {
-                return { status: 'active', slot: bestActive, slotStatus: bestActiveStatus };
-            }
-            if (bestUpcoming) {
-                return { status: 'upcoming', slot: bestUpcoming, slotStatus: bestUpcomingStatus };
-            }
-            return { status: 'completed', slot: null, slotStatus: null };
+            // Sort by start time
+            result.sort((a, b) => a.sortTime - b.sortTime);
+            return result;
         }
 
-        function getNextActivityStatus(slots, sessionDate, afterTime) {
-            const now = afterTime || new Date();
-            let best = null;
-            let bestStatus = null;
+        // ===== CORE: find ongoing and next from flattened slots =====
+        function findOngoingAndNext(flatSlots) {
+            const now = new Date();
+            let ongoing = null;
+            let next = null;
 
-            for (const slot of slots) {
-                const status = getSlotStatus(slot, sessionDate);
-                if (status.status === 'upcoming') {
-                    if (status.startTime > now) {
-                        if (!best || status.startTime < bestStatus.startTime) {
-                            best = slot;
-                            bestStatus = status;
-                        }
-                    }
-                }
-                if (status.status === 'active') {
-                    if (status.startTime > now) {
-                        if (!best || status.startTime < bestStatus.startTime) {
-                            best = slot;
-                            bestStatus = status;
-                        }
-                    }
-                }
-            }
-
-            if (!best) {
-                for (const slot of slots) {
-                    const status = getSlotStatus(slot, sessionDate);
-                    if (status.status === 'active' && status.startTime > now) {
-                        if (!best || status.startTime < bestStatus.startTime) {
-                            best = slot;
-                            bestStatus = status;
-                        }
-                    }
-                }
-            }
-
-            if (best) {
-                return { status: bestStatus.status, slot: best, slotStatus: bestStatus };
-            }
-
-            let allCompleted = true;
-            for (const slot of slots) {
-                const status = getSlotStatus(slot, sessionDate);
-                if (status.status !== 'completed') {
-                    allCompleted = false;
+            // Find ongoing: first slot with status === 'active'
+            for (const item of flatSlots) {
+                if (item.status.status === 'active') {
+                    ongoing = item;
                     break;
                 }
             }
-            if (allCompleted) {
-                return { status: 'all_completed', slot: null, slotStatus: null };
+
+            // Find next: first slot that starts after the ongoing ends (or after now if no ongoing)
+            const afterTime = ongoing ? ongoing.status.endTime : now;
+            for (const item of flatSlots) {
+                const st = item.status.startTime;
+                // Use >= so a slot starting exactly when the previous one ends is picked as "next"
+                if (st && st >= afterTime && item.status.status !== 'completed') {
+                    // Make sure we don't pick the ongoing slot itself (if it has startTime >= afterTime)
+                    if (ongoing && item === ongoing) continue;
+                    next = item;
+                    break;
+                }
             }
 
-            return { status: 'none', slot: null, slotStatus: null };
-        }
-
-        function formatCountdown(ms) {
-            if (ms < 0) return '00:00:00';
-            const totalSec = Math.floor(ms / 1000);
-            const h = Math.floor(totalSec / 3600);
-            const m = Math.floor((totalSec % 3600) / 60);
-            const s = totalSec % 60;
-            if (h > 0) {
-                return `${h}h ${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
+            // If still no next, look for the first upcoming slot (safety net)
+            if (!next) {
+                for (const item of flatSlots) {
+                    if (item.status.status === 'upcoming') {
+                        next = item;
+                        break;
+                    }
+                }
             }
-            return `${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
-        }
 
-        function getSessionDisplayDate(session) {
-            const dateInfo = parseDateStr(session.date);
-            if (!dateInfo) return session.date;
-            const start = dateInfo.start;
-            const end = dateInfo.end;
-            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            if (start.getDate() === end.getDate()) {
-                return `${monthNames[start.getMonth()]} ${start.getDate()}`;
-            } else {
-                return `${monthNames[start.getMonth()]} ${start.getDate()}-${monthNames[end.getMonth()]} ${end.getDate()}`;
-            }
+            return { ongoing, next };
         }
 
         // ========== TIKTOK SCHEDULE ==========
@@ -1272,6 +1229,7 @@
 
         // ========== TRACKER RENDER FUNCTIONS ==========
 
+        // --- TikTok Tracker ---
         function renderTikTokTracker() {
             const container = document.getElementById('tiktok-tracker-content');
             if (!container) return;
@@ -1310,10 +1268,20 @@
                     </div>
                 `;
 
-                // STACKED LAYOUT: GWP first, then Active, then Next
-                html += `<div class="tracker-stacked">`;
+                // Activity definitions for TikTok
+                const activityDefs = [
+                    { type: 'flash', slots: currentSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt',
+                        color: '#fe2c55' },
+                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags',
+                        color: '#00f2ea' },
+                    { type: 'giveaway', slots: currentSession.giveaways, label: 'GIVEAWAY', icon: 'fa-gift',
+                        color: '#fe2c55' }
+                ];
 
-                // ---- 1. GWP ----
+                const flat = flattenSlots(currentSession, activityDefs);
+                const { ongoing, next } = findOngoingAndNext(flat);
+
+                // GWP row
                 const gwpEnd = se ? se.end : null;
                 const gwpActive = se && now >= se.start && now <= se.end;
                 const gwpClass = gwpActive ? 'tracker-item-active' : (se && now < se.start ? 'tracker-item-upcoming' :
@@ -1322,6 +1290,9 @@
                 const gwpCountdown = gwpActive && se ? formatCountdown(se.end - now) : (se && now < se.start ? formatCountdown(
                     se.start - now) : '—');
 
+                html += `<div class="tracker-stacked">`;
+
+                // 1. GWP
                 html += `
                     <div class="tracker-item ${gwpClass}">
                         <div class="flex items-center gap-1.5 mb-0.5">
@@ -1336,103 +1307,19 @@
                     </div>
                 `;
 
-                // Determine activities
-                const activities = [
-                    { type: 'flash', slots: currentSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt', color: '#fe2c55' },
-                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags', color: '#00f2ea' },
-                    { type: 'giveaway', slots: currentSession.giveaways, label: 'GIVEAWAY', icon: 'fa-gift', color: '#fe2c55' }
-                ];
-
-                let currentActivity = null;
-                let currentActivityStatus = null;
-                let nextActivity = null;
-                let nextActivityStatus = null;
-
-                // Find current active activity
-                for (const act of activities) {
-                    const status = getActivityStatus(act.slots, se ? se.start : new Date());
-                    if (status.status === 'active') {
-                        currentActivity = act;
-                        currentActivityStatus = status;
-                        break;
-                    }
-                }
-
-                // If no active, find the next upcoming
-                if (!currentActivity) {
-                    let bestUpcoming = null;
-                    let bestUpcomingStatus = null;
-                    for (const act of activities) {
-                        const status = getActivityStatus(act.slots, se ? se.start : new Date());
-                        if (status.status === 'upcoming') {
-                            if (!bestUpcoming || status.slotStatus.startTime < bestUpcomingStatus.slotStatus.startTime) {
-                                bestUpcoming = act;
-                                bestUpcomingStatus = status;
-                            }
-                        }
-                    }
-                    if (bestUpcoming) {
-                        currentActivity = bestUpcoming;
-                        currentActivityStatus = bestUpcomingStatus;
-                        currentActivityStatus._displayStatus = 'upcoming';
-                    }
-                }
-
-                // Find next activity after current
-                if (currentActivity && currentActivityStatus) {
-                    const afterTime = currentActivityStatus.slotStatus ? currentActivityStatus.slotStatus.endTime : now;
-                    let bestNext = null;
-                    let bestNextStatus = null;
-                    for (const act of activities) {
-                        if (act.type === currentActivity.type) continue;
-                        const status = getNextActivityStatus(act.slots, se ? se.start : new Date(), afterTime);
-                        if (status.status === 'upcoming' || status.status === 'active') {
-                            if (!bestNext || status.slotStatus.startTime < bestNextStatus.slotStatus.startTime) {
-                                bestNext = act;
-                                bestNextStatus = status;
-                            }
-                        }
-                    }
-                    if (bestNext) {
-                        nextActivity = bestNext;
-                        nextActivityStatus = bestNextStatus;
-                    }
-                }
-
-                if (!currentActivity) {
-                    let firstUpcoming = null;
-                    let firstUpcomingStatus = null;
-                    for (const act of activities) {
-                        const status = getActivityStatus(act.slots, se ? se.start : new Date());
-                        if (status.status === 'upcoming') {
-                            if (!firstUpcoming || status.slotStatus.startTime < firstUpcomingStatus.slotStatus.startTime) {
-                                firstUpcoming = act;
-                                firstUpcomingStatus = status;
-                            }
-                        }
-                    }
-                    if (firstUpcoming) {
-                        currentActivity = firstUpcoming;
-                        currentActivityStatus = firstUpcomingStatus;
-                        currentActivityStatus._displayStatus = 'upcoming';
-                    }
-                }
-
-                // ---- 2. Current Activity ----
                 html += `<div class="tracker-divider"></div>`;
-                const isOngoingActive = currentActivity && currentActivityStatus &&
-                    currentActivityStatus._displayStatus !== 'upcoming' && currentActivityStatus.status === 'active';
-                if (isOngoingActive) {
-                    const countdown = currentActivityStatus.slotStatus ?
-                        formatCountdown(currentActivityStatus.slotStatus.endTime - now) : '—';
-                    const slotDisplay = currentActivityStatus.slot || '—';
-                    const color = currentActivity.color;
+
+                // 2. Ongoing Activity
+                if (ongoing && ongoing.status.status === 'active') {
+                    const countdown = ongoing.status.endTime ? formatCountdown(ongoing.status.endTime - now) : '—';
+                    const slotDisplay = ongoing.slot || '—';
+                    const color = ongoing.color || '#00f2ea';
 
                     html += `
                         <div class="tracker-item tracker-item-active">
                             <div class="flex items-center gap-1.5 mb-0.5">
-                                <i class="fa-solid ${currentActivity.icon}" style="color:${color}"></i>
-                                <span class="tracker-subtitle" style="color:${color}">Ongoing Activity : ${currentActivity.label}</span>
+                                <i class="fa-solid ${ongoing.icon || 'fa-clock'}" style="color:${color}"></i>
+                                <span class="tracker-subtitle" style="color:${color}">Ongoing Activity : ${ongoing.label || 'Activity'}</span>
                                 <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">🔴 ACTIVE</span>
                             </div>
                             <div class="flex items-center justify-between gap-2">
@@ -1442,37 +1329,51 @@
                         </div>
                     `;
                 } else {
-                    html += `
-                        <div class="tracker-item tracker-item-idle">
-                            <div class="flex items-center gap-1.5 mb-0.5">
-                                <i class="fa-solid fa-clock text-[#555]"></i>
-                                <span class="tracker-label text-[#555]">No Activity</span>
+                    // Check if any slot is upcoming (so we know there's at least something coming)
+                    const hasUpcoming = flat.some(f => f.status.status === 'upcoming');
+                    if (hasUpcoming) {
+                        html += `
+                            <div class="tracker-item tracker-item-idle">
+                                <div class="flex items-center gap-1.5 mb-0.5">
+                                    <i class="fa-solid fa-clock text-[#555]"></i>
+                                    <span class="tracker-label text-[#555]">No Activity at this moment</span>
+                                </div>
+                                <div class="tracker-value text-[#666] text-sm">—</div>
+                                <div class="tracker-sub text-[#444]">Next activity starts soon</div>
                             </div>
-                            <div class="tracker-value text-[#666] text-sm">—</div>
-                            <div class="tracker-sub text-[#444]">Waiting for next slot</div>
-                        </div>
-                    `;
+                        `;
+                    } else {
+                        html += `
+                            <div class="tracker-item tracker-item-idle">
+                                <div class="flex items-center gap-1.5 mb-0.5">
+                                    <i class="fa-solid fa-check-circle text-[#444]"></i>
+                                    <span class="tracker-label text-[#555]">All activities completed</span>
+                                </div>
+                                <div class="tracker-value text-[#666] text-sm">—</div>
+                                <div class="tracker-sub text-[#444]">Session ending soon</div>
+                            </div>
+                        `;
+                    }
                 }
 
-                // ---- 3. Next Activity ----
                 html += `<div class="tracker-divider"></div>`;
-                if (nextActivity && nextActivityStatus) {
-                    const isActive = nextActivityStatus.status === 'active';
+
+                // 3. Next Activity
+                if (next) {
+                    const isActive = next.status.status === 'active';
                     const actClass = isActive ? 'tracker-item-active' : 'tracker-item-upcoming';
                     const actLabel = isActive ? '🔴 ACTIVE' : '⏳ UPCOMING';
-                    const countdown = isActive && nextActivityStatus.slotStatus ?
-                        formatCountdown(nextActivityStatus.slotStatus.endTime - now) :
-                        (nextActivityStatus.slotStatus ?
-                            formatCountdown(nextActivityStatus.slotStatus.startTime - now) :
-                            '—');
-                    const slotDisplay = nextActivityStatus.slot || '—';
-                    const color = nextActivity.color;
+                    const countdown = isActive && next.status.endTime ?
+                        formatCountdown(next.status.endTime - now) :
+                        (next.status.startTime ? formatCountdown(next.status.startTime - now) : '—');
+                    const slotDisplay = next.slot || '—';
+                    const color = next.color || '#00f2ea';
 
                     html += `
                         <div class="tracker-item ${actClass}">
                             <div class="flex items-center gap-1.5 mb-0.5">
-                                <i class="fa-solid ${nextActivity.icon}" style="color:${color}"></i>
-                                <span class="tracker-subtitle" style="color:${color}">Next Activity: ${nextActivity.label}</span>
+                                <i class="fa-solid ${next.icon || 'fa-clock'}" style="color:${color}"></i>
+                                <span class="tracker-subtitle" style="color:${color}">Next Activity: ${next.label || 'Activity'}</span>
                                 <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
                             </div>
                             <div class="flex items-center justify-between gap-2">
@@ -1485,11 +1386,11 @@
                     html += `
                         <div class="tracker-item tracker-item-idle">
                             <div class="flex items-center gap-1.5 mb-0.5">
-                                <i class="fa-solid fa-check-circle text-[#444]"></i>
-                                <span class="tracker-label text-[#555]">All Activities Completed</span>
+                                <i class="fa-solid fa-calendar-xmark text-[#444]"></i>
+                                <span class="tracker-label text-[#555]">No activity yet</span>
                             </div>
                             <div class="tracker-value text-[#666] text-sm">—</div>
-                            <div class="tracker-sub text-[#444]">Session ending soon</div>
+                            <div class="tracker-sub text-[#444]">All activities completed</div>
                         </div>
                     `;
                 }
@@ -1519,7 +1420,6 @@
                         </div>
                     </div>
                 `;
-
             } else {
                 html += `
                     <div class="tracker-no-session">
@@ -1534,7 +1434,7 @@
             setTimeout(renderTikTokTracker, 1000);
         }
 
-        // ========== SHOPEE TRACKER - Shopee theme ==========
+        // --- Shopee Tracker ---
         function renderShopeeTracker() {
             const container = document.getElementById('shopee-tracker-content');
             if (!container) return;
@@ -1573,10 +1473,20 @@
                     </div>
                 `;
 
-                // STACKED LAYOUT: GWP first, then Active, then Next
-                html += `<div class="tracker-stacked">`;
+                // Activity definitions for Shopee
+                const activityDefs = [
+                    { type: 'flash', slots: currentSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt',
+                        color: '#b8860b' },
+                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags',
+                        color: '#ee4d2d' },
+                    { type: 'promosi', slots: currentSession.promosiSlots, label: 'LIMITED OFFER (50% OFF)',
+                        icon: 'fa-percent', color: '#b8860b' }
+                ];
 
-                // ---- 1. GWP - Shopee theme ----
+                const flat = flattenSlots(currentSession, activityDefs);
+                const { ongoing, next } = findOngoingAndNext(flat);
+
+                // GWP row - Shopee theme
                 const gwpEnd = se ? se.end : null;
                 const gwpActive = se && now >= se.start && now <= se.end;
                 const gwpClass = gwpActive ? 'tracker-item-shopee-active' : (se && now < se.start ?
@@ -1585,6 +1495,9 @@
                 const gwpCountdown = gwpActive && se ? formatCountdown(se.end - now) : (se && now < se.start ? formatCountdown(
                     se.start - now) : '—');
 
+                html += `<div class="tracker-stacked">`;
+
+                // 1. GWP
                 html += `
                     <div class="tracker-item ${gwpClass}">
                         <div class="flex items-center gap-1.5 mb-0.5">
@@ -1599,103 +1512,19 @@
                     </div>
                 `;
 
-                // Shopee activities
-                const activities = [
-                    { type: 'flash', slots: currentSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt',
-                    color: '#b8860b' },
-                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags',
-                    color: '#ee4d2d' },
-                    { type: 'promosi', slots: currentSession.promosiSlots, label: 'LIMITED OFFER (50% OFF)',
-                        icon: 'fa-percent', color: '#b8860b' }
-                ];
-
-                let currentActivity = null;
-                let currentActivityStatus = null;
-                let nextActivity = null;
-                let nextActivityStatus = null;
-
-                for (const act of activities) {
-                    const status = getActivityStatus(act.slots, se ? se.start : new Date());
-                    if (status.status === 'active') {
-                        currentActivity = act;
-                        currentActivityStatus = status;
-                        break;
-                    }
-                }
-
-                if (!currentActivity) {
-                    let bestUpcoming = null;
-                    let bestUpcomingStatus = null;
-                    for (const act of activities) {
-                        const status = getActivityStatus(act.slots, se ? se.start : new Date());
-                        if (status.status === 'upcoming') {
-                            if (!bestUpcoming || status.slotStatus.startTime < bestUpcomingStatus.slotStatus.startTime) {
-                                bestUpcoming = act;
-                                bestUpcomingStatus = status;
-                            }
-                        }
-                    }
-                    if (bestUpcoming) {
-                        currentActivity = bestUpcoming;
-                        currentActivityStatus = bestUpcomingStatus;
-                        currentActivityStatus._displayStatus = 'upcoming';
-                    }
-                }
-
-                if (currentActivity && currentActivityStatus) {
-                    const afterTime = currentActivityStatus.slotStatus ? currentActivityStatus.slotStatus.endTime : now;
-                    let bestNext = null;
-                    let bestNextStatus = null;
-                    for (const act of activities) {
-                        if (act.type === currentActivity.type) continue;
-                        const status = getNextActivityStatus(act.slots, se ? se.start : new Date(), afterTime);
-                        if (status.status === 'upcoming' || status.status === 'active') {
-                            if (!bestNext || status.slotStatus.startTime < bestNextStatus.slotStatus.startTime) {
-                                bestNext = act;
-                                bestNextStatus = status;
-                            }
-                        }
-                    }
-                    if (bestNext) {
-                        nextActivity = bestNext;
-                        nextActivityStatus = bestNextStatus;
-                    }
-                }
-
-                if (!currentActivity) {
-                    let firstUpcoming = null;
-                    let firstUpcomingStatus = null;
-                    for (const act of activities) {
-                        const status = getActivityStatus(act.slots, se ? se.start : new Date());
-                        if (status.status === 'upcoming') {
-                            if (!firstUpcoming || status.slotStatus.startTime < firstUpcomingStatus.slotStatus.startTime) {
-                                firstUpcoming = act;
-                                firstUpcomingStatus = status;
-                            }
-                        }
-                    }
-                    if (firstUpcoming) {
-                        currentActivity = firstUpcoming;
-                        currentActivityStatus = firstUpcomingStatus;
-                        currentActivityStatus._displayStatus = 'upcoming';
-                    }
-                }
-
-                // ---- 2. Current Activity - Shopee theme ----
                 html += `<div class="tracker-divider-shopee"></div>`;
-                const isOngoingActiveShopee = currentActivity && currentActivityStatus &&
-                    currentActivityStatus._displayStatus !== 'upcoming' && currentActivityStatus.status === 'active';
-                if (isOngoingActiveShopee) {
-                    const countdown = currentActivityStatus.slotStatus ?
-                        formatCountdown(currentActivityStatus.slotStatus.endTime - now) : '—';
-                    const slotDisplay = currentActivityStatus.slot || '—';
-                    const color = currentActivity.color;
+
+                // 2. Ongoing Activity - Shopee theme
+                if (ongoing && ongoing.status.status === 'active') {
+                    const countdown = ongoing.status.endTime ? formatCountdown(ongoing.status.endTime - now) : '—';
+                    const slotDisplay = ongoing.slot || '—';
+                    const color = ongoing.color || '#ee4d2d';
 
                     html += `
                         <div class="tracker-item tracker-item-shopee-active">
                             <div class="flex items-center gap-1.5 mb-0.5">
-                                <i class="fa-solid ${currentActivity.icon}" style="color:${color}"></i>
-                                <span class="tracker-subtitle" style="color:${color}">Ongoing Activity : ${currentActivity.label}</span>
+                                <i class="fa-solid ${ongoing.icon || 'fa-clock'}" style="color:${color}"></i>
+                                <span class="tracker-subtitle" style="color:${color}">Ongoing Activity : ${ongoing.label || 'Activity'}</span>
                                 <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">🔴 ACTIVE</span>
                             </div>
                             <div class="flex items-center justify-between gap-2">
@@ -1705,37 +1534,50 @@
                         </div>
                     `;
                 } else {
-                    html += `
-                        <div class="tracker-item tracker-item-shopee-idle">
-                            <div class="flex items-center gap-1.5 mb-0.5">
-                                <i class="fa-solid fa-clock text-slate-400"></i>
-                                <span class="tracker-label text-slate-400">No Activity</span>
+                    const hasUpcoming = flat.some(f => f.status.status === 'upcoming');
+                    if (hasUpcoming) {
+                        html += `
+                            <div class="tracker-item tracker-item-shopee-idle">
+                                <div class="flex items-center gap-1.5 mb-0.5">
+                                    <i class="fa-solid fa-clock text-slate-400"></i>
+                                    <span class="tracker-label text-slate-400">No Activity at this moment</span>
+                                </div>
+                                <div class="tracker-value text-slate-500 text-sm">—</div>
+                                <div class="tracker-sub text-slate-400">Next activity starts soon</div>
                             </div>
-                            <div class="tracker-value text-slate-500 text-sm">—</div>
-                            <div class="tracker-sub text-slate-400">Waiting for next slot</div>
-                        </div>
-                    `;
+                        `;
+                    } else {
+                        html += `
+                            <div class="tracker-item tracker-item-shopee-idle">
+                                <div class="flex items-center gap-1.5 mb-0.5">
+                                    <i class="fa-solid fa-check-circle text-slate-400"></i>
+                                    <span class="tracker-label text-slate-400">All activities completed</span>
+                                </div>
+                                <div class="tracker-value text-slate-500 text-sm">—</div>
+                                <div class="tracker-sub text-slate-400">Session ending soon</div>
+                            </div>
+                        `;
+                    }
                 }
 
-                // ---- 3. Next Activity - Shopee theme ----
                 html += `<div class="tracker-divider-shopee"></div>`;
-                if (nextActivity && nextActivityStatus) {
-                    const isActive = nextActivityStatus.status === 'active';
+
+                // 3. Next Activity - Shopee theme
+                if (next) {
+                    const isActive = next.status.status === 'active';
                     const actClass = isActive ? 'tracker-item-shopee-active' : 'tracker-item-shopee-upcoming';
                     const actLabel = isActive ? '🔴 ACTIVE' : '⏳ UPCOMING';
-                    const countdown = isActive && nextActivityStatus.slotStatus ?
-                        formatCountdown(nextActivityStatus.slotStatus.endTime - now) :
-                        (nextActivityStatus.slotStatus ?
-                            formatCountdown(nextActivityStatus.slotStatus.startTime - now) :
-                            '—');
-                    const slotDisplay = nextActivityStatus.slot || '—';
-                    const color = nextActivity.color;
+                    const countdown = isActive && next.status.endTime ?
+                        formatCountdown(next.status.endTime - now) :
+                        (next.status.startTime ? formatCountdown(next.status.startTime - now) : '—');
+                    const slotDisplay = next.slot || '—';
+                    const color = next.color || '#ee4d2d';
 
                     html += `
                         <div class="tracker-item ${actClass}">
                             <div class="flex items-center gap-1.5 mb-0.5">
-                                <i class="fa-solid ${nextActivity.icon}" style="color:${color}"></i>
-                                <span class="tracker-subtitle" style="color:${color}">Next Activity: ${nextActivity.label}</span>
+                                <i class="fa-solid ${next.icon || 'fa-clock'}" style="color:${color}"></i>
+                                <span class="tracker-subtitle" style="color:${color}">Next Activity: ${next.label || 'Activity'}</span>
                                 <span class="tracker-badge" style="background:${color}20;color:${color};border:1px solid ${color}40;margin-left:auto;">${actLabel}</span>
                             </div>
                             <div class="flex items-center justify-between gap-2">
@@ -1748,11 +1590,11 @@
                     html += `
                         <div class="tracker-item tracker-item-shopee-idle">
                             <div class="flex items-center gap-1.5 mb-0.5">
-                                <i class="fa-solid fa-check-circle text-slate-400"></i>
-                                <span class="tracker-label text-slate-400">All Activities Completed</span>
+                                <i class="fa-solid fa-calendar-xmark text-slate-400"></i>
+                                <span class="tracker-label text-slate-400">No activity yet</span>
                             </div>
                             <div class="tracker-value text-slate-500 text-sm">—</div>
-                            <div class="tracker-sub text-slate-400">Session ending soon</div>
+                            <div class="tracker-sub text-slate-400">All activities completed</div>
                         </div>
                     `;
                 }
@@ -1802,7 +1644,6 @@
                         </div>
                     </div>
                 `;
-
             } else {
                 html += `
                     <div class="tracker-no-session text-slate-500">
@@ -2075,6 +1916,32 @@
         function resetShopeeFilters() {
             document.getElementById('filter-shopee-host').value = 'ALL';
             renderShopeeCards(shopeeCardsData);
+        }
+
+        // ========== HELPERS ==========
+        function getSessionDisplayDate(session) {
+            const dateInfo = parseDateStr(session.date);
+            if (!dateInfo) return session.date;
+            const start = dateInfo.start;
+            const end = dateInfo.end;
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            if (start.getDate() === end.getDate()) {
+                return `${monthNames[start.getMonth()]} ${start.getDate()}`;
+            } else {
+                return `${monthNames[start.getMonth()]} ${start.getDate()}-${monthNames[end.getMonth()]} ${end.getDate()}`;
+            }
+        }
+
+        function formatCountdown(ms) {
+            if (ms < 0) return '00:00:00';
+            const totalSec = Math.floor(ms / 1000);
+            const h = Math.floor(totalSec / 3600);
+            const m = Math.floor((totalSec % 3600) / 60);
+            const s = totalSec % 60;
+            if (h > 0) {
+                return `${h}h ${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
+            }
+            return `${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
         }
 
         // ========== INIT ==========
