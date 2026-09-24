@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Corolla Shoes</title>
-    <script src="https://cdn.tailwindcss.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: { xs: '480px' }
+                }
+            }
+        };
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -89,9 +97,9 @@
             border: 1px solid rgba(0, 242, 234, 0.3);
         }
         .tiktok-tag-pink {
-            background: rgba(254, 44, 55, 0.15);
+            background: rgba(254, 44, 85, 0.15);
             color: #fe2c55;
-            border: 1px solid rgba(254, 44, 55, 0.3);
+            border: 1px solid rgba(254, 44, 85, 0.3);
         }
         .tiktok-badge {
             background: #00f2ea;
@@ -325,16 +333,16 @@
 
         /* List items in cards */
         .slot-list li {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
         }
         @media (min-width: 480px) {
             .slot-list li {
-                font-size: 0.7rem;
+                font-size: 0.8rem;
             }
         }
         @media (min-width: 768px) {
             .slot-list li {
-                font-size: 0.75rem;
+                font-size: 0.875rem;
             }
         }
 
@@ -637,27 +645,27 @@
 
             <div class="asset-grid">
                 <!-- GWP: Gift Bag -->
-                <div class="asset-card group border border-[#00f2ea]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#00f2ea]/60 hover:shadow-[0_0_20px_rgba(0,242,234,0.25)] transition-all">
-                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#00f2ea]/20 overflow-hidden mb-1.5 relative">
+                <div class="asset-card group border border-[#fe2c55]/30 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#fe2c55]/60 hover:shadow-[0_0_20px_rgba(254,44,85,0.25)] transition-all">
+                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#fe2c55]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839"
                         alt="Gift Bag GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/00f2ea/000000?text=Gift+Bag+GWP';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.6)]">GWP</span>
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/fe2c55/ffffff?text=Gift+Bag+GWP';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded shadow-[0_0_8px_rgba(254,44,85,0.6)]">GWP</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Premium Gift Bag</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">Gift With Purchase</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#ff8fa8] font-medium truncate">Gift With Purchase</p>
                 </div>
 
                 <!-- GWP: Rain Cover -->
-                <div class="asset-card group border border-[#00f2ea]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#00f2ea]/60 hover:shadow-[0_0_20px_rgba(0,242,234,0.25)] transition-all">
-                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#00f2ea]/20 overflow-hidden mb-1.5 relative">
+                <div class="asset-card group border border-[#fe2c55]/30 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#fe2c55]/60 hover:shadow-[0_0_20px_rgba(254,44,85,0.25)] transition-all">
+                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#fe2c55]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839"
                         alt="Rain Cover GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/00f2ea/000000?text=Rain+Cover+GWP';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.6)]">Gift With Purchase</span>
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/fe2c55/ffffff?text=Rain+Cover+GWP';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded shadow-[0_0_8px_rgba(254,44,85,0.6)]">Gift With Purchase</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Shoe Rain Cover</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">Gift With Purchase</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#ff8fa8] font-medium truncate">Gift With Purchase</p>
                 </div>
 
                 <!-- Flash Sale -->
@@ -666,22 +674,22 @@
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c92821a9255b4117b677ce2e6114f221~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
                         alt="Flash Sale" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/fe2c55/ffffff?text=Flash+Sale+RM39';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded shadow-[0_0_8px_rgba(254,44,85,0.6)]">RM39</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded shadow-[0_0_8px_rgba(254,44,85,0.6)]">RM39</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Flash Sale</p>
                     <p class="text-[0.45rem] sm:text-[10px] text-[#ff8fa8] font-medium truncate">5-Min Drops</p>
                 </div>
 
                 <!-- B1G1 -->
-                <div class="asset-card group border border-[#00f2ea]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#00f2ea]/60 hover:shadow-[0_0_20px_rgba(0,242,234,0.25)] transition-all">
-                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#00f2ea]/20 overflow-hidden mb-1.5 relative">
+                <div class="asset-card group border border-[#fe2c55]/30 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#fe2c55]/60 hover:shadow-[0_0_20px_rgba(254,44,85,0.25)] transition-all">
+                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#fe2c55]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/77fb78f84a0948f287dbf5cc9fb31d74~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
                         alt="Buy 1 Get 1 Deals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/00f2ea/000000?text=Buy+1+Get+1';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.6)]">B1G1</span>
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/fe2c55/ffffff?text=Buy+1+Get+1';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded shadow-[0_0_8px_rgba(254,44,85,0.6)]">B1G1</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Buy 1 Get 1</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">Limited Deals</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#ff8fa8] font-medium truncate">Limited Deals</p>
                 </div>
             </div>
         </div>
@@ -740,37 +748,37 @@
             </div>
 
             <div class="asset-grid">
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
+                <div class="asset-card group border border-[#ee4d2d]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-orange-50/40 hover:bg-orange-50 hover:border-[#ee4d2d]/60 hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-[#ee4d2d]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Gift Bag GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Gift+Bag+GWP';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded">GWP</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Premium Gift Bag</p>
                     <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Gift With Purchase</p>
                 </div>
 
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
+                <div class="asset-card group border border-[#ee4d2d]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-orange-50/40 hover:bg-orange-50 hover:border-[#ee4d2d]/60 hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-[#ee4d2d]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Shoe Cover GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Shoe+Cover+GWP';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded">GWP</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Shoe Cover</p>
                     <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Gift With Purchase</p>
                 </div>
 
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
+                <div class="asset-card group border border-[#ffb800]/40 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-amber-50/40 hover:bg-amber-50 hover:border-[#ffb800]/70 hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-[#ffb800]/30 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c92821a9255b4117b677ce2e6114f221~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687" alt="Shopee Flash Sale Asset" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/2563eb/ffffff?text=Flash+Sale+RM39';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#ffb800] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">RM39</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#ffb800] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded">RM39</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Flash Sale</p>
                     <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">10-Min Drops</p>
                 </div>
 
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
+                <div class="asset-card group border border-[#ee4d2d]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-orange-50/40 hover:bg-orange-50 hover:border-[#ee4d2d]/60 hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-[#ee4d2d]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/77fb78f84a0948f287dbf5cc9fb31d74~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687" alt="Buy 1 Get 1 Deals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/d97706/ffffff?text=Buy+1+Get+1';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">B1G1</span>
+                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded">B1G1</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Buy 1 Get 1</p>
                     <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Limited Deals</p>
@@ -1214,7 +1222,7 @@
                 <div class="flex items-center gap-2 mb-3">
                     <i class="fa-solid fa-satellite-dish text-[#00f2ea] text-lg"></i>
                     <span class="text-white font-bold text-sm sm:text-base">📡 LIVE TRACKER</span>
-                    <span class="text-[10px] text-[#7dd3d8] ml-auto tracker-countdown" id="tiktok-tracker-time">${now.toLocaleTimeString()}</span>
+                    <span class="text-[10px] sm:text-xs text-[#7dd3d8] ml-auto tracker-countdown" id="tiktok-tracker-time">${now.toLocaleTimeString()}</span>
                 </div>
                 <div class="border-b border-[#00f2ea]/20 mb-3"></div>
             `;
@@ -1232,7 +1240,7 @@
                         <span class="font-semibold">👤 ${currentSession.host}</span>
                         <span class="text-[#7dd3d8]">|</span>
                         <span class="text-[#7dd3d8]">⏰ ${currentSession.time}</span>
-                        <span class="text-[10px] text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
+                        <span class="text-[10px] sm:text-xs text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
                     </div>
                 `;
 
@@ -1369,7 +1377,7 @@
                         <span class="font-semibold">👤 ${nextSession.host}</span>
                         <span class="text-[#7dd3d8]">|</span>
                         <span class="text-[#7dd3d8]">⏰ ${nextSession.time}</span>
-                        <span class="text-[10px] text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                        <span class="text-[10px] sm:text-xs text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
                     </div>
                     <div class="tracker-item tracker-item-upcoming">
                         <div class="flex items-center gap-2 text-[#7dd3d8]">
@@ -1407,7 +1415,7 @@
                 <div class="flex items-center gap-2 mb-3">
                     <i class="fa-solid fa-satellite-dish text-[#ee4d2d] text-lg"></i>
                     <span class="text-[#ee4d2d] font-bold text-sm sm:text-base">📡 LIVE TRACKER</span>
-                    <span class="text-[10px] text-slate-400 ml-auto tracker-countdown" id="shopee-tracker-time">${now.toLocaleTimeString()}</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 ml-auto tracker-countdown" id="shopee-tracker-time">${now.toLocaleTimeString()}</span>
                 </div>
                 <div class="border-b border-orange-200/50 mb-3"></div>
             `;
@@ -1425,7 +1433,7 @@
                         <span class="font-semibold">👤 ${currentSession.host}</span>
                         <span class="text-slate-400">|</span>
                         <span class="text-slate-500">⏰ ${currentSession.time}</span>
-                        <span class="text-[10px] text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
+                        <span class="text-[10px] sm:text-xs text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
                     </div>
                 `;
 
@@ -1567,7 +1575,7 @@
                                 <span class="text-slate-800">${nextSession.host}</span>
                                 <span class="text-slate-400">|</span>
                                 <span class="text-slate-500">${nextSession.time}</span>
-                                <span class="text-[10px] text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                                <span class="text-[10px] sm:text-xs text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
                             </div>
                         </div>
                     `;
@@ -1586,7 +1594,7 @@
                         <span class="font-semibold">👤 ${nextSession.host}</span>
                         <span class="text-slate-400">|</span>
                         <span class="text-slate-500">⏰ ${nextSession.time}</span>
-                        <span class="text-[10px] text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                        <span class="text-[10px] sm:text-xs text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
                     </div>
                     <div class="tracker-item tracker-item-shopee-upcoming">
                         <div class="flex items-center gap-2 text-slate-500">
@@ -1690,17 +1698,17 @@
                     "bg-[#0d1526] rounded-2xl border border-[#00f2ea]/25 shadow-sm overflow-hidden flex flex-col hover:border-[#00f2ea]/60 hover:shadow-[0_0_30px_rgba(0,242,234,0.2)] transition-all min-w-0";
 
                 const flashList = item.flashSlots.map(s =>
-                    `<li class="flex items-center gap-1 text-[#c9e8ec] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-bolt text-[#fe2c55] text-[8px] sm:text-[10px]"></i> ${s}</li>`
+                    `<li class="flex items-center gap-1 text-[#c9e8ec] text-[0.75rem] sm:text-[0.8rem] md:text-[0.875rem]"><i class="fa-solid fa-bolt text-[#fe2c55] text-[9px] sm:text-[11px]"></i> ${s}</li>`
                 ).join('');
                 const b1g1List = item.b1g1Slots.map(s =>
-                    `<li class="flex items-center gap-1 text-[#c9e8ec] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tags text-[#00f2ea] text-[8px] sm:text-[10px]"></i> ${s}</li>`
+                    `<li class="flex items-center gap-1 text-[#c9e8ec] text-[0.75rem] sm:text-[0.8rem] md:text-[0.875rem]"><i class="fa-solid fa-tags text-[#00f2ea] text-[9px] sm:text-[11px]"></i> ${s}</li>`
                 ).join('');
 
                 card.innerHTML = `
                     <div class="bg-gradient-to-br from-[#0f1a30] to-[#1a0f2e] text-white p-3 sm:p-4 border-b-2 border-[#00f2ea]">
                         <div class="flex items-center justify-between mb-1.5 sm:mb-2 flex-wrap gap-1">
                             <span class="text-[0.55rem] sm:text-xs font-bold bg-[#00f2ea]/20 text-[#00f2ea] border border-[#00f2ea]/40 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg">${item.date}</span>
-                            <span class="text-[0.5rem] sm:text-[11px] font-semibold text-[#7dd3d8]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
+                            <span class="text-[0.65rem] sm:text-sm font-semibold text-[#7dd3d8]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
                         </div>
                         <div class="flex items-center justify-between flex-wrap gap-1">
                             <div class="flex items-center gap-2">
@@ -1715,10 +1723,10 @@
                             <div class="min-w-0">
                                 <div class="flex items-center gap-1 mb-0.5 sm:mb-1 flex-wrap">
                                     <span class="text-[0.5rem] sm:text-[10px] font-extrabold uppercase text-[#00f2ea]">GWP</span>
-                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.5)]">FREE</span>
+                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.5 rounded shadow-[0_0_8px_rgba(0,242,234,0.5)]">FREE</span>
                                 </div>
                                 <p class="text-[0.6rem] sm:text-xs font-bold text-white truncate">${item.gwpItem}</p>
-                                <p class="text-[0.45rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">${item.time}</p>
+                                <p class="text-[0.6rem] sm:text-xs text-[#7dd3d8] font-medium truncate">${item.time}</p>
                             </div>
                             <img src="${item.gwpImage}" alt="${item.gwpItem}" class="gwp-thumb object-cover rounded-lg border border-[#00f2ea]/30 bg-[#0a1020] shrink-0"
                                  onerror="this.onerror=null; this.src='https://placehold.co/100x100/00f2ea/000000?text=GWP';">
@@ -1728,14 +1736,14 @@
                             <div class="bg-[#fe2c55]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#fe2c55]/30 min-w-0">
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="font-extrabold text-[#fe2c55] text-[0.55rem] sm:text-[11px]">FLASH SALE</span>
-                                    <span class="bg-[#fe2c55] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded shadow-[0_0_8px_rgba(254,44,85,0.5)]">RM39</span>
+                                    <span class="bg-[#fe2c55] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.5 rounded shadow-[0_0_8px_rgba(254,44,85,0.5)]">RM39</span>
                                 </div>
                                 <ul class="slot-list space-y-0.5 font-medium">${flashList}</ul>
                             </div>
                             <div class="bg-[#00f2ea]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#00f2ea]/25 min-w-0">
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="font-extrabold text-[#00f2ea] text-[0.55rem] sm:text-[11px]">BUY 1 GET 1</span>
-                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.5)]">PROMO</span>
+                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.5 rounded shadow-[0_0_8px_rgba(0,242,234,0.5)]">PROMO</span>
                                 </div>
                                 <ul class="slot-list space-y-0.5 font-medium">${b1g1List}</ul>
                             </div>
@@ -1789,7 +1797,7 @@
                              onerror="this.onerror=null; this.src='https://placehold.co/100x100/ea580c/ffffff?text=GWP';">
                         <div class="min-w-0">
                             <p class="text-[0.55rem] sm:text-[10px] font-bold text-slate-800 truncate">${gwp.item}</p>
-                            <p class="text-[0.4rem] sm:text-[8px] text-slate-500 font-medium">${gwp.times.join(' · ')}</p>
+                            <p class="text-[0.5rem] sm:text-[10px] text-slate-500 font-medium">${gwp.times.join(' · ')}</p>
                         </div>
                     </div>
                 `).join('');
@@ -1798,7 +1806,7 @@
                     <div class="bg-gradient-to-br from-[#ee4d2d] to-[#d93d1e] text-white p-3 sm:p-4 border-b-2 border-[#ffb800]">
                         <div class="flex items-center justify-between mb-1.5 sm:mb-2 flex-wrap gap-1">
                             <span class="text-[0.55rem] sm:text-xs font-bold bg-white/20 text-white border border-white/30 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg">${item.date}</span>
-                            <span class="text-[0.5rem] sm:text-[11px] font-semibold text-[#fde0d5]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
+                            <span class="text-[0.65rem] sm:text-sm font-semibold text-[#fde0d5]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
                         </div>
                         <div class="flex items-center justify-between flex-wrap gap-1">
                             <div class="flex items-center gap-2">
@@ -1812,7 +1820,7 @@
                         <div class="bg-orange-50/70 p-2 sm:p-3 rounded-xl border border-orange-200/80 space-y-1.5">
                             <div class="flex items-center gap-1 flex-wrap">
                                 <span class="text-[0.5rem] sm:text-[10px] font-extrabold uppercase text-[#ee4d2d]">GWP</span>
-                                <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.25 rounded">FREE</span>
+                                <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.5 rounded">FREE</span>
                             </div>
                             <div class="flex flex-wrap gap-2">
                                 ${gwpItemsHtml}
@@ -1823,20 +1831,20 @@
                             <div class="bg-[#ffb800]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#ffb800]/30 min-w-0">
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="font-extrabold text-[#b8860b] text-[0.55rem] sm:text-[11px]">FLASH SALE</span>
-                                    <span class="bg-[#ffb800] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">RM39</span>
+                                    <span class="bg-[#ffb800] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.5 rounded">RM39</span>
                                 </div>
                                 <ul class="slot-list space-y-0.5 font-medium max-h-20 sm:max-h-28 overflow-y-auto custom-scrollbar">
-                                    ${item.flashSlots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-bolt text-[#ffb800] text-[8px] sm:text-[10px]"></i> ${s}</li>`).join('')}
+                                    ${item.flashSlots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.75rem] sm:text-[0.8rem] md:text-[0.875rem]"><i class="fa-solid fa-bolt text-[#ffb800] text-[9px] sm:text-[11px]"></i> ${s}</li>`).join('')}
                                 </ul>
                             </div>
 
                             <div class="bg-[#ee4d2d]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#ee4d2d]/20 min-w-0">
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="font-extrabold text-[#ee4d2d] text-[0.55rem] sm:text-[11px]">BUY 1 GET 1</span>
-                                    <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">2 PAIRS</span>
+                                    <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.5 rounded">2 PAIRS</span>
                                 </div>
                                 <ul class="slot-list space-y-0.5 font-medium max-h-20 sm:max-h-28 overflow-y-auto custom-scrollbar">
-                                    ${item.b1g1Slots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tags text-[#ee4d2d] text-[8px] sm:text-[10px]"></i> ${s}</li>`).join('')}
+                                    ${item.b1g1Slots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.75rem] sm:text-[0.8rem] md:text-[0.875rem]"><i class="fa-solid fa-tags text-[#ee4d2d] text-[9px] sm:text-[11px]"></i> ${s}</li>`).join('')}
                                 </ul>
                             </div>
                         </div>
