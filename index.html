@@ -30,9 +30,12 @@
             background: #94a3b8;
         }
 
-        /* TikTok Theme */
+        /* TikTok Neon Theme */
+        .tiktok-neon-bg {
+            background: radial-gradient(ellipse at top left, #0a1a30 0%, #0a0e1a 40%, #1a0a1e 100%);
+        }
         .tiktok-gradient {
-            background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #0a0e1a 0%, #0d1526 100%);
         }
         .tiktok-accent {
             color: #00f2ea;
@@ -50,7 +53,7 @@
             border-color: #2a2a3a;
         }
         .tiktok-card-header {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #0f1a30 0%, #1a0f2e 100%);
             border-bottom: 2px solid #00f2ea;
         }
         .tiktok-card-gwp {
@@ -65,14 +68,11 @@
             background: rgba(0, 242, 234, 0.08);
             border-color: rgba(0, 242, 234, 0.2);
         }
-        .tiktok-card-giveaway {
-            background: rgba(254, 44, 85, 0.08);
-            border-color: rgba(254, 44, 85, 0.2);
-        }
         .tiktok-btn-active {
-            background: #000000;
-            color: white;
+            background: #00f2ea;
+            color: black;
             border: 1px solid #00f2ea;
+            box-shadow: 0 0 12px rgba(0, 242, 234, 0.4);
         }
         .tiktok-btn-inactive {
             background: transparent;
@@ -102,12 +102,12 @@
             color: #fff;
         }
         .tiktok-filter-select {
-            background: #0a0a0a;
+            background: #0d1526;
             color: #fff;
-            border-color: #2a2a3a;
+            border-color: #1a2540;
         }
         .tiktok-filter-select option {
-            background: #0a0a0a;
+            background: #0d1526;
             color: #fff;
         }
 
@@ -139,10 +139,6 @@
         .shopee-card-b1g1 {
             background: rgba(238, 77, 45, 0.08);
             border-color: rgba(238, 77, 45, 0.2);
-        }
-        .shopee-card-promo {
-            background: rgba(255, 184, 0, 0.08);
-            border-color: rgba(255, 184, 0, 0.2);
         }
         .shopee-btn-active {
             background: #ee4d2d;
@@ -405,15 +401,16 @@
         /* TikTok tracker items */
         .tracker-item-active {
             background: rgba(0, 242, 234, 0.12);
-            border: 1px solid rgba(0, 242, 234, 0.3);
+            border: 1px solid rgba(0, 242, 234, 0.4);
+            box-shadow: 0 0 12px rgba(0, 242, 234, 0.15);
         }
         .tracker-item-upcoming {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid #2a2a3a;
+            background: rgba(0, 242, 234, 0.04);
+            border: 1px solid rgba(0, 242, 234, 0.18);
         }
         .tracker-item-idle {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid #1a1a2a;
+            border: 1px solid rgba(0, 242, 234, 0.1);
             opacity: 0.5;
         }
         /* Shopee tracker items */
@@ -554,7 +551,7 @@
             }
         }
         .tracker-divider {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(0, 242, 234, 0.15);
             margin: 0.25rem 0;
         }
         .tracker-divider-shopee {
@@ -582,7 +579,7 @@
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-2">
             <div class="header-brand flex items-center gap-2 sm:gap-4 min-w-0">
                 <div class="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-xl border border-slate-200 p-0.5 sm:p-1 bg-white shadow-xs flex items-center justify-center overflow-hidden shrink-0">
-                    <img src="https://scontent.fkul8-4.fna.fbcdn.net/v/t39.30808-6/590563163_122152685126827852_1103710828564532184_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=geUC16ftifAQ7kNvwFQPFfp&_nc_oc=AdqLGs4rox0InU7QnuJNFj068yoylcOtMVR4Sl0teZ1rVk8W5V_6RcOOHQhAutrgguh9feBo31wkaLbGuq8iOnc5&_nc_zt=23&_nc_ht=scontent.fkul8-4.fna&_nc_gid=0cD0ldIB6w4LA0ks_iaUxw&_nc_ss=7b2a8&oh=00_AQI4kqfpPYQ8w_9w8t2y6OtCoESET61LQMd76r84J3hVCg&oe=6AA4B37A"
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6yWmHuIaZD3xIlS3pBdwl5SIAW_Ac67ZglHw_ZfsugH1xggVdKQ2VZOSM&s=10"
                     alt="Corolla Shoes Logo"
                     class="w-full h-full object-cover rounded-lg"
                     onerror="this.onerror=null; this.src='https://placehold.co/100x100/10b981/ffffff?text=Corolla';" />
@@ -596,7 +593,7 @@
                             <span id="badge-text-short" class="sm:hidden">TikTok</span>
                         </span>
                     </div>
-                    <p class="text-[0.5rem] sm:text-[0.6rem] md:text-xs text-slate-500 font-medium truncate hidden xs:block">9.9 Double Day Campaign Operations</p>
+                    <p class="text-[0.5rem] sm:text-[0.6rem] md:text-xs text-slate-500 font-medium truncate hidden xs:block">Payday Live Campaign Operations</p>
                 </div>
             </div>
 
@@ -616,119 +613,100 @@
     </header>
 
     <!-- ==================== TIKTOK VIEW ==================== -->
-    <main id="view-tiktok" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 flex-1 w-full">
+    <main id="view-tiktok" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 flex-1 w-full tiktok-neon-bg">
 
         <!-- ====== TIKTOK TRACKER ====== -->
-        <div id="tiktok-tracker" class="tracker-card bg-black rounded-2xl border border-[#2a2a3a] shadow-sm overflow-hidden">
+        <div id="tiktok-tracker" class="tracker-card bg-[#0d1526] rounded-2xl border border-[#00f2ea]/40 shadow-[0_0_30px_rgba(0,242,234,0.15)] overflow-hidden">
             <div id="tiktok-tracker-content" class="p-3 sm:p-4 md:p-5">
                 <!-- Rendered by JavaScript -->
             </div>
         </div>
 
-        <!-- Campaign Assets -->
-        <div class="bg-white p-3 sm:p-4 md:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3 sm:space-y-4">
+        <!-- ====== CAMPAIGN ASSETS (TikTok neon theme) ====== -->
+        <div class="bg-[#0d1526] p-3 sm:p-4 md:p-5 rounded-2xl border border-[#00f2ea]/30 shadow-[0_0_25px_rgba(0,242,234,0.08)] space-y-3 sm:space-y-4">
             <div class="flex items-center justify-between flex-wrap gap-2">
                 <div>
-                    <h2 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+                    <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-boxes-packing text-[#00f2ea]"></i>
                         <span class="truncate">Campaign Assets</span>
                     </h2>
-                    <p class="text-[0.6rem] sm:text-xs text-slate-500 truncate">GWP → Flash Sale → B1G1 → Giveaway</p>
+                    <p class="text-[0.6rem] sm:text-xs text-[#7dd3d8] truncate">GWP → Flash Sale → B1G1</p>
                 </div>
-                <span class="text-[0.55rem] sm:text-xs bg-slate-100 text-slate-600 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">6 Media</span>
+                <span class="text-[0.55rem] sm:text-xs bg-[#00f2ea]/10 text-[#00f2ea] border border-[#00f2ea]/30 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">4 Media</span>
             </div>
 
             <div class="asset-grid">
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
-                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
-                        alt="Socks GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/10b981/ffffff?text=Socks+GWP';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
-                    </div>
-                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Corolla Socks</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
-                </div>
-
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
+                <!-- GWP: Gift Bag -->
+                <div class="asset-card group border border-[#00f2ea]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#00f2ea]/60 hover:shadow-[0_0_20px_rgba(0,242,234,0.25)] transition-all">
+                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#00f2ea]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839"
                         alt="Gift Bag GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/10b981/ffffff?text=Gift+Bag+GWP';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/00f2ea/000000?text=Gift+Bag+GWP';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.6)]">GWP</span>
                     </div>
-                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Premium Gift Bag</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Premium Gift Bag</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">Gift With Purchase</p>
                 </div>
 
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
+                <!-- GWP: Rain Cover -->
+                <div class="asset-card group border border-[#00f2ea]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#00f2ea]/60 hover:shadow-[0_0_20px_rgba(0,242,234,0.25)] transition-all">
+                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#00f2ea]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839"
                         alt="Rain Cover GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/10b981/ffffff?text=Rain+Cover+GWP';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/00f2ea/000000?text=Rain+Cover+GWP';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.6)]">Gift With Purchase</span>
                     </div>
-                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Shoe Rain Cover</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Shoe Rain Cover</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">Gift With Purchase</p>
                 </div>
 
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
+                <!-- Flash Sale -->
+                <div class="asset-card group border border-[#fe2c55]/30 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#fe2c55]/60 hover:shadow-[0_0_20px_rgba(254,44,85,0.25)] transition-all">
+                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#fe2c55]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/c92821a9255b4117b677ce2e6114f221~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
                         alt="Flash Sale" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/2563eb/ffffff?text=Flash+Sale+RM39';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">RM39</span>
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/fe2c55/ffffff?text=Flash+Sale+RM39';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded shadow-[0_0_8px_rgba(254,44,85,0.6)]">RM39</span>
                     </div>
-                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Flash Sale</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">10-Min Drops</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Flash Sale</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#ff8fa8] font-medium truncate">5-Min Drops</p>
                 </div>
 
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
+                <!-- B1G1 -->
+                <div class="asset-card group border border-[#00f2ea]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#00f2ea]/60 hover:shadow-[0_0_20px_rgba(0,242,234,0.25)] transition-all">
+                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#00f2ea]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/77fb78f84a0948f287dbf5cc9fb31d74~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
                         alt="Buy 1 Get 1 Deals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/d97706/ffffff?text=Buy+1+Get+1';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">B1G1</span>
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/00f2ea/000000?text=Buy+1+Get+1';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#00f2ea] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.6)]">B1G1</span>
                     </div>
-                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Buy 1 Get 1</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Alternating</p>
-                </div>
-
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
-                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/249e9fea4ab4467886dd375c12f8834d~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687"
-                        alt="Corolla Shoe Giveaway" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/f43f5e/ffffff?text=Giveaway+Shoe';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GIVEAWAY</span>
-                    </div>
-                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Corolla Shoes</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Size 36 only</p>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Buy 1 Get 1</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">Limited Deals</p>
                 </div>
             </div>
         </div>
 
-        <!-- Filter bar - TikTok themed -->
-        <div class="filter-bar bg-black p-3 sm:p-4 rounded-2xl border border-[#2a2a3a] shadow-xs">
+        <!-- Filter bar - TikTok neon themed -->
+        <div class="filter-bar bg-[#0d1526] p-3 sm:p-4 rounded-2xl border border-[#00f2ea]/30 shadow-[0_0_25px_rgba(0,242,234,0.08)]">
             <div>
                 <h2 class="text-sm sm:text-base md:text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
                     <i class="fa-brands fa-tiktok text-[#00f2ea]"></i>
                     <span class="truncate">TikTok Shop Live Schedule</span>
                 </h2>
-                <p class="text-[0.55rem] sm:text-xs text-[#666] truncate">GWP → Flash Sale → B1G1 → Giveaway</p>
+                <p class="text-[0.55rem] sm:text-xs text-[#7dd3d8] truncate">Sep 24 8:00 PM – Sep 25 11:00 PM · Flash Sale &amp; B1G1 only during confirmed host shifts</p>
             </div>
 
             <div class="flex items-center gap-2 shrink-0">
                 <div class="relative">
-                    <select id="filter-host" onchange="filterSchedule()" class="bg-[#0a0a0a] border border-[#2a2a3a] text-white text-[0.6rem] sm:text-xs font-semibold rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 pr-6 sm:pr-8 focus:outline-none focus:ring-2 focus:ring-[#00f2ea] appearance-none min-w-[80px] sm:min-w-[100px]">
+                    <select id="filter-host" onchange="filterSchedule()" class="bg-[#0a1020] border border-[#00f2ea]/30 text-white text-[0.6rem] sm:text-xs font-semibold rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 pr-6 sm:pr-8 focus:outline-none focus:ring-2 focus:ring-[#00f2ea] appearance-none min-w-[80px] sm:min-w-[100px]">
                         <option value="ALL">All Hosts</option>
+                        <option value="Syasya">Syasya</option>
                         <option value="Zaiffa">Zaiffa</option>
                         <option value="Qys">Qys</option>
-                        <option value="Nurul">Nurul</option>
-                        <option value="Mar">Mar</option>
                     </select>
-                    <i class="fa-solid fa-chevron-down text-[8px] sm:text-[10px] text-[#555] absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                    <i class="fa-solid fa-chevron-down text-[8px] sm:text-[10px] text-[#7dd3d8] absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                 </div>
-                <button onclick="resetFilters()" class="p-1.5 sm:p-2 bg-[#1a1a2a] hover:bg-[#2a2a3a] text-[#666] hover:text-white rounded-xl text-[0.6rem] sm:text-xs font-semibold transition-all border border-[#2a2a3a]" title="Reset Filters">
+                <button onclick="resetFilters()" class="p-1.5 sm:p-2 bg-[#00f2ea]/10 hover:bg-[#00f2ea]/25 text-[#00f2ea] rounded-xl text-[0.6rem] sm:text-xs font-semibold transition-all border border-[#00f2ea]/30" title="Reset Filters">
                     <i class="fa-solid fa-rotate-left"></i>
                 </button>
             </div>
@@ -756,28 +734,28 @@
                         <i class="fa-solid fa-boxes-packing text-[#ee4d2d]"></i>
                         <span class="truncate">Campaign Assets</span>
                     </h2>
-                    <p class="text-[0.6rem] sm:text-xs text-slate-500 truncate">GWP → Flash Sale → B1G1 → 50% OFF</p>
+                    <p class="text-[0.6rem] sm:text-xs text-slate-500 truncate">GWP → Flash Sale → B1G1</p>
                 </div>
-                <span class="text-[0.55rem] sm:text-xs bg-slate-100 text-slate-600 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">5 Media</span>
+                <span class="text-[0.55rem] sm:text-xs bg-slate-100 text-slate-600 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">4 Media</span>
             </div>
 
             <div class="asset-grid">
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
-                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687" alt="Socks GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Socks+GWP';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
-                    </div>
-                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Corolla Socks</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
-                </div>
-
                 <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
                     <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Gift Bag GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Gift+Bag+GWP';" />
                         <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Premium Gift Bag</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Free with Order</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Gift With Purchase</p>
+                </div>
+
+                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Shoe Cover GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Shoe+Cover+GWP';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">GWP</span>
+                    </div>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Shoe Cover</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Gift With Purchase</p>
                 </div>
 
                 <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
@@ -795,16 +773,7 @@
                         <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">B1G1</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Buy 1 Get 1</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Alternating</p>
-                </div>
-
-                <div class="asset-card group border border-slate-200 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                    <div class="aspect-square bg-white rounded-lg border border-slate-200/80 overflow-hidden mb-1.5 relative">
-                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/9cba0ecd1dca4409a61812123a989411~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Limited Offer Asset" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/6366f1/ffffff?text=Limited+Offer';" />
-                        <span class="absolute top-0.5 left-0.5 bg-[#ffb800] text-black text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.25 rounded">50%</span>
-                    </div>
-                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Limited Offer</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">RM59.9</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Limited Deals</p>
                 </div>
             </div>
         </div>
@@ -816,7 +785,7 @@
                     <i class="fa-solid fa-bag-shopping text-[#ffb800]"></i>
                     <span class="truncate">Shopee Hub Live Schedule</span>
                 </h2>
-                <p class="text-[0.55rem] sm:text-xs text-[#fde0d5] truncate">GWP → Flash Sale → B1G1 → 50% OFF</p>
+                <p class="text-[0.55rem] sm:text-xs text-[#fde0d5] truncate">Payday Live · GWP → Flash Sale → B1G1</p>
             </div>
 
             <div class="flex items-center gap-2 shrink-0">
@@ -824,9 +793,7 @@
                     <select id="filter-shopee-host" onchange="filterShopeeSchedule()" class="bg-white border border-[#d93d1e] text-slate-700 text-[0.6rem] sm:text-xs font-semibold rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 pr-6 sm:pr-8 focus:outline-none focus:ring-2 focus:ring-[#ffb800] appearance-none min-w-[80px] sm:min-w-[100px]">
                         <option value="ALL">All Hosts</option>
                         <option value="Nureen">Nureen</option>
-                        <option value="Azmira">Azmira</option>
                         <option value="Anis">Anis</option>
-                        <option value="Anis">Anissa</option>
                     </select>
                     <i class="fa-solid fa-chevron-down text-[8px] sm:text-[10px] text-slate-400 absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                 </div>
@@ -980,15 +947,15 @@
             return next;
         }
 
-        // ===== CORE: getSlotStatus — returns status for a single slot =====
-        function getSlotStatus(slotTime, sessionDate) {
+        function getSlotStatus(slotTime, sessionStart) {
             const parsed = parseSlotTime(slotTime);
             if (!parsed) return { status: 'unknown', startTime: null, endTime: null };
             const now = new Date();
 
             if (parsed.type === 'single') {
-                const dt = combineDateAndTime(sessionDate, parsed.start);
+                let dt = combineDateAndTime(sessionStart, parsed.start);
                 if (!dt) return { status: 'unknown', startTime: null, endTime: null };
+                if (dt < sessionStart) dt = new Date(dt.getTime() + 24 * 60 * 60 * 1000);
                 const diff = now - dt;
                 if (diff >= 0 && diff < 10 * 60 * 1000) {
                     return { status: 'active', startTime: dt, endTime: new Date(dt.getTime() + 10 * 60 * 1000) };
@@ -998,9 +965,11 @@
                     return { status: 'completed', startTime: dt, endTime: new Date(dt.getTime() + 10 * 60 * 1000) };
                 }
             } else if (parsed.type === 'range') {
-                const startDt = combineDateAndTime(sessionDate, parsed.start);
-                const endDt = combineDateAndTime(sessionDate, parsed.end);
+                let startDt = combineDateAndTime(sessionStart, parsed.start);
+                let endDt = combineDateAndTime(sessionStart, parsed.end);
                 if (!startDt || !endDt) return { status: 'unknown', startTime: null, endTime: null };
+                if (startDt < sessionStart) startDt = new Date(startDt.getTime() + 24 * 60 * 60 * 1000);
+                if (endDt < sessionStart) endDt = new Date(endDt.getTime() + 24 * 60 * 60 * 1000);
                 if (endDt < startDt) {
                     endDt.setDate(endDt.getDate() + 1);
                 }
@@ -1015,10 +984,8 @@
             return { status: 'unknown', startTime: null, endTime: null };
         }
 
-        // ===== CORE: flatten all slots for a session with their status =====
         function flattenSlots(session, activityDefs) {
             const result = [];
-            const now = new Date();
             const se = getSessionStartEnd(session);
             if (!se) return result;
             const sessionStart = se.start;
@@ -1039,18 +1006,15 @@
                 }
             }
 
-            // Sort by start time
             result.sort((a, b) => a.sortTime - b.sortTime);
             return result;
         }
 
-        // ===== CORE: find ongoing and next from flattened slots =====
         function findOngoingAndNext(flatSlots) {
             const now = new Date();
             let ongoing = null;
             let next = null;
 
-            // Find ongoing: first slot with status === 'active'
             for (const item of flatSlots) {
                 if (item.status.status === 'active') {
                     ongoing = item;
@@ -1058,20 +1022,16 @@
                 }
             }
 
-            // Find next: first slot that starts after the ongoing ends (or after now if no ongoing)
             const afterTime = ongoing ? ongoing.status.endTime : now;
             for (const item of flatSlots) {
                 const st = item.status.startTime;
-                // Use >= so a slot starting exactly when the previous one ends is picked as "next"
                 if (st && st >= afterTime && item.status.status !== 'completed') {
-                    // Make sure we don't pick the ongoing slot itself (if it has startTime >= afterTime)
                     if (ongoing && item === ongoing) continue;
                     next = item;
                     break;
                 }
             }
 
-            // If still no next, look for the first upcoming slot (safety net)
             if (!next) {
                 for (const item of flatSlots) {
                     if (item.status.status === 'upcoming') {
@@ -1084,153 +1044,162 @@
             return { ongoing, next };
         }
 
+        // ========== SHARED IMAGE ASSETS ==========
+        const IMG_GIFT_BAG = "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839";
+        const IMG_RAIN_COVER = "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839";
+
         // ========== TIKTOK SCHEDULE ==========
         let shiftData = [{
             id: 1,
-            date: "Sep 8",
+            date: "Sep 24",
             time: "8:00 PM - 11:00 PM",
-            host: "Qys",
-            tag: "Prime Night",
+            host: "Syasya",
+            tag: "Payday Night",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
-            gwpItem: "Socks",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
-            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
-            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"],
-            giveaways: ["8:30 PM Drop", "9:30 PM Drop", "10:30 PM Drop"]
+            gwpItem: "Gift Bag",
+            gwpImage: IMG_GIFT_BAG,
+            flashSlots: ["8:00-8:05 PM", "9:00-9:05 PM", "10:00-10:05 PM"],
+            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
         }, {
             id: 2,
-            date: "Sep 8-9",
+            date: "Sep 24-25",
             time: "11:30 PM - 2:30 AM",
-            host: "Nurul",
-            tag: "Midnight",
+            host: "Syasya",
+            tag: "Overnight",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
             gwpItem: "Rain Cover",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
-            flashSlots: ["11:30-11:40 PM", "12:30-12:40 AM", "1:30-1:40 AM"],
-            b1g1Slots: ["11:40-11:50 PM", "12:40-12:50 AM", "1:40-1:50 AM"],
-            giveaways: ["12:00 AM Drop", "1:00 AM Drop", "2:00 AM Drop"]
+            gwpImage: IMG_RAIN_COVER,
+            flashSlots: ["11:30-11:35 PM", "12:30-12:35 AM", "1:30-1:35 AM"],
+            b1g1Slots: ["11:40-11:50 PM", "12:40-12:50 AM", "1:40-1:50 AM"]
         }, {
             id: 3,
-            date: "Sep 9",
+            date: "Sep 25",
             time: "9:00 AM - 12:00 PM",
             host: "Zaiffa",
             tag: "Morning",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
             gwpItem: "Gift Bag",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
-            flashSlots: ["9:00-9:10 AM", "10:00-10:10 AM", "11:00-11:10 AM"],
-            b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"],
-            giveaways: ["9:30 AM Drop", "10:30 AM Drop", "11:30 AM Drop"]
+            gwpImage: IMG_GIFT_BAG,
+            flashSlots: ["9:00-9:05 AM", "10:00-10:05 AM", "11:00-11:05 AM"],
+            b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"]
         }, {
             id: 4,
-            date: "Sep 9",
+            date: "Sep 25",
             time: "12:30 PM - 3:30 PM",
             host: "Zaiffa",
             tag: "Noon",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
-            gwpItem: "Socks",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
-            flashSlots: ["12:30-12:40 PM", "1:30-1:40 PM", "2:30-2:40 PM"],
-            b1g1Slots: ["12:40-12:50 PM", "1:40-1:50 PM", "2:40-2:50 PM"],
-            giveaways: ["1:00 PM Drop", "2:00 PM Drop", "3:00 PM Drop"]
+            gwpItem: "Rain Cover",
+            gwpImage: IMG_RAIN_COVER,
+            flashSlots: ["12:30-12:35 PM", "1:30-1:35 PM", "2:30-2:35 PM"],
+            b1g1Slots: ["12:40-12:50 PM", "1:40-1:50 PM", "2:40-2:50 PM"]
         }, {
             id: 5,
-            date: "Sep 9",
+            date: "Sep 25",
             time: "4:00 PM - 7:00 PM",
             host: "Qys",
             tag: "Afternoon",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
             gwpItem: "Rain Cover",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
-            flashSlots: ["4:00-4:10 PM", "5:00-5:10 PM", "6:00-6:10 PM"],
-            b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"],
-            giveaways: ["4:30 PM Drop", "5:30 PM Drop", "6:30 PM Drop"]
+            gwpImage: IMG_RAIN_COVER,
+            flashSlots: ["4:00-4:05 PM", "5:00-5:05 PM", "6:00-6:05 PM"],
+            b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"]
         }, {
             id: 6,
-            date: "Sep 9",
+            date: "Sep 25",
             time: "8:00 PM - 11:00 PM",
-            host: "Mar",
+            host: "Qys",
             tag: "Peak Night",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
-            gwpItem: "Socks",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
-            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
-            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"],
-            giveaways: ["8:30 PM Drop", "9:30 PM Drop", "10:30 PM Drop"]
+            gwpItem: "Gift Bag",
+            gwpImage: IMG_GIFT_BAG,
+            flashSlots: ["8:00-8:05 PM", "9:00-9:05 PM", "10:00-10:05 PM"],
+            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
         }];
 
         // ========== SHOPEE SCHEDULE ==========
+        // Note: "Waterproof Shoe Cover" shortened to "Shoe Cover" for display.
         let shopeeCardsData = [{
-            date: "Sep 8",
+            id: 1,
+            date: "Sep 24",
             time: "8:00 PM - 11:00 PM",
-            host: "Azmira",
-            tag: "Prime Night",
+            host: "Nureen",
+            tag: "Payday Night",
             tagBg: "bg-white/20 text-white border-white/30",
-            gwpItem: "Socks",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
-            flashSlots: ["8:00 - 8:10 PM", "9:00 - 9:10 PM"],
-            b1g1Slots: ["8:30 - 8:50 PM", "9:20 - 9:30 PM", "10:00 - 10:10 PM"],
-            promosiSlots: ["8:10 - 8:30 PM", "9:10 - 9:20 PM", "10:10 - 10:30 PM"]
+            gwpList: [
+                { item: "Gift Bag", time: "8:00–9:00 PM", image: IMG_GIFT_BAG },
+                { item: "Shoe Cover", time: "10:00–11:00 PM", image: IMG_RAIN_COVER }
+            ],
+            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
+            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
         }, {
-            date: "Sep 8-9",
+            id: 2,
+            date: "Sep 24-25",
             time: "11:30 PM - 2:30 AM",
             host: "Anis",
-            tag: "Midnight",
+            tag: "Overnight",
             tagBg: "bg-white/20 text-white border-white/30",
-            gwpItem: "Gift Bag",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
-            flashSlots: ["11:30 - 11:40 PM"],
-            b1g1Slots: ["12:00 - 12:10 AM"],
-            promosiSlots: ["12:10 - 12:20 AM"]
+            gwpList: [
+                { item: "Gift Bag", time: "12:00–1:00 AM", image: IMG_GIFT_BAG }
+            ],
+            flashSlots: ["11:30-11:40 PM", "12:00-12:10 AM", "1:00-1:10 AM"],
+            b1g1Slots: ["11:40-11:50 PM", "12:10-12:20 AM", "1:10-1:20 AM"]
         }, {
-            date: "Sep 9",
+            id: 3,
+            date: "Sep 25",
             time: "9:00 AM - 12:00 PM",
             host: "Nureen",
             tag: "Morning",
             tagBg: "bg-white/20 text-white border-white/30",
-            gwpItem: "Socks",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
-            flashSlots: ["9:00 - 9:10 AM", "10:00 - 10:10 AM"],
-            b1g1Slots: ["9:20 - 9:30 AM", "10:20 - 10:30 AM"],
-            promosiSlots: ["9:10 - 9:20 AM", "10:10 - 10:20 AM", "11:00 - 11:20 AM"]
+            gwpList: [
+                { item: "Shoe Cover", time: "9:00–10:00 AM", image: IMG_RAIN_COVER },
+                { item: "Shoe Cover", time: "11:00 AM–12:00 PM", image: IMG_RAIN_COVER }
+            ],
+            flashSlots: ["9:00-9:10 AM", "10:00-10:10 AM", "11:00-11:10 AM"],
+            b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"]
         }, {
-            date: "Sep 9",
+            id: 4,
+            date: "Sep 25",
             time: "12:30 PM - 3:30 PM",
             host: "Nureen",
             tag: "Noon",
             tagBg: "bg-white/20 text-white border-white/30",
-            gwpItem: "Socks",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
-            flashSlots: ["12:30 - 12:40 PM", "2:00 - 2:10 PM", "3:00 - 3:10 PM"],
-            b1g1Slots: ["12:50 - 1:00 PM", "2:20 - 2:30 PM", "3:20 - 3:30 PM"],
-            promosiSlots: ["12:40 - 12:50 PM", "1:10 - 1:20 PM", "2:10 - 2:20 PM", "3:10 - 3:20 PM"]
+            gwpList: [
+                { item: "Gift Bag", time: "12:30–1:30 PM", image: IMG_GIFT_BAG },
+                { item: "Shoe Cover", time: "2:00–3:00 PM", image: IMG_RAIN_COVER }
+            ],
+            flashSlots: ["12:30-12:40 PM", "2:00-2:10 PM", "3:00-3:10 PM"],
+            b1g1Slots: ["12:40-12:50 PM", "2:10-2:20 PM", "3:10-3:20 PM"]
         }, {
-            date: "Sep 9",
+            id: 5,
+            date: "Sep 25",
             time: "4:00 PM - 7:00 PM",
             host: "Anis",
             tag: "Afternoon",
             tagBg: "bg-white/20 text-white border-white/30",
-            gwpItem: "Socks",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fd4cf94d40a7481b8924090a35f0767b~tplv-aphluv4xwc-resize-jpeg:300:300.jpeg?dr=15584&t=555f072d&ps=933b5bde&shp=5aca9457&shcp=9b759fb9&idc=my&from=1523225687",
-            flashSlots: ["4:00 - 4:10 PM", "5:00 - 5:10 PM"],
-            b1g1Slots: ["4:30 - 4:40 PM"],
-            promosiSlots: ["4:10 - 4:20 PM", "5:10 - 5:20 PM", "6:10 - 6:20 PM"]
+            gwpList: [
+                { item: "Gift Bag", time: "4:00–4:10 PM", image: IMG_GIFT_BAG },
+                { item: "Shoe Cover", time: "6:00–7:00 PM", image: IMG_RAIN_COVER }
+            ],
+            flashSlots: ["4:00-4:10 PM", "5:00-5:10 PM", "6:00-6:10 PM"],
+            b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"]
         }, {
-            date: "Sep 9",
+            id: 6,
+            date: "Sep 25",
             time: "8:00 PM - 11:00 PM",
-            host: "Anissa",
+            host: "Anis",
             tag: "Peak Night",
             tagBg: "bg-white/20 text-white border-white/30",
-            gwpItem: "Gift Bag",
-            gwpImage: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839",
-            flashSlots: ["8:00 - 8:10 PM", "10:00 - 10:10 PM"],
-            b1g1Slots: ["8:20 - 8:30 PM", "10:20 - 10:30 PM"],
-            promosiSlots: ["8:10 - 8:20 PM", "9:00 - 9:10 PM", "10:10 - 10:20 PM"]
+            gwpList: [
+                { item: "Shoe Cover", time: "8:00–9:00 PM", image: IMG_RAIN_COVER },
+                { item: "Shoe Cover", time: "10:00–11:00 PM", image: IMG_RAIN_COVER }
+            ],
+            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
+            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
         }];
 
         // ========== TRACKER RENDER FUNCTIONS ==========
 
-        // --- TikTok Tracker ---
         function renderTikTokTracker() {
             const container = document.getElementById('tiktok-tracker-content');
             if (!container) return;
@@ -1241,49 +1210,42 @@
 
             let html = '';
 
-            // Header
             html += `
                 <div class="flex items-center gap-2 mb-3">
                     <i class="fa-solid fa-satellite-dish text-[#00f2ea] text-lg"></i>
                     <span class="text-white font-bold text-sm sm:text-base">📡 LIVE TRACKER</span>
-                    <span class="text-[10px] text-[#666] ml-auto tracker-countdown" id="tiktok-tracker-time">${now.toLocaleTimeString()}</span>
+                    <span class="text-[10px] text-[#7dd3d8] ml-auto tracker-countdown" id="tiktok-tracker-time">${now.toLocaleTimeString()}</span>
                 </div>
-                <div class="border-b border-[#2a2a3a] mb-3"></div>
+                <div class="border-b border-[#00f2ea]/20 mb-3"></div>
             `;
 
             if (currentSession) {
                 const se = getSessionStartEnd(currentSession);
                 const dateDisplay = getSessionDisplayDate(currentSession);
 
-                // Session info
                 html += `
                     <div class="flex flex-wrap items-center gap-2 mb-3 text-sm text-white">
                         <span class="font-bold text-[#00f2ea]">🔴 LIVE NOW</span>
-                        <span class="text-[#888]">|</span>
+                        <span class="text-[#7dd3d8]">|</span>
                         <span class="font-semibold">📅 ${dateDisplay}</span>
-                        <span class="text-[#888]">|</span>
+                        <span class="text-[#7dd3d8]">|</span>
                         <span class="font-semibold">👤 ${currentSession.host}</span>
-                        <span class="text-[#888]">|</span>
-                        <span class="text-[#888]">⏰ ${currentSession.time}</span>
+                        <span class="text-[#7dd3d8]">|</span>
+                        <span class="text-[#7dd3d8]">⏰ ${currentSession.time}</span>
                         <span class="text-[10px] text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
                     </div>
                 `;
 
-                // Activity definitions for TikTok
                 const activityDefs = [
                     { type: 'flash', slots: currentSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt',
                         color: '#fe2c55' },
                     { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags',
-                        color: '#00f2ea' },
-                    { type: 'giveaway', slots: currentSession.giveaways, label: 'GIVEAWAY', icon: 'fa-gift',
-                        color: '#fe2c55' }
+                        color: '#00f2ea' }
                 ];
 
                 const flat = flattenSlots(currentSession, activityDefs);
                 const { ongoing, next } = findOngoingAndNext(flat);
 
-                // GWP row
-                const gwpEnd = se ? se.end : null;
                 const gwpActive = se && now >= se.start && now <= se.end;
                 const gwpClass = gwpActive ? 'tracker-item-active' : (se && now < se.start ? 'tracker-item-upcoming' :
                     'tracker-item-idle');
@@ -1293,7 +1255,6 @@
 
                 html += `<div class="tracker-stacked">`;
 
-                // 1. GWP
                 html += `
                     <div class="tracker-item ${gwpClass}">
                         <div class="flex items-center gap-1.5 mb-0.5">
@@ -1310,7 +1271,6 @@
 
                 html += `<div class="tracker-divider"></div>`;
 
-                // 2. Ongoing Activity
                 if (ongoing && ongoing.status.status === 'active') {
                     const countdown = ongoing.status.endTime ? formatCountdown(ongoing.status.endTime - now) : '—';
                     const slotDisplay = ongoing.slot || '—';
@@ -1330,28 +1290,27 @@
                         </div>
                     `;
                 } else {
-                    // Check if any slot is upcoming (so we know there's at least something coming)
                     const hasUpcoming = flat.some(f => f.status.status === 'upcoming');
                     if (hasUpcoming) {
                         html += `
                             <div class="tracker-item tracker-item-idle">
                                 <div class="flex items-center gap-1.5 mb-0.5">
-                                    <i class="fa-solid fa-clock text-[#555]"></i>
-                                    <span class="tracker-label text-[#555]">No Activity at this moment</span>
+                                    <i class="fa-solid fa-clock text-[#7dd3d8]"></i>
+                                    <span class="tracker-label text-[#7dd3d8]">No Activity at this moment</span>
                                 </div>
-                                <div class="tracker-value text-[#666] text-sm">—</div>
-                                <div class="tracker-sub text-[#444]">Next activity starts soon</div>
+                                <div class="tracker-value text-[#7dd3d8] text-sm">—</div>
+                                <div class="tracker-sub text-[#7dd3d8]">Next activity starts soon</div>
                             </div>
                         `;
                     } else {
                         html += `
                             <div class="tracker-item tracker-item-idle">
                                 <div class="flex items-center gap-1.5 mb-0.5">
-                                    <i class="fa-solid fa-check-circle text-[#444]"></i>
-                                    <span class="tracker-label text-[#555]">All activities completed</span>
+                                    <i class="fa-solid fa-check-circle text-[#7dd3d8]"></i>
+                                    <span class="tracker-label text-[#7dd3d8]">All activities completed</span>
                                 </div>
-                                <div class="tracker-value text-[#666] text-sm">—</div>
-                                <div class="tracker-sub text-[#444]">Session ending soon</div>
+                                <div class="tracker-value text-[#7dd3d8] text-sm">—</div>
+                                <div class="tracker-sub text-[#7dd3d8]">Session ending soon</div>
                             </div>
                         `;
                     }
@@ -1359,7 +1318,6 @@
 
                 html += `<div class="tracker-divider"></div>`;
 
-                // 3. Next Activity
                 if (next) {
                     const isActive = next.status.status === 'active';
                     const actClass = isActive ? 'tracker-item-active' : 'tracker-item-upcoming';
@@ -1387,11 +1345,11 @@
                     html += `
                         <div class="tracker-item tracker-item-idle">
                             <div class="flex items-center gap-1.5 mb-0.5">
-                                <i class="fa-solid fa-calendar-xmark text-[#444]"></i>
-                                <span class="tracker-label text-[#555]">No activity yet</span>
+                                <i class="fa-solid fa-calendar-xmark text-[#7dd3d8]"></i>
+                                <span class="tracker-label text-[#7dd3d8]">No activity yet</span>
                             </div>
-                            <div class="tracker-value text-[#666] text-sm">—</div>
-                            <div class="tracker-sub text-[#444]">All activities completed</div>
+                            <div class="tracker-value text-[#7dd3d8] text-sm">—</div>
+                            <div class="tracker-sub text-[#7dd3d8]">All activities completed</div>
                         </div>
                     `;
                 }
@@ -1405,16 +1363,16 @@
                 html += `
                     <div class="flex flex-wrap items-center gap-2 mb-3 text-sm text-white">
                         <span class="font-bold text-[#ffb800]">⏳ UPCOMING</span>
-                        <span class="text-[#888]">|</span>
+                        <span class="text-[#7dd3d8]">|</span>
                         <span class="font-semibold">📅 ${nextDateDisplay}</span>
-                        <span class="text-[#888]">|</span>
+                        <span class="text-[#7dd3d8]">|</span>
                         <span class="font-semibold">👤 ${nextSession.host}</span>
-                        <span class="text-[#888]">|</span>
-                        <span class="text-[#888]">⏰ ${nextSession.time}</span>
+                        <span class="text-[#7dd3d8]">|</span>
+                        <span class="text-[#7dd3d8]">⏰ ${nextSession.time}</span>
                         <span class="text-[10px] text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
                     </div>
                     <div class="tracker-item tracker-item-upcoming">
-                        <div class="flex items-center gap-2 text-[#888]">
+                        <div class="flex items-center gap-2 text-[#7dd3d8]">
                             <i class="fa-solid fa-clock"></i>
                             <span>No live session at the moment. Next session starts in </span>
                             <span class="text-[#00f2ea] font-mono tracker-countdown">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
@@ -1424,9 +1382,9 @@
             } else {
                 html += `
                     <div class="tracker-no-session">
-                        <i class="fa-solid fa-calendar-xmark text-3xl text-[#555] mb-2"></i>
+                        <i class="fa-solid fa-calendar-xmark text-3xl text-[#7dd3d8] mb-2"></i>
                         <p class="text-white text-sm">No upcoming sessions found.</p>
-                        <p class="text-[#666] text-xs">All campaign sessions have ended.</p>
+                        <p class="text-[#7dd3d8] text-xs">All campaign sessions have ended.</p>
                     </div>
                 `;
             }
@@ -1435,7 +1393,6 @@
             setTimeout(renderTikTokTracker, 1000);
         }
 
-        // --- Shopee Tracker ---
         function renderShopeeTracker() {
             const container = document.getElementById('shopee-tracker-content');
             if (!container) return;
@@ -1446,7 +1403,6 @@
 
             let html = '';
 
-            // Header - Shopee theme
             html += `
                 <div class="flex items-center gap-2 mb-3">
                     <i class="fa-solid fa-satellite-dish text-[#ee4d2d] text-lg"></i>
@@ -1460,7 +1416,6 @@
                 const se = getSessionStartEnd(currentSession);
                 const dateDisplay = getSessionDisplayDate(currentSession);
 
-                // Session info - Shopee theme
                 html += `
                     <div class="flex flex-wrap items-center gap-2 mb-3 text-sm text-slate-800">
                         <span class="font-bold text-[#ee4d2d]">🔴 LIVE NOW</span>
@@ -1474,21 +1429,16 @@
                     </div>
                 `;
 
-                // Activity definitions for Shopee
                 const activityDefs = [
                     { type: 'flash', slots: currentSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt',
                         color: '#b8860b' },
-                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags',
-                        color: '#ee4d2d' },
-                    { type: 'promosi', slots: currentSession.promosiSlots, label: 'LIMITED OFFER (50% OFF)',
-                        icon: 'fa-percent', color: '#b8860b' }
+                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1 (2 PAIRS)', icon: 'fa-tags',
+                        color: '#ee4d2d' }
                 ];
 
                 const flat = flattenSlots(currentSession, activityDefs);
                 const { ongoing, next } = findOngoingAndNext(flat);
 
-                // GWP row - Shopee theme
-                const gwpEnd = se ? se.end : null;
                 const gwpActive = se && now >= se.start && now <= se.end;
                 const gwpClass = gwpActive ? 'tracker-item-shopee-active' : (se && now < se.start ?
                     'tracker-item-shopee-upcoming' : 'tracker-item-shopee-idle');
@@ -1496,9 +1446,12 @@
                 const gwpCountdown = gwpActive && se ? formatCountdown(se.end - now) : (se && now < se.start ? formatCountdown(
                     se.start - now) : '—');
 
+                const groupedGwp = groupGwpList(currentSession.gwpList);
+                const gwpItems = groupedGwp.map(g => g.item).join(' + ');
+                const gwpTimes = groupedGwp.map(g => `${g.item}: ${g.times.join(' · ')}`).join(' | ');
+
                 html += `<div class="tracker-stacked">`;
 
-                // 1. GWP
                 html += `
                     <div class="tracker-item ${gwpClass}">
                         <div class="flex items-center gap-1.5 mb-0.5">
@@ -1507,15 +1460,15 @@
                             <span class="tracker-badge" style="background:#ee4d2d20;color:#ee4d2d;border:1px solid #ee4d2d40;margin-left:auto;">${gwpLabel}</span>
                         </div>
                         <div class="flex items-center justify-between gap-2">
-                            <div class="tracker-value tracker-gwp-value text-slate-800">${currentSession.gwpItem}</div>
+                            <div class="tracker-value tracker-gwp-value text-slate-800">${gwpItems}</div>
                             <span class="tracker-countdown tracker-activity-countdown" style="color:#ee4d2d;">${gwpCountdown}</span>
                         </div>
+                        <div class="tracker-sub text-slate-500 mt-0.5">${gwpTimes}</div>
                     </div>
                 `;
 
                 html += `<div class="tracker-divider-shopee"></div>`;
 
-                // 2. Ongoing Activity - Shopee theme
                 if (ongoing && ongoing.status.status === 'active') {
                     const countdown = ongoing.status.endTime ? formatCountdown(ongoing.status.endTime - now) : '—';
                     const slotDisplay = ongoing.slot || '—';
@@ -1563,7 +1516,6 @@
 
                 html += `<div class="tracker-divider-shopee"></div>`;
 
-                // 3. Next Activity - Shopee theme
                 if (next) {
                     const isActive = next.status.status === 'active';
                     const actClass = isActive ? 'tracker-item-shopee-active' : 'tracker-item-shopee-upcoming';
@@ -1602,8 +1554,7 @@
 
                 html += `</div>`;
 
-                // Next session teaser - Shopee theme
-                if (nextSession && nextSession.id !== currentSession.id) {
+                if (nextSession && nextSession !== currentSession) {
                     const nextSe = getSessionStartEnd(nextSession);
                     const nextDateDisplay = getSessionDisplayDate(nextSession);
                     html += `
@@ -1674,7 +1625,7 @@
 
             if (platform === 'tiktok') {
                 btnTiktok.className =
-                    "px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-bold transition-all bg-black text-white shadow-xs flex items-center gap-1 sm:gap-2 border border-[#00f2ea]";
+                    "px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-bold transition-all bg-[#00f2ea] text-black shadow-[0_0_12px_rgba(0,242,234,0.5)] flex items-center gap-1 sm:gap-2 border border-[#00f2ea]";
                 btnShopee.className =
                     "px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg text-[0.55rem] sm:text-xs font-semibold text-[#888] hover:text-white transition-all flex items-center gap-1 sm:gap-2";
                 viewTiktok.classList.remove('hidden');
@@ -1682,15 +1633,16 @@
                 badgeText.textContent = "TikTok Shop Hub";
                 badgeTextShort.textContent = "TikTok";
                 badgeContainer.className =
-                    "platform-badge bg-[#00f2ea] text-black font-bold rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300 shrink-0";
+                    "platform-badge bg-[#00f2ea] text-black font-bold rounded-full uppercase tracking-wider flex items-center gap-1 transition-all duration-300 shrink-0 shadow-[0_0_10px_rgba(0,242,234,0.4)]";
                 header.className =
-                    "bg-black border-b border-[#2a2a3a] sticky top-0 z-40 shadow-sm transition-all duration-300 header-height";
+                    "bg-[#0a0e1a] border-b-2 border-[#00f2ea] sticky top-0 z-40 shadow-[0_0_20px_rgba(0,242,234,0.2)] transition-all duration-300 header-height";
                 toggleContainer.className =
-                    "platform-toggle-buttons flex items-center bg-[#1a1a2a] p-0.5 sm:p-1 rounded-xl border border-[#2a2a3a] transition-all duration-300 shrink-0";
+                    "platform-toggle-buttons flex items-center bg-[#0d1526] p-0.5 sm:p-1 rounded-xl border border-[#00f2ea]/30 transition-all duration-300 shrink-0";
                 brandName.className =
                     "text-sm sm:text-base md:text-xl font-black text-white tracking-tight transition-colors duration-300 truncate";
-                document.querySelector('body').style.backgroundColor = '#0a0a0a';
+                document.querySelector('body').style.background = 'radial-gradient(ellipse at top left, #0a1a30 0%, #0a0e1a 40%, #1a0a1e 100%)';
                 document.querySelector('body').style.color = '#e0e0e0';
+                document.querySelector('body').style.backgroundAttachment = 'fixed';
                 renderTikTokTracker();
             } else {
                 btnShopee.className =
@@ -1709,7 +1661,7 @@
                     "platform-toggle-buttons flex items-center bg-[#f5f0eb] p-0.5 sm:p-1 rounded-xl border border-[#e8ddd0] transition-all duration-300 shrink-0";
                 brandName.className =
                     "text-sm sm:text-base md:text-xl font-black text-[#ee4d2d] tracking-tight transition-colors duration-300 truncate";
-                document.querySelector('body').style.backgroundColor = '#f8fafc';
+                document.querySelector('body').style.background = '#f8fafc';
                 document.querySelector('body').style.color = '#1e293b';
                 renderShopeeTracker();
                 renderShopeeCards(shopeeCardsData);
@@ -1723,10 +1675,10 @@
 
             if (filteredData.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full bg-black p-6 sm:p-8 rounded-2xl border border-[#2a2a3a] text-center py-8 sm:py-12">
-                        <i class="fa-solid fa-filter-circle-xmark text-3xl sm:text-4xl text-[#555] mb-2 sm:mb-3"></i>
+                    <div class="col-span-full bg-[#0d1526] p-6 sm:p-8 rounded-2xl border border-[#00f2ea]/30 text-center py-8 sm:py-12">
+                        <i class="fa-solid fa-filter-circle-xmark text-3xl sm:text-4xl text-[#7dd3d8] mb-2 sm:mb-3"></i>
                         <p class="text-sm sm:text-base font-bold text-white">No shifts match your filter.</p>
-                        <p class="text-xs text-[#666]">Try resetting your host filters.</p>
+                        <p class="text-xs text-[#7dd3d8]">Try resetting your host filters.</p>
                     </div>
                 `;
                 return;
@@ -1735,26 +1687,20 @@
             filteredData.forEach(item => {
                 const card = document.createElement('div');
                 card.className =
-                    "bg-black rounded-2xl border border-[#2a2a3a] shadow-sm overflow-hidden flex flex-col hover:shadow-[0_0_30px_rgba(0,242,234,0.08)] transition-all min-w-0";
+                    "bg-[#0d1526] rounded-2xl border border-[#00f2ea]/25 shadow-sm overflow-hidden flex flex-col hover:border-[#00f2ea]/60 hover:shadow-[0_0_30px_rgba(0,242,234,0.2)] transition-all min-w-0";
 
                 const flashList = item.flashSlots.map(s =>
-                    `<li class="flex items-center gap-1 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-bolt text-[#fe2c55] text-[8px] sm:text-[10px]"></i> ${s}</li>`
+                    `<li class="flex items-center gap-1 text-[#c9e8ec] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-bolt text-[#fe2c55] text-[8px] sm:text-[10px]"></i> ${s}</li>`
                 ).join('');
                 const b1g1List = item.b1g1Slots.map(s =>
-                    `<li class="flex items-center gap-1 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tags text-[#00f2ea] text-[8px] sm:text-[10px]"></i> ${s}</li>`
+                    `<li class="flex items-center gap-1 text-[#c9e8ec] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tags text-[#00f2ea] text-[8px] sm:text-[10px]"></i> ${s}</li>`
                 ).join('');
 
-                const giveawayList = `
-                    ${item.giveaways.map(g => `<li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-gift text-[#fe2c55] text-[8px] sm:text-[10px]"></i> ${g}</li>`).join('')}
-                    <li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-check-circle text-[#00f2ea] text-[8px] sm:text-[10px]"></i> Task 1: Follow host</li>
-                    <li class="flex items-center gap-1.5 text-[#ccc] text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-check-circle text-[#00f2ea] text-[8px] sm:text-[10px]"></i> Task 2: Place order during LIVE</li>
-                `;
-
                 card.innerHTML = `
-                    <div class="bg-gradient-to-br from-[#0a0a0a] to-[#1a1a2e] text-white p-3 sm:p-4 border-b-2 border-[#00f2ea]">
+                    <div class="bg-gradient-to-br from-[#0f1a30] to-[#1a0f2e] text-white p-3 sm:p-4 border-b-2 border-[#00f2ea]">
                         <div class="flex items-center justify-between mb-1.5 sm:mb-2 flex-wrap gap-1">
-                            <span class="text-[0.55rem] sm:text-xs font-bold bg-[#00f2ea]/20 text-[#00f2ea] border border-[#00f2ea]/30 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg">${item.date}</span>
-                            <span class="text-[0.5rem] sm:text-[11px] font-semibold text-[#888]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
+                            <span class="text-[0.55rem] sm:text-xs font-bold bg-[#00f2ea]/20 text-[#00f2ea] border border-[#00f2ea]/40 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg">${item.date}</span>
+                            <span class="text-[0.5rem] sm:text-[11px] font-semibold text-[#7dd3d8]"><i class="fa-regular fa-clock mr-1"></i>${item.time}</span>
                         </div>
                         <div class="flex items-center justify-between flex-wrap gap-1">
                             <div class="flex items-center gap-2">
@@ -1764,49 +1710,53 @@
                         </div>
                     </div>
 
-                    <div class="card-padding space-y-2 sm:space-y-3 flex-1 flex flex-col justify-between bg-[#0d0d1a]">
-                        <div class="bg-[#00f2ea]/10 p-2 sm:p-3 rounded-xl border border-[#00f2ea]/20 flex items-center justify-between gap-2">
+                    <div class="card-padding space-y-2 sm:space-y-3 flex-1 flex flex-col justify-between bg-[#0a1020]">
+                        <div class="bg-[#00f2ea]/10 p-2 sm:p-3 rounded-xl border border-[#00f2ea]/25 flex items-center justify-between gap-2">
                             <div class="min-w-0">
                                 <div class="flex items-center gap-1 mb-0.5 sm:mb-1 flex-wrap">
                                     <span class="text-[0.5rem] sm:text-[10px] font-extrabold uppercase text-[#00f2ea]">GWP</span>
-                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.25 rounded">FREE</span>
+                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.5)]">FREE</span>
                                 </div>
                                 <p class="text-[0.6rem] sm:text-xs font-bold text-white truncate">${item.gwpItem}</p>
-                                <p class="text-[0.45rem] sm:text-[10px] text-[#666] font-medium truncate">${item.time}</p>
+                                <p class="text-[0.45rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">${item.time}</p>
                             </div>
-                            <img src="${item.gwpImage}" alt="${item.gwpItem}" class="gwp-thumb object-cover rounded-lg border border-[#2a2a3a] bg-black shrink-0"
+                            <img src="${item.gwpImage}" alt="${item.gwpItem}" class="gwp-thumb object-cover rounded-lg border border-[#00f2ea]/30 bg-[#0a1020] shrink-0"
                                  onerror="this.onerror=null; this.src='https://placehold.co/100x100/00f2ea/000000?text=GWP';">
                         </div>
 
                         <div class="deal-grid">
-                            <div class="bg-[#fe2c55]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#fe2c55]/20 min-w-0">
+                            <div class="bg-[#fe2c55]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#fe2c55]/30 min-w-0">
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="font-extrabold text-[#fe2c55] text-[0.55rem] sm:text-[11px]">FLASH SALE</span>
-                                    <span class="bg-[#fe2c55] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">RM39</span>
+                                    <span class="bg-[#fe2c55] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded shadow-[0_0_8px_rgba(254,44,85,0.5)]">RM39</span>
                                 </div>
                                 <ul class="slot-list space-y-0.5 font-medium">${flashList}</ul>
                             </div>
-                            <div class="bg-[#00f2ea]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#00f2ea]/20 min-w-0">
+                            <div class="bg-[#00f2ea]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#00f2ea]/25 min-w-0">
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="font-extrabold text-[#00f2ea] text-[0.55rem] sm:text-[11px]">BUY 1 GET 1</span>
-                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">PROMO</span>
+                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded shadow-[0_0_8px_rgba(0,242,234,0.5)]">PROMO</span>
                                 </div>
                                 <ul class="slot-list space-y-0.5 font-medium">${b1g1List}</ul>
                             </div>
-                        </div>
-
-                        <div class="bg-[#fe2c55]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#fe2c55]/20 min-w-0">
-                            <div class="flex items-center justify-between mb-1 flex-wrap gap-1">
-                                <span class="text-[0.45rem] sm:text-[10px] font-extrabold uppercase text-[#fe2c55] truncate">Corolla Ease (size 36)</span>
-                                <span class="bg-[#fe2c55] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded shrink-0">HOURLY</span>
-                            </div>
-                            <ul class="slot-list space-y-0.5 font-medium">${giveawayList}</ul>
                         </div>
                     </div>
                 `;
 
                 grid.appendChild(card);
             });
+        }
+
+        // ========== GROUP GWP LIST BY ITEM ==========
+        function groupGwpList(gwpList) {
+            const map = new Map();
+            gwpList.forEach(entry => {
+                if (!map.has(entry.item)) {
+                    map.set(entry.item, { item: entry.item, image: entry.image, times: [] });
+                }
+                map.get(entry.item).times.push(entry.time);
+            });
+            return Array.from(map.values());
         }
 
         // ========== RENDER SHOPEE CARDS ==========
@@ -1830,6 +1780,20 @@
                 card.className =
                     "bg-white rounded-2xl border border-orange-200/80 shadow-sm overflow-hidden flex flex-col hover:shadow-md transition-all min-w-0";
 
+                const groupedGwp = groupGwpList(item.gwpList);
+
+                // Side-by-side GWP items (flex row, wrap on very small screens)
+                const gwpItemsHtml = groupedGwp.map(gwp => `
+                    <div class="flex items-center gap-1.5 flex-1 min-w-0">
+                        <img src="${gwp.image}" alt="${gwp.item}" class="w-7 h-7 sm:w-9 sm:h-9 object-cover rounded-lg border border-orange-200 bg-white shrink-0"
+                             onerror="this.onerror=null; this.src='https://placehold.co/100x100/ea580c/ffffff?text=GWP';">
+                        <div class="min-w-0">
+                            <p class="text-[0.55rem] sm:text-[10px] font-bold text-slate-800 truncate">${gwp.item}</p>
+                            <p class="text-[0.4rem] sm:text-[8px] text-slate-500 font-medium">${gwp.times.join(' · ')}</p>
+                        </div>
+                    </div>
+                `).join('');
+
                 card.innerHTML = `
                     <div class="bg-gradient-to-br from-[#ee4d2d] to-[#d93d1e] text-white p-3 sm:p-4 border-b-2 border-[#ffb800]">
                         <div class="flex items-center justify-between mb-1.5 sm:mb-2 flex-wrap gap-1">
@@ -1845,17 +1809,14 @@
                     </div>
 
                     <div class="card-padding space-y-2 sm:space-y-3 flex-1 flex flex-col justify-between bg-orange-50/20">
-                        <div class="bg-orange-50/70 p-2 sm:p-3 rounded-xl border border-orange-200/80 flex items-center justify-between gap-2">
-                            <div class="min-w-0">
-                                <div class="flex items-center gap-1 mb-0.5 sm:mb-1 flex-wrap">
-                                    <span class="text-[0.5rem] sm:text-[10px] font-extrabold uppercase text-[#ee4d2d]">GWP</span>
-                                    <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.25 rounded">FREE</span>
-                                </div>
-                                <p class="text-[0.6rem] sm:text-xs font-bold text-slate-800 truncate">${item.gwpItem}</p>
-                                <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">${item.time}</p>
+                        <div class="bg-orange-50/70 p-2 sm:p-3 rounded-xl border border-orange-200/80 space-y-1.5">
+                            <div class="flex items-center gap-1 flex-wrap">
+                                <span class="text-[0.5rem] sm:text-[10px] font-extrabold uppercase text-[#ee4d2d]">GWP</span>
+                                <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.25 rounded">FREE</span>
                             </div>
-                            <img src="${item.gwpImage}" alt="GWP" class="gwp-thumb object-cover rounded-lg border border-orange-200 bg-white shrink-0"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/ea580c/ffffff?text=GWP';">
+                            <div class="flex flex-wrap gap-2">
+                                ${gwpItemsHtml}
+                            </div>
                         </div>
 
                         <div class="deal-grid">
@@ -1872,22 +1833,12 @@
                             <div class="bg-[#ee4d2d]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#ee4d2d]/20 min-w-0">
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="font-extrabold text-[#ee4d2d] text-[0.55rem] sm:text-[11px]">BUY 1 GET 1</span>
-                                    <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">PROMO</span>
+                                    <span class="bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded">2 PAIRS</span>
                                 </div>
                                 <ul class="slot-list space-y-0.5 font-medium max-h-20 sm:max-h-28 overflow-y-auto custom-scrollbar">
-                                    ${item.b1g1Slots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-gift text-[#ee4d2d] text-[8px] sm:text-[10px]"></i> ${s}</li>`).join('')}
+                                    ${item.b1g1Slots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tags text-[#ee4d2d] text-[8px] sm:text-[10px]"></i> ${s}</li>`).join('')}
                                 </ul>
                             </div>
-                        </div>
-
-                        <div class="bg-[#ffb800]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#ffb800]/30 min-w-0">
-                            <div class="flex items-center justify-between mb-1 flex-wrap gap-1">
-                                <span class="text-[0.45rem] sm:text-[10px] font-extrabold uppercase text-[#b8860b] truncate">LIMITED OFFER (50% OFF)</span>
-                                <span class="bg-[#ffb800] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.25 rounded shrink-0">RM59.9</span>
-                            </div>
-                            <ul class="slot-list space-y-0.5 font-medium max-h-20 sm:max-h-28 overflow-y-auto custom-scrollbar">
-                                ${item.promosiSlots.map(s => `<li class="flex items-center gap-1 text-slate-700 text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem]"><i class="fa-solid fa-tag text-[#ffb800] text-[8px] sm:text-[10px]"></i> ${s}</li>`).join('')}
-                            </ul>
                         </div>
                     </div>
                 `;
@@ -1947,38 +1898,31 @@
 
         // ========== INIT ==========
         window.onload = function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const embedMode = urlParams.get('embed') === 'tracker';
-    const platform = urlParams.get('platform') || 'tiktok';
+            const urlParams = new URLSearchParams(window.location.search);
+            const embedMode = urlParams.get('embed') === 'tracker';
+            const platform = urlParams.get('platform') || 'tiktok';
 
-    if (embedMode) {
-        // Hide header
-        document.querySelector('header').style.display = 'none';
+            if (embedMode) {
+                document.querySelector('header').style.display = 'none';
 
-        // Hide everything inside both views except the tracker cards themselves
-        const views = ['view-tiktok', 'view-shopee'];
-        views.forEach(viewId => {
-            const view = document.getElementById(viewId);
-            if (!view) return;
-            // Hide all direct children of the view except the tracker card
-            Array.from(view.children).forEach(child => {
-                if (!child.id || (child.id !== 'tiktok-tracker' && child.id !== 'shopee-tracker')) {
-                    child.style.display = 'none';
-                }
-            });
-            // Ensure the tracker card itself is visible (in case it was hidden)
-            const tracker = view.querySelector('.tracker-card');
-            if (tracker) tracker.style.display = 'block';
-        });
+                const views = ['view-tiktok', 'view-shopee'];
+                views.forEach(viewId => {
+                    const view = document.getElementById(viewId);
+                    if (!view) return;
+                    Array.from(view.children).forEach(child => {
+                        if (!child.id || (child.id !== 'tiktok-tracker' && child.id !== 'shopee-tracker')) {
+                            child.style.display = 'none';
+                        }
+                    });
+                    const tracker = view.querySelector('.tracker-card');
+                    if (tracker) tracker.style.display = 'block';
+                });
+            }
 
-        // Also hide any other stray elements (e.g., if the tracker is not direct child)
-        // Already handled above.
-    }
-
-    renderTikTokCards(shiftData);
-    renderShopeeCards(shopeeCardsData);
-    switchPlatform(platform);
-};
+            renderTikTokCards(shiftData);
+            renderShopeeCards(shopeeCardsData);
+            switchPlatform(platform);
+        };
     </script>
 
 </body>
