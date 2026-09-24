@@ -446,7 +446,6 @@
             background: color-mix(in srgb, currentColor 14%, transparent);
             border: 1px solid color-mix(in srgb, currentColor 38%, transparent);
             box-shadow: 0 0 6px color-mix(in srgb, currentColor 25%, transparent);
-            /* Keep the countdown pill from shrinking or wrapping on small screens */
             white-space: nowrap;
             flex-shrink: 0;
             font-size: 0.75rem;
@@ -471,7 +470,6 @@
                 padding: 4px 12px;
             }
         }
-        /* Session-end / header countdowns — fixed size, never shrink */
         .tracker-session-countdown {
             font-size: 0.75rem;
             padding: 3px 10px;
@@ -485,7 +483,6 @@
                 padding: 4px 12px;
             }
         }
-        /* Tracker header clock — fixed size */
         .tracker-clock {
             font-size: 0.7rem;
             white-space: nowrap;
@@ -679,10 +676,34 @@
                     </h2>
                     <p class="text-[0.6rem] sm:text-xs text-[#7dd3d8] truncate">GWP → Flash Sale → B1G1</p>
                 </div>
-                <span class="text-[0.55rem] sm:text-xs bg-[#00f2ea]/10 text-[#00f2ea] border border-[#00f2ea]/30 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">4 Media</span>
+                <span class="text-[0.55rem] sm:text-xs bg-[#00f2ea]/10 text-[#00f2ea] border border-[#00f2ea]/30 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">6 Media</span>
             </div>
 
             <div class="asset-grid">
+                <!-- NEW: Corolla Vaylo (Live Exclusive) -->
+                <div class="asset-card group border border-[#fe2c55]/30 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#fe2c55]/60 hover:shadow-[0_0_20px_rgba(254,44,85,0.25)] transition-all">
+                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#fe2c55]/20 overflow-hidden mb-1.5 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/dad155411cf7442dac3c41d0292a3721~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15582&t=555f072d&ps=933b5bde&shp=c940a200&shcp=9b759fb9&idc=my3&from=3376456192"
+                        alt="Corolla Vaylo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/fe2c55/ffffff?text=Corolla+Vaylo';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded shadow-[0_0_8px_rgba(254,44,85,0.6)]">NEW</span>
+                    </div>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Corolla Vaylo</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#ff8fa8] font-medium truncate">Live Exclusive</p>
+                </div>
+
+                <!-- NEW: Corolla Ballet (New Color Way) -->
+                <div class="asset-card group border border-[#fe2c55]/30 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#fe2c55]/60 hover:shadow-[0_0_20px_rgba(254,44,85,0.25)] transition-all">
+                    <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#fe2c55]/20 overflow-hidden mb-1.5 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/37d0c28b38f7473794d164d02ab9e4f4~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15582&t=555f072d&ps=933b5bde&shp=c940a200&shcp=9b759fb9&idc=my3&from=3376456192"
+                        alt="Corolla Ballet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/fe2c55/ffffff?text=Corolla+Ballet';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded shadow-[0_0_8px_rgba(254,44,85,0.6)]">COLOR</span>
+                    </div>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Corolla Ballet</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#ff8fa8] font-medium truncate">New Color Way</p>
+                </div>
+
                 <!-- GWP: Gift Bag -->
                 <div class="asset-card group border border-[#fe2c55]/30 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#fe2c55]/60 hover:shadow-[0_0_20px_rgba(254,44,85,0.25)] transition-all">
                     <div class="aspect-square bg-[#0a1020] rounded-lg border border-[#fe2c55]/20 overflow-hidden mb-1.5 relative">
@@ -783,10 +804,30 @@
                     </h2>
                     <p class="text-[0.6rem] sm:text-xs text-slate-500 truncate">GWP → Flash Sale → B1G1</p>
                 </div>
-                <span class="text-[0.55rem] sm:text-xs bg-slate-100 text-slate-600 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">4 Media</span>
+                <span class="text-[0.55rem] sm:text-xs bg-slate-100 text-slate-600 font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg shrink-0">6 Media</span>
             </div>
 
             <div class="asset-grid">
+                <!-- NEW: Corolla Vaylo (Live Exclusive) -->
+                <div class="asset-card group border border-[#ee4d2d]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-orange-50/40 hover:bg-orange-50 hover:border-[#ee4d2d]/60 hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-[#ee4d2d]/20 overflow-hidden mb-1.5 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/dad155411cf7442dac3c41d0292a3721~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15582&t=555f072d&ps=933b5bde&shp=c940a200&shcp=9b759fb9&idc=my3&from=3376456192" alt="Corolla Vaylo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Corolla+Vaylo';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded">NEW</span>
+                    </div>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Corolla Vaylo</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">Live Exclusive</p>
+                </div>
+
+                <!-- NEW: Corolla Ballet (New Color Way) -->
+                <div class="asset-card group border border-[#ee4d2d]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-orange-50/40 hover:bg-orange-50 hover:border-[#ee4d2d]/60 hover:shadow-md transition-all">
+                    <div class="aspect-square bg-white rounded-lg border border-[#ee4d2d]/20 overflow-hidden mb-1.5 relative">
+                        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/37d0c28b38f7473794d164d02ab9e4f4~tplv-aphluv4xwc-resize-webp:800:800.webp?dr=15582&t=555f072d&ps=933b5bde&shp=c940a200&shcp=9b759fb9&idc=my3&from=3376456192" alt="Corolla Ballet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Corolla+Ballet';" />
+                        <span class="absolute top-0.5 left-0.5 bg-[#ee4d2d] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded">COLOR</span>
+                    </div>
+                    <p class="text-[0.55rem] sm:text-xs font-bold text-slate-800 truncate">Corolla Ballet</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-slate-500 font-medium truncate">New Color Way</p>
+                </div>
+
                 <div class="asset-card group border border-[#ee4d2d]/25 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-orange-50/40 hover:bg-orange-50 hover:border-[#ee4d2d]/60 hover:shadow-md transition-all">
                     <div class="aspect-square bg-white rounded-lg border border-[#ee4d2d]/20 overflow-hidden mb-1.5 relative">
                         <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839" alt="Gift Bag GWP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x300/ea580c/ffffff?text=Gift+Bag+GWP';" />
@@ -1165,7 +1206,6 @@
         }];
 
         // ========== SHOPEE SCHEDULE ==========
-        // Note: "Waterproof Shoe Cover" shortened to "Shoe Cover" for display.
         let shopeeCardsData = [{
             id: 1,
             date: "Sep 24",
@@ -1829,7 +1869,6 @@
 
                 const groupedGwp = groupGwpList(item.gwpList);
 
-                // Side-by-side GWP items (flex row, wrap on very small screens)
                 const gwpItemsHtml = groupedGwp.map(gwp => `
                     <div class="flex items-center gap-1.5 flex-1 min-w-0">
                         <img src="${gwp.image}" alt="${gwp.item}" class="w-7 h-7 sm:w-9 sm:h-9 object-cover rounded-lg border border-orange-200 bg-white shrink-0"
