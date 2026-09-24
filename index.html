@@ -441,21 +441,59 @@
             align-items: center;
             font-weight: 800;
             letter-spacing: 0.02em;
-            padding: 2px 9px;
+            padding: 3px 10px;
             border-radius: 999px;
             background: color-mix(in srgb, currentColor 14%, transparent);
             border: 1px solid color-mix(in srgb, currentColor 38%, transparent);
             box-shadow: 0 0 6px color-mix(in srgb, currentColor 25%, transparent);
+            /* Keep the countdown pill from shrinking or wrapping on small screens */
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            line-height: 1;
+        }
+        @media (min-width: 640px) {
+            .tracker-countdown {
+                font-size: 0.85rem;
+                padding: 4px 12px;
+            }
         }
         .tracker-activity-countdown {
             font-size: 0.75rem;
-            padding: 2px 10px;
+            padding: 3px 10px;
             font-weight: 800;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         @media (min-width: 640px) {
             .tracker-activity-countdown {
                 font-size: 0.85rem;
-                padding: 3px 11px;
+                padding: 4px 12px;
+            }
+        }
+        /* Session-end / header countdowns — fixed size, never shrink */
+        .tracker-session-countdown {
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            font-weight: 800;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        @media (min-width: 640px) {
+            .tracker-session-countdown {
+                font-size: 0.85rem;
+                padding: 4px 12px;
+            }
+        }
+        /* Tracker header clock — fixed size */
+        .tracker-clock {
+            font-size: 0.7rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        @media (min-width: 640px) {
+            .tracker-clock {
+                font-size: 0.75rem;
             }
         }
         .tracker-status-dot {
@@ -552,6 +590,7 @@
             border-radius: 9999px;
             font-weight: 700;
             letter-spacing: 0.03em;
+            white-space: nowrap;
         }
         @media (min-width: 480px) {
             .tracker-badge {
@@ -1222,7 +1261,7 @@
                 <div class="flex items-center gap-2 mb-3">
                     <i class="fa-solid fa-satellite-dish text-[#00f2ea] text-lg"></i>
                     <span class="text-white font-bold text-sm sm:text-base">📡 LIVE TRACKER</span>
-                    <span class="text-[10px] sm:text-xs text-[#7dd3d8] ml-auto tracker-countdown" id="tiktok-tracker-time">${now.toLocaleTimeString()}</span>
+                    <span class="text-[#7dd3d8] ml-auto tracker-countdown tracker-clock" id="tiktok-tracker-time">${now.toLocaleTimeString()}</span>
                 </div>
                 <div class="border-b border-[#00f2ea]/20 mb-3"></div>
             `;
@@ -1240,7 +1279,7 @@
                         <span class="font-semibold">👤 ${currentSession.host}</span>
                         <span class="text-[#7dd3d8]">|</span>
                         <span class="text-[#7dd3d8]">⏰ ${currentSession.time}</span>
-                        <span class="text-[10px] sm:text-xs text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
+                        <span class="text-[#00f2ea] ml-auto tracker-countdown tracker-session-countdown" id="tiktok-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
                     </div>
                 `;
 
@@ -1377,7 +1416,7 @@
                         <span class="font-semibold">👤 ${nextSession.host}</span>
                         <span class="text-[#7dd3d8]">|</span>
                         <span class="text-[#7dd3d8]">⏰ ${nextSession.time}</span>
-                        <span class="text-[10px] sm:text-xs text-[#00f2ea] ml-auto tracker-countdown" id="tiktok-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                        <span class="text-[#00f2ea] ml-auto tracker-countdown tracker-session-countdown" id="tiktok-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
                     </div>
                     <div class="tracker-item tracker-item-upcoming">
                         <div class="flex items-center gap-2 text-[#7dd3d8]">
@@ -1415,7 +1454,7 @@
                 <div class="flex items-center gap-2 mb-3">
                     <i class="fa-solid fa-satellite-dish text-[#ee4d2d] text-lg"></i>
                     <span class="text-[#ee4d2d] font-bold text-sm sm:text-base">📡 LIVE TRACKER</span>
-                    <span class="text-[10px] sm:text-xs text-slate-400 ml-auto tracker-countdown" id="shopee-tracker-time">${now.toLocaleTimeString()}</span>
+                    <span class="text-slate-400 ml-auto tracker-countdown tracker-clock" id="shopee-tracker-time">${now.toLocaleTimeString()}</span>
                 </div>
                 <div class="border-b border-orange-200/50 mb-3"></div>
             `;
@@ -1433,7 +1472,7 @@
                         <span class="font-semibold">👤 ${currentSession.host}</span>
                         <span class="text-slate-400">|</span>
                         <span class="text-slate-500">⏰ ${currentSession.time}</span>
-                        <span class="text-[10px] sm:text-xs text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
+                        <span class="text-[#ee4d2d] ml-auto tracker-countdown tracker-session-countdown" id="shopee-session-end">${se ? formatCountdown(se.end - now) : ''}</span>
                     </div>
                 `;
 
@@ -1575,7 +1614,7 @@
                                 <span class="text-slate-800">${nextSession.host}</span>
                                 <span class="text-slate-400">|</span>
                                 <span class="text-slate-500">${nextSession.time}</span>
-                                <span class="text-[10px] sm:text-xs text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                                <span class="text-[#ee4d2d] ml-auto tracker-countdown tracker-session-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
                             </div>
                         </div>
                     `;
@@ -1594,7 +1633,7 @@
                         <span class="font-semibold">👤 ${nextSession.host}</span>
                         <span class="text-slate-400">|</span>
                         <span class="text-slate-500">⏰ ${nextSession.time}</span>
-                        <span class="text-[10px] sm:text-xs text-[#ee4d2d] ml-auto tracker-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
+                        <span class="text-[#ee4d2d] ml-auto tracker-countdown tracker-session-countdown" id="shopee-next-start">${nextSe ? formatCountdown(nextSe.start - now) : ''}</span>
                     </div>
                     <div class="tracker-item tracker-item-shopee-upcoming">
                         <div class="flex items-center gap-2 text-slate-500">
