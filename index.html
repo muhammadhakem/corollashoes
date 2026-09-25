@@ -277,7 +277,7 @@
                         <span class="absolute top-0.5 left-0.5 bg-[#fe2c55] text-white text-[0.45rem] sm:text-[0.55rem] font-extrabold px-1 py-0.5 rounded shadow-[0_0_8px_rgba(254,44,85,0.6)]">RM39</span>
                     </div>
                     <p class="text-[0.55rem] sm:text-xs font-bold text-white truncate">Flash Sale</p>
-                    <p class="text-[0.45rem] sm:text-[10px] text-[#ff8fa8] font-medium truncate">5-Min Drops</p>
+                    <p class="text-[0.45rem] sm:text-[10px] text-[#ff8fa8] font-medium truncate">10-Min Drops</p>
                 </div>
 
                 <div class="asset-card group border border-[#fe2c55]/30 rounded-xl p-1.5 sm:p-2 md:p-2.5 bg-[#1a0f1e] hover:bg-[#22142a] hover:border-[#fe2c55]/60 hover:shadow-[0_0_20px_rgba(254,44,85,0.25)] transition-all">
@@ -632,41 +632,42 @@
         const IMG_GIFT_BAG = "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/8d59cfc367ba49b78b0d0bc0d347f797~tplv-aphluv4xwc-crop-webp:790:957.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839";
         const IMG_RAIN_COVER = "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839";
 
+        // ========== TIKTOK SCHEDULE (Flash Sale now 10-min) ==========
         let shiftData = [{
             id: 1, date: "Sep 24", time: "8:00 PM - 11:00 PM", host: "Syasya", tag: "Payday Night",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
             gwpItem: "Gift Bag", gwpImage: IMG_GIFT_BAG,
-            flashSlots: ["8:00-8:05 PM", "9:00-9:05 PM", "10:00-10:05 PM"],
+            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
             b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
         }, {
             id: 2, date: "Sep 24-25", time: "11:30 PM - 2:30 AM", host: "Syasya", tag: "Overnight",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
             gwpItem: "Rain Cover", gwpImage: IMG_RAIN_COVER,
-            flashSlots: ["11:30-11:35 PM", "12:30-12:35 AM", "1:30-1:35 AM"],
+            flashSlots: ["11:30-11:40 PM", "12:30-12:40 AM", "1:30-1:40 AM"],
             b1g1Slots: ["11:40-11:50 PM", "12:40-12:50 AM", "1:40-1:50 AM"]
         }, {
             id: 3, date: "Sep 25", time: "9:00 AM - 12:00 PM", host: "Zaiffa", tag: "Morning",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
             gwpItem: "Gift Bag", gwpImage: IMG_GIFT_BAG,
-            flashSlots: ["9:00-9:05 AM", "10:00-10:05 AM", "11:00-11:05 AM"],
+            flashSlots: ["9:00-9:10 AM", "10:00-10:10 AM", "11:00-11:10 AM"],
             b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"]
         }, {
             id: 4, date: "Sep 25", time: "12:30 PM - 3:30 PM", host: "Zaiffa", tag: "Noon",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
             gwpItem: "Rain Cover", gwpImage: IMG_RAIN_COVER,
-            flashSlots: ["12:30-12:35 PM", "1:30-1:35 PM", "2:30-2:35 PM"],
+            flashSlots: ["12:30-12:40 PM", "1:30-1:40 PM", "2:30-2:40 PM"],
             b1g1Slots: ["12:40-12:50 PM", "1:40-1:50 PM", "2:40-2:50 PM"]
         }, {
             id: 5, date: "Sep 25", time: "4:00 PM - 7:00 PM", host: "Qys", tag: "Afternoon",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
             gwpItem: "Rain Cover", gwpImage: IMG_RAIN_COVER,
-            flashSlots: ["4:00-4:05 PM", "5:00-5:05 PM", "6:00-6:05 PM"],
+            flashSlots: ["4:00-4:10 PM", "5:00-5:10 PM", "6:00-6:10 PM"],
             b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"]
         }, {
             id: 6, date: "Sep 25", time: "8:00 PM - 11:00 PM", host: "Qys", tag: "Peak Night",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
             gwpItem: "Gift Bag", gwpImage: IMG_GIFT_BAG,
-            flashSlots: ["8:00-8:05 PM", "9:00-9:05 PM", "10:00-10:05 PM"],
+            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
             b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
         }];
 
@@ -874,8 +875,6 @@
                 }
 
                 html += `</div>`;
-
-                /* NOTE: "Next Session" teaser block REMOVED — info already shown at top when current session ends */
 
             } else if (nextSession) {
                 const nextSe = getSessionStartEnd(nextSession);
@@ -1113,8 +1112,6 @@
                 }
 
                 html += `</div>`;
-
-                /* NOTE: "Next Session" teaser block REMOVED — info already shown at top when current session ends */
 
             } else if (nextSession) {
                 const nextSe = getSessionStartEnd(nextSession);
