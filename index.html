@@ -413,15 +413,19 @@
                     <i class="fa-solid fa-bag-shopping text-[#ffb800]"></i>
                     <span class="truncate">Shopee Hub Live Schedule</span>
                 </h2>
-                <p class="text-[0.55rem] sm:text-xs text-[#fde0d5] truncate">Payday Live · GWP → Flash Sale → B1G1</p>
+                <p class="text-[0.55rem] sm:text-xs text-[#fde0d5] truncate">Oct 9 9:00 AM – Oct 10 11:00 PM · GWP → Flash Sale → B1G1</p>
             </div>
 
             <div class="flex items-center gap-2 shrink-0">
                 <div class="relative">
                     <select id="filter-shopee-host" onchange="filterShopeeSchedule()" class="bg-white border border-[#d93d1e] text-slate-700 text-[0.6rem] sm:text-xs font-semibold rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 pr-6 sm:pr-8 focus:outline-none focus:ring-2 focus:ring-[#ffb800] appearance-none min-w-[80px] sm:min-w-[100px]">
                         <option value="ALL">All Hosts</option>
-                        <option value="Nureen">Nureen</option>
+                        <option value="Fatin">Fatin</option>
+                        <option value="Balqis">Balqis</option>
                         <option value="Anis">Anis</option>
+                        <option value="Syaz">Syaz</option>
+                        <option value="Mai">Mai</option>
+                        <option value="Qys">Qys</option>
                     </select>
                     <i class="fa-solid fa-chevron-down text-[8px] sm:text-[10px] text-slate-400 absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                 </div>
@@ -726,58 +730,97 @@
             return session.gwpItem || '—';
         }
 
-        let shopeeCardsData = [{
-            id: 1, date: "Sep 24", time: "8:00 PM - 11:00 PM", host: "Nureen", tag: "Payday Night",
+        let shopeeCardsData = [
+        {
+            id: 1, date: "Oct 9", time: "9:00 AM - 12:00 PM", host: "Fatin", tag: "Morning",
             tagBg: "bg-white/20 text-white border-white/30",
             gwpList: [
-                { item: "Gift Bag", time: "8:00–9:00 PM", image: IMG_GIFT_BAG },
-                { item: "Shoe Cover", time: "10:00–11:00 PM", image: IMG_RAIN_COVER }
-            ],
-            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
-            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
-        }, {
-            id: 2, date: "Sep 24-25", time: "11:30 PM - 2:30 AM", host: "Anis", tag: "Overnight",
-            tagBg: "bg-white/20 text-white border-white/30",
-            gwpList: [{ item: "Gift Bag", time: "12:00–1:00 AM", image: IMG_GIFT_BAG }],
-            flashSlots: ["11:30-11:40 PM", "12:00-12:10 AM", "1:00-1:10 AM"],
-            b1g1Slots: ["11:40-11:50 PM", "12:10-12:20 AM", "1:10-1:20 AM"]
-        }, {
-            id: 3, date: "Sep 25", time: "9:00 AM - 12:00 PM", host: "Nureen", tag: "Morning",
-            tagBg: "bg-white/20 text-white border-white/30",
-            gwpList: [
-                { item: "Shoe Cover", time: "9:00–10:00 AM", image: IMG_RAIN_COVER },
-                { item: "Shoe Cover", time: "11:00 AM–12:00 PM", image: IMG_RAIN_COVER }
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "9:00 AM – 10:00 AM", image: IMG_SHOE_CLEANER },
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "11:00 AM – 12:00 PM", image: IMG_SHOE_CLEANER }
             ],
             flashSlots: ["9:00-9:10 AM", "10:00-10:10 AM", "11:00-11:10 AM"],
             b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"]
-        }, {
-            id: 4, date: "Sep 25", time: "12:30 PM - 3:30 PM", host: "Nureen", tag: "Noon",
+        },
+        {
+            id: 2, date: "Oct 9", time: "12:30 PM - 3:30 PM", host: "Fatin", tag: "Noon",
             tagBg: "bg-white/20 text-white border-white/30",
             gwpList: [
-                { item: "Gift Bag", time: "12:30–1:30 PM", image: IMG_GIFT_BAG },
-                { item: "Shoe Cover", time: "2:00–3:00 PM", image: IMG_RAIN_COVER }
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "12:30 PM – 1:30 PM", image: IMG_SHOE_CLEANER },
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "2:00 PM – 3:00 PM", image: IMG_SHOE_CLEANER }
             ],
             flashSlots: ["12:30-12:40 PM", "2:00-2:10 PM", "3:00-3:10 PM"],
-            b1g1Slots: ["12:40-12:50 PM", "2:10-2:20 PM", "3:10-3:20 PM"]
-        }, {
-            id: 5, date: "Sep 25", time: "4:00 PM - 7:00 PM", host: "Anis", tag: "Afternoon",
+            b1g1Slots: ["12:50-1:00 PM", "2:10-2:20 PM", "3:10-3:20 PM"]
+        },
+        {
+            id: 3, date: "Oct 9", time: "4:00 PM - 7:00 PM", host: "Balqis", tag: "Afternoon",
             tagBg: "bg-white/20 text-white border-white/30",
             gwpList: [
-                { item: "Gift Bag", time: "4:00–4:10 PM", image: IMG_GIFT_BAG },
-                { item: "Shoe Cover", time: "6:00–7:00 PM", image: IMG_RAIN_COVER }
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "4:00 PM – 5:00 PM", image: IMG_SHOE_CLEANER },
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "6:00 PM – 7:00 PM", image: IMG_SHOE_CLEANER }
             ],
             flashSlots: ["4:00-4:10 PM", "5:00-5:10 PM", "6:00-6:10 PM"],
             b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"]
-        }, {
-            id: 6, date: "Sep 25", time: "8:00 PM - 11:00 PM", host: "Anis", tag: "Peak Night",
+        },
+        {
+            id: 4, date: "Oct 9", time: "8:00 PM - 11:00 PM", host: "Balqis", tag: "Prime Night",
             tagBg: "bg-white/20 text-white border-white/30",
             gwpList: [
-                { item: "Shoe Cover", time: "8:00–9:00 PM", image: IMG_RAIN_COVER },
-                { item: "Shoe Cover", time: "10:00–11:00 PM", image: IMG_RAIN_COVER }
+                { item: "Free Waterproof Shoe Cover with Every Order", time: "8:00 PM – 9:00 PM", image: IMG_RAIN_COVER },
+                { item: "Free Waterproof Shoe Cover with Every Order", time: "10:00 PM – 11:00 PM", image: IMG_RAIN_COVER }
+            ],
+            flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
+            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
+        },
+        {
+            id: 5, date: "Oct 9-10", time: "11:30 PM - 2:30 AM", host: "Anis", tag: "Midnight",
+            tagBg: "bg-white/20 text-white border-white/30",
+            gwpList: [
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "12:00 AM – 1:00 AM", image: IMG_SHOE_CLEANER }
+            ],
+            flashSlots: ["11:30-11:40 PM", "12:00-12:10 AM", "1:00-1:10 AM"],
+            b1g1Slots: ["11:40-11:50 PM", "12:10-12:20 AM", "1:10-1:20 AM"]
+        },
+        {
+            id: 6, date: "Oct 10", time: "9:00 AM - 12:00 PM", host: "Syaz", tag: "Morning",
+            tagBg: "bg-white/20 text-white border-white/30",
+            gwpList: [
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "9:00 AM – 10:00 AM", image: IMG_SHOE_CLEANER },
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "11:00 AM – 12:00 PM", image: IMG_SHOE_CLEANER }
+            ],
+            flashSlots: ["9:00-9:10 AM", "10:00-10:10 AM", "11:00-11:10 AM"],
+            b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"]
+        },
+        {
+            id: 7, date: "Oct 10", time: "12:30 PM - 3:30 PM", host: "Syaz", tag: "Noon",
+            tagBg: "bg-white/20 text-white border-white/30",
+            gwpList: [
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "12:30 PM – 1:30 PM", image: IMG_SHOE_CLEANER },
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "2:00 PM – 3:00 PM", image: IMG_SHOE_CLEANER }
+            ],
+            flashSlots: ["12:30-12:40 PM", "2:00-2:10 PM", "3:00-3:10 PM"],
+            b1g1Slots: ["12:50-1:00 PM", "2:10-2:20 PM", "3:10-3:20 PM"]
+        },
+        {
+            id: 8, date: "Oct 10", time: "4:00 PM - 7:00 PM", host: "Mai", tag: "Afternoon",
+            tagBg: "bg-white/20 text-white border-white/30",
+            gwpList: [
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "4:00 PM – 5:00 PM", image: IMG_SHOE_CLEANER },
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "6:00 PM – 7:00 PM", image: IMG_SHOE_CLEANER }
+            ],
+            flashSlots: ["4:00-4:10 PM", "5:00-5:10 PM", "6:00-6:10 PM"],
+            b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"]
+        },
+        {
+            id: 9, date: "Oct 10", time: "8:00 PM - 11:00 PM", host: "Qys", tag: "Peak Night",
+            tagBg: "bg-white/20 text-white border-white/30",
+            gwpList: [
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "8:00 PM – 9:00 PM", image: IMG_SHOE_CLEANER },
+                { item: "Buy 2 Get 1 Free Shoe Cleaner", time: "10:00 PM – 11:00 PM", image: IMG_SHOE_CLEANER }
             ],
             flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
             b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
         }];
+
 
         function renderTikTokTracker() {
             const container = document.getElementById('tiktok-tracker-content');
