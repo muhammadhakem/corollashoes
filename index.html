@@ -306,10 +306,10 @@
                 <div class="relative">
                     <select id="filter-host" onchange="filterSchedule()" class="bg-[#0a1020] border border-[#00f2ea]/30 text-white text-[0.6rem] sm:text-xs font-semibold rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 pr-6 sm:pr-8 focus:outline-none focus:ring-2 focus:ring-[#00f2ea] appearance-none min-w-[80px] sm:min-w-[100px]">
                         <option value="ALL">All Hosts</option>
-                        <option value="Qys">Qys</option>
-                        <option value="Robert">Robert</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Nurul">Nurul</option>
                         <option value="Zaiffa">Zaiffa</option>
-                        <option value="Fatin">Fatin</option>
+                        <option value="Mai">Mai</option>
                     </select>
                     <i class="fa-solid fa-chevron-down text-[8px] sm:text-[10px] text-[#7dd3d8] absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                 </div>
@@ -317,6 +317,17 @@
                     <i class="fa-solid fa-rotate-left"></i>
                 </button>
             </div>
+        </div>
+
+        <div class="bg-[#0d1526] p-3 sm:p-4 rounded-2xl border border-[#ffb800]/30 shadow-[0_0_25px_rgba(255,184,0,0.08)]">
+            <h3 class="text-xs sm:text-sm font-extrabold text-[#ffb800] flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-gift"></i>
+                <span>LIVE GIVEAWAY — Terms &amp; Conditions (all sessions)</span>
+            </h3>
+            <ol class="space-y-1 text-[0.7rem] sm:text-sm text-[#c9e8ec] font-medium">
+                <li class="flex items-center gap-2"><span class="bg-[#ffb800]/20 text-[#ffb800] border border-[#ffb800]/40 font-black text-[0.55rem] sm:text-[10px] px-1.5 py-0.5 rounded-lg shrink-0">TASK 1</span> Follow host.</li>
+                <li class="flex items-center gap-2"><span class="bg-[#ffb800]/20 text-[#ffb800] border border-[#ffb800]/40 font-black text-[0.55rem] sm:text-[10px] px-1.5 py-0.5 rounded-lg shrink-0">TASK 2</span> Place order during LIVE.</li>
+            </ol>
         </div>
 
         <div id="tiktok-grid" class="schedule-grid"></div>
@@ -471,9 +482,10 @@
 
         function parseSlotTime(slotStr) {
             let clean = slotStr.replace(' Drop', '').trim();
-            const rangeMatch = clean.match(/^(\d+:\d+)\s*-\s*(\d+:\d+)\s*(AM|PM)$/i);
+            const rangeMatch = clean.match(/^(\d+:\d+)\s*(AM|PM)?\s*-\s*(\d+:\d+)\s*(AM|PM)$/i);
             if (rangeMatch) {
-                return { start: rangeMatch[1] + ' ' + rangeMatch[3], end: rangeMatch[2] + ' ' + rangeMatch[3], type: 'range' };
+                const endMer = rangeMatch[4];
+                return { start: rangeMatch[1] + ' ' + (rangeMatch[2] || endMer), end: rangeMatch[3] + ' ' + endMer, type: 'range' };
             }
             const singleMatch = clean.match(/^(\d+:\d+)\s*(AM|PM)$/i);
             if (singleMatch) {
@@ -638,23 +650,25 @@
         const GWP_SHOE_CLEANER = { item: "Buy 2 Get Shoe Cleaner", image: IMG_SHOE_CLEANER };
 
         let shiftData = [{
-            id: 1, date: "Oct 9", time: "8:00 PM - 11:00 PM", host: "Qys", tag: "Prime Night",
+            id: 1, date: "Oct 9", time: "8:00 PM - 11:00 PM", host: "Ruby", tag: "Prime Night",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
             gwpList: [
                 { item: "Gift Bag", time: "8:00 PM - 11:00 PM", image: IMG_GIFT_BAG },
                 { ...GWP_SHOE_CLEANER, time: "8:00 PM - 11:00 PM" }
             ],
             flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
-            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
+            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"],
+            giveawaySlots: ["8:20-8:30 PM", "9:20-9:30 PM", "10:20-10:30 PM"]
         }, {
-            id: 2, date: "Oct 9-10", time: "11:30 PM - 2:30 AM", host: "Robert", tag: "Midnight",
+            id: 2, date: "Oct 9-10", time: "11:30 PM - 2:30 AM", host: "Nurul", tag: "Midnight",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
             gwpList: [
                 { item: "Rain Cover", time: "11:30 PM - 2:30 AM", image: IMG_RAIN_COVER },
                 { ...GWP_SHOE_CLEANER, time: "11:30 PM - 2:30 AM" }
             ],
             flashSlots: ["11:30-11:40 PM", "12:30-12:40 AM", "1:30-1:40 AM"],
-            b1g1Slots: ["11:40-11:50 PM", "12:40-12:50 AM", "1:40-1:50 AM"]
+            b1g1Slots: ["11:40-11:50 PM", "12:40-12:50 AM", "1:40-1:50 AM"],
+            giveawaySlots: ["11:50 PM-12:00 AM", "12:50-1:00 AM", "1:50-2:00 AM"]
         }, {
             id: 3, date: "Oct 10", time: "9:00 AM - 12:00 PM", host: "Zaiffa", tag: "Morning",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
@@ -663,7 +677,8 @@
                 { ...GWP_SHOE_CLEANER, time: "9:00 AM - 12:00 PM" }
             ],
             flashSlots: ["9:00-9:10 AM", "10:00-10:10 AM", "11:00-11:10 AM"],
-            b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"]
+            b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"],
+            giveawaySlots: ["9:20-9:30 AM", "10:20-10:30 AM", "11:20-11:30 AM"]
         }, {
             id: 4, date: "Oct 10", time: "12:30 PM - 3:30 PM", host: "Zaiffa", tag: "Noon",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
@@ -672,25 +687,28 @@
                 { ...GWP_SHOE_CLEANER, time: "12:30 PM - 3:30 PM" }
             ],
             flashSlots: ["12:30-12:40 PM", "1:30-1:40 PM", "2:30-2:40 PM"],
-            b1g1Slots: ["12:40-12:50 PM", "1:40-1:50 PM", "2:40-2:50 PM"]
+            b1g1Slots: ["12:40-12:50 PM", "1:40-1:50 PM", "2:40-2:50 PM"],
+            giveawaySlots: ["12:50-1:00 PM", "1:50-2:00 PM", "2:50-3:00 PM"]
         }, {
-            id: 5, date: "Oct 10", time: "4:00 PM - 7:00 PM", host: "Fatin", tag: "Afternoon",
+            id: 5, date: "Oct 10", time: "4:00 PM - 7:00 PM", host: "Ruby", tag: "Afternoon",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
             gwpList: [
                 { item: "Rain Cover", time: "4:00 PM - 7:00 PM", image: IMG_RAIN_COVER },
                 { ...GWP_SHOE_CLEANER, time: "4:00 PM - 7:00 PM" }
             ],
             flashSlots: ["4:00-4:10 PM", "5:00-5:10 PM", "6:00-6:10 PM"],
-            b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"]
+            b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"],
+            giveawaySlots: ["4:20-4:30 PM", "5:20-5:30 PM", "6:20-6:30 PM"]
         }, {
-            id: 6, date: "Oct 10", time: "8:00 PM - 11:00 PM", host: "Fatin", tag: "Peak Night",
+            id: 6, date: "Oct 10", time: "8:00 PM - 11:00 PM", host: "Mai", tag: "Peak Night",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
             gwpList: [
                 { item: "Gift Bag", time: "8:00 PM - 11:00 PM", image: IMG_GIFT_BAG },
                 { ...GWP_SHOE_CLEANER, time: "8:00 PM - 11:00 PM" }
             ],
             flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
-            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
+            b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"],
+            giveawaySlots: ["8:20-8:30 PM", "9:20-9:30 PM", "10:20-10:30 PM"]
         }];
 
         function gwpItemsText(session) {
@@ -789,7 +807,8 @@
 
                 const activityDefs = [
                     { type: 'flash', slots: currentSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt', color: '#fe2c55' },
-                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags', color: '#00f2ea' }
+                    { type: 'b1g1', slots: currentSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags', color: '#00f2ea' },
+                    { type: 'giveaway', slots: (currentSession.giveawaySlots || []), label: 'LIVE GIVEAWAY', icon: 'fa-gift', color: '#ffb800' }
                 ];
 
                 const flat = flattenSlots(currentSession, activityDefs);
@@ -922,7 +941,8 @@
 
                 const activityDefs = [
                     { type: 'flash', slots: nextSession.flashSlots, label: 'FLASH SALE', icon: 'fa-bolt', color: '#fe2c55' },
-                    { type: 'b1g1', slots: nextSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags', color: '#00f2ea' }
+                    { type: 'b1g1', slots: nextSession.b1g1Slots, label: 'BUY 1 GET 1', icon: 'fa-tags', color: '#00f2ea' },
+                    { type: 'giveaway', slots: (nextSession.giveawaySlots || []), label: 'LIVE GIVEAWAY', icon: 'fa-gift', color: '#ffb800' }
                 ];
                 const firstUpcoming = getFirstUpcomingActivity(nextSession, activityDefs);
 
@@ -1290,6 +1310,9 @@
                 const b1g1List = item.b1g1Slots.map(s =>
                     `<li class="flex items-center gap-1 text-[#c9e8ec] text-[0.75rem] sm:text-[0.8rem] md:text-[0.875rem]"><i class="fa-solid fa-tags text-[#00f2ea] text-[9px] sm:text-[11px]"></i> ${s}</li>`
                 ).join('');
+                const giveawayList = (item.giveawaySlots || []).map(s =>
+                    `<li class="flex items-center gap-1 text-[#c9e8ec] text-[0.75rem] sm:text-[0.8rem] md:text-[0.875rem]"><i class="fa-solid fa-gift text-[#ffb800] text-[9px] sm:text-[11px]"></i> ${s}</li>`
+                ).join('');
                 const groupedGwp = groupGwpList(item.gwpList);
                 const gwpItemsHtml = groupedGwp.map(gwp => `
                     <div class="flex items-center gap-1.5 flex-1 min-w-0">
@@ -1341,6 +1364,14 @@
                                 </div>
                                 <ul class="slot-list space-y-0.5 font-medium">${b1g1List}</ul>
                             </div>
+                        </div>
+
+                        <div class="bg-[#ffb800]/10 p-1.5 sm:p-2.5 rounded-xl border border-[#ffb800]/30 min-w-0">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-extrabold text-[#ffb800] text-[0.55rem] sm:text-[11px]">LIVE GIVEAWAY</span>
+                                <span class="bg-[#ffb800] text-black text-[0.45rem] sm:text-[9px] font-extrabold px-1 sm:px-1.5 py-0.5 rounded shadow-[0_0_8px_rgba(255,184,0,0.5)]">10 MIN</span>
+                            </div>
+                            <ul class="slot-list space-y-0.5 font-medium">${giveawayList}</ul>
                         </div>
                     </div>
                 `;
