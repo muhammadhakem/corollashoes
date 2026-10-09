@@ -1312,10 +1312,10 @@
                 ).join('');
                 const groupedGwp = groupGwpList(item.gwpList);
                 const gwpItemsHtml = groupedGwp.map(gwp => `
-                    <div class="flex flex-col items-center gap-0.5 min-w-0 w-[3.4rem]">
-                        <img src="${gwp.image}" alt="${gwp.item}" class="w-9 h-9 sm:w-12 sm:h-12 object-cover rounded-lg border border-[#00f2ea]/30 bg-[#0a1020] shrink-0"
+                    <div class="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+                        <img src="${gwp.image}" alt="${gwp.item}" class="w-11 h-11 sm:w-14 sm:h-14 object-cover rounded-lg border border-[#00f2ea]/30 bg-[#0a1020] shrink-0"
                              onerror="this.onerror=null; this.src='https://placehold.co/100x100/00f2ea/000000?text=GWP';">
-                        <p class="text-[0.5rem] sm:text-[9px] font-bold text-white text-center leading-tight">${gwp.item}</p>
+                        <p class="text-[0.55rem] sm:text-[10px] font-bold text-white leading-tight min-w-0">${gwp.item}</p>
                     </div>
                 `).join('');
 
@@ -1407,10 +1407,10 @@
                 const groupedGwp = groupGwpList(item.gwpList);
 
                 const gwpItemsHtml = groupedGwp.map(gwp => `
-                    <div class="flex flex-col items-center gap-0.5 min-w-0 w-[3.4rem]">
-                        <img src="${gwp.image}" alt="${gwp.item}" class="w-9 h-9 sm:w-12 sm:h-12 object-cover rounded-lg border border-orange-200 bg-white shrink-0"
+                    <div class="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+                        <img src="${gwp.image}" alt="${gwp.item}" class="w-11 h-11 sm:w-14 sm:h-14 object-cover rounded-lg border border-orange-200 bg-white shrink-0"
                              onerror="this.onerror=null; this.src='https://placehold.co/100x100/ea580c/ffffff?text=GWP';">
-                        <p class="text-[0.5rem] sm:text-[9px] font-bold text-slate-800 text-center leading-tight">${gwp.item}</p>
+                        <p class="text-[0.55rem] sm:text-[10px] font-bold text-slate-800 leading-tight min-w-0">${gwp.item}</p>
                     </div>
                 `).join('');
 
