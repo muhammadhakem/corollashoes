@@ -1297,7 +1297,7 @@
                              onerror="this.onerror=null; this.src='https://placehold.co/100x100/00f2ea/000000?text=GWP';">
                         <div class="min-w-0">
                             <p class="text-[0.6rem] sm:text-xs font-bold text-white truncate">${gwp.item}</p>
-                            <p class="text-[0.5rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">${gwp.times.join(' · ')}</p>
+                            ${gwp.times.join(' · ') !== item.time ? `<p class="text-[0.5rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">${gwp.times.join(' · ')}</p>` : ''}
                         </div>
                     </div>
                 `).join('');
