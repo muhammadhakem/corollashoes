@@ -186,7 +186,7 @@
                             <span id="badge-text-short" class="sm:hidden">TikTok</span>
                         </span>
                     </div>
-                    <p class="text-[0.5rem] sm:text-[0.6rem] md:text-xs text-slate-500 font-medium truncate hidden xs:block">Payday Live Campaign Operations</p>
+                    <p class="text-[0.5rem] sm:text-[0.6rem] md:text-xs text-slate-500 font-medium truncate hidden xs:block">Corolla Mega Sale Live Operations</p>
                 </div>
             </div>
 
@@ -299,16 +299,17 @@
                     <i class="fa-brands fa-tiktok text-[#00f2ea]"></i>
                     <span class="truncate">TikTok Shop Live Schedule</span>
                 </h2>
-                <p class="text-[0.55rem] sm:text-xs text-[#7dd3d8] truncate">Sep 24 8:00 PM – Sep 25 11:00 PM · Flash Sale &amp; B1G1 only during confirmed host shifts</p>
+                <p class="text-[0.55rem] sm:text-xs text-[#7dd3d8] truncate">Oct 9 8:00 PM – Oct 10 11:00 PM · Flash Sale &amp; B1G1 during confirmed host shifts</p>
             </div>
 
             <div class="flex items-center gap-2 shrink-0">
                 <div class="relative">
                     <select id="filter-host" onchange="filterSchedule()" class="bg-[#0a1020] border border-[#00f2ea]/30 text-white text-[0.6rem] sm:text-xs font-semibold rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 pr-6 sm:pr-8 focus:outline-none focus:ring-2 focus:ring-[#00f2ea] appearance-none min-w-[80px] sm:min-w-[100px]">
                         <option value="ALL">All Hosts</option>
-                        <option value="Syasya">Syasya</option>
-                        <option value="Zaiffa">Zaiffa</option>
                         <option value="Qys">Qys</option>
+                        <option value="Robert">Robert</option>
+                        <option value="Zaiffa">Zaiffa</option>
+                        <option value="Fatin">Fatin</option>
                     </select>
                     <i class="fa-solid fa-chevron-down text-[8px] sm:text-[10px] text-[#7dd3d8] absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                 </div>
@@ -633,43 +634,69 @@
         const IMG_RAIN_COVER = "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/5d2cc83abc49434889ddd1a7c52eb4c4~tplv-aphluv4xwc-crop-webp:800:800.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my&from=2378011839";
 
         // ========== TIKTOK SCHEDULE (Flash Sale now 10-min) ==========
+        const IMG_SHOE_CLEANER = "https://placehold.co/100x100/00f2ea/000000?text=Shoe+Cleaner";
+        const GWP_SHOE_CLEANER = { item: "Buy 2 Get Shoe Cleaner", image: IMG_SHOE_CLEANER };
+
         let shiftData = [{
-            id: 1, date: "Sep 24", time: "8:00 PM - 11:00 PM", host: "Syasya", tag: "Payday Night",
+            id: 1, date: "Oct 9", time: "8:00 PM - 11:00 PM", host: "Qys", tag: "Prime Night",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
-            gwpItem: "Gift Bag", gwpImage: IMG_GIFT_BAG,
+            gwpList: [
+                { item: "Gift Bag", time: "8:00 PM - 11:00 PM", image: IMG_GIFT_BAG },
+                { ...GWP_SHOE_CLEANER, time: "8:00 PM - 11:00 PM" }
+            ],
             flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
             b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
         }, {
-            id: 2, date: "Sep 24-25", time: "11:30 PM - 2:30 AM", host: "Syasya", tag: "Overnight",
+            id: 2, date: "Oct 9-10", time: "11:30 PM - 2:30 AM", host: "Robert", tag: "Midnight",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
-            gwpItem: "Rain Cover", gwpImage: IMG_RAIN_COVER,
+            gwpList: [
+                { item: "Rain Cover", time: "11:30 PM - 2:30 AM", image: IMG_RAIN_COVER },
+                { ...GWP_SHOE_CLEANER, time: "11:30 PM - 2:30 AM" }
+            ],
             flashSlots: ["11:30-11:40 PM", "12:30-12:40 AM", "1:30-1:40 AM"],
             b1g1Slots: ["11:40-11:50 PM", "12:40-12:50 AM", "1:40-1:50 AM"]
         }, {
-            id: 3, date: "Sep 25", time: "9:00 AM - 12:00 PM", host: "Zaiffa", tag: "Morning",
+            id: 3, date: "Oct 10", time: "9:00 AM - 12:00 PM", host: "Zaiffa", tag: "Morning",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
-            gwpItem: "Gift Bag", gwpImage: IMG_GIFT_BAG,
+            gwpList: [
+                { item: "Gift Bag", time: "9:00 AM - 12:00 PM", image: IMG_GIFT_BAG },
+                { ...GWP_SHOE_CLEANER, time: "9:00 AM - 12:00 PM" }
+            ],
             flashSlots: ["9:00-9:10 AM", "10:00-10:10 AM", "11:00-11:10 AM"],
             b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"]
         }, {
-            id: 4, date: "Sep 25", time: "12:30 PM - 3:30 PM", host: "Zaiffa", tag: "Noon",
+            id: 4, date: "Oct 10", time: "12:30 PM - 3:30 PM", host: "Zaiffa", tag: "Noon",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
-            gwpItem: "Rain Cover", gwpImage: IMG_RAIN_COVER,
+            gwpList: [
+                { item: "Gift Bag", time: "12:30 PM - 3:30 PM", image: IMG_GIFT_BAG },
+                { ...GWP_SHOE_CLEANER, time: "12:30 PM - 3:30 PM" }
+            ],
             flashSlots: ["12:30-12:40 PM", "1:30-1:40 PM", "2:30-2:40 PM"],
             b1g1Slots: ["12:40-12:50 PM", "1:40-1:50 PM", "2:40-2:50 PM"]
         }, {
-            id: 5, date: "Sep 25", time: "4:00 PM - 7:00 PM", host: "Qys", tag: "Afternoon",
+            id: 5, date: "Oct 10", time: "4:00 PM - 7:00 PM", host: "Fatin", tag: "Afternoon",
             tagBg: "bg-[#00f2ea]/20 text-[#00f2ea] border-[#00f2ea]/30",
-            gwpItem: "Rain Cover", gwpImage: IMG_RAIN_COVER,
+            gwpList: [
+                { item: "Rain Cover", time: "4:00 PM - 7:00 PM", image: IMG_RAIN_COVER },
+                { ...GWP_SHOE_CLEANER, time: "4:00 PM - 7:00 PM" }
+            ],
             flashSlots: ["4:00-4:10 PM", "5:00-5:10 PM", "6:00-6:10 PM"],
             b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"]
         }, {
-            id: 6, date: "Sep 25", time: "8:00 PM - 11:00 PM", host: "Qys", tag: "Peak Night",
+            id: 6, date: "Oct 10", time: "8:00 PM - 11:00 PM", host: "Fatin", tag: "Peak Night",
             tagBg: "bg-[#fe2c55]/20 text-[#fe2c55] border-[#fe2c55]/30",
-            gwpItem: "Gift Bag", gwpImage: IMG_GIFT_BAG,
+            gwpList: [
+                { item: "Gift Bag", time: "8:00 PM - 11:00 PM", image: IMG_GIFT_BAG },
+                { ...GWP_SHOE_CLEANER, time: "8:00 PM - 11:00 PM" }
+            ],
             flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
             b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"]
         }];
+
+        function gwpItemsText(session) {
+            if (session.gwpList) return groupGwpList(session.gwpList).map(g => g.item).join(' + ');
+            return session.gwpItem || '—';
+        }
 
         let shopeeCardsData = [{
             id: 1, date: "Sep 24", time: "8:00 PM - 11:00 PM", host: "Nureen", tag: "Payday Night",
@@ -783,7 +810,7 @@
                             <span class="tracker-badge bg-[#00f2ea]/20 text-[#00f2ea] border border-[#00f2ea]/30 ml-auto">${gwpLabel}</span>
                         </div>
                         <div class="flex items-center justify-between gap-2">
-                            <div class="tracker-value tracker-gwp-value text-white">${currentSession.gwpItem}</div>
+                            <div class="tracker-value tracker-gwp-value text-white">${gwpItemsText(currentSession)}</div>
                             <span class="tracker-countdown tracker-activity-countdown" style="color:#00f2ea;">${gwpCountdown}</span>
                         </div>
                     </div>
@@ -1263,6 +1290,17 @@
                 const b1g1List = item.b1g1Slots.map(s =>
                     `<li class="flex items-center gap-1 text-[#c9e8ec] text-[0.75rem] sm:text-[0.8rem] md:text-[0.875rem]"><i class="fa-solid fa-tags text-[#00f2ea] text-[9px] sm:text-[11px]"></i> ${s}</li>`
                 ).join('');
+                const groupedGwp = groupGwpList(item.gwpList);
+                const gwpItemsHtml = groupedGwp.map(gwp => `
+                    <div class="flex items-center gap-1.5 flex-1 min-w-0">
+                        <img src="${gwp.image}" alt="${gwp.item}" class="gwp-thumb object-cover rounded-lg border border-[#00f2ea]/30 bg-[#0a1020] shrink-0"
+                             onerror="this.onerror=null; this.src='https://placehold.co/100x100/00f2ea/000000?text=GWP';">
+                        <div class="min-w-0">
+                            <p class="text-[0.6rem] sm:text-xs font-bold text-white truncate">${gwp.item}</p>
+                            <p class="text-[0.5rem] sm:text-[10px] text-[#7dd3d8] font-medium truncate">${gwp.times.join(' · ')}</p>
+                        </div>
+                    </div>
+                `).join('');
 
                 card.innerHTML = `
                     <div class="bg-gradient-to-br from-[#0f1a30] to-[#1a0f2e] text-white p-3 sm:p-4 border-b-2 border-[#00f2ea]">
@@ -1279,17 +1317,13 @@
                     </div>
 
                     <div class="card-padding space-y-2 sm:space-y-3 flex-1 flex flex-col justify-between bg-[#0a1020]">
-                        <div class="bg-[#00f2ea]/10 p-2 sm:p-3 rounded-xl border border-[#00f2ea]/25 flex items-center justify-between gap-2">
-                            <div class="min-w-0">
-                                <div class="flex items-center gap-1 mb-0.5 sm:mb-1 flex-wrap">
-                                    <span class="text-[0.5rem] sm:text-[10px] font-extrabold uppercase text-[#00f2ea]">GWP</span>
-                                    <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.5 rounded shadow-[0_0_8px_rgba(0,242,234,0.5)]">FREE</span>
-                                </div>
-                                <p class="text-[0.6rem] sm:text-xs font-bold text-white truncate">${item.gwpItem}</p>
-                                <p class="text-[0.6rem] sm:text-xs text-[#7dd3d8] font-medium truncate">${item.time}</p>
+                        <div class="bg-[#00f2ea]/10 p-2 sm:p-3 rounded-xl border border-[#00f2ea]/25">
+                            <div class="flex items-center gap-1 mb-1 sm:mb-1.5 flex-wrap">
+                                <span class="text-[0.5rem] sm:text-[10px] font-extrabold uppercase text-[#00f2ea]">GWP</span>
+                                <span class="bg-[#00f2ea] text-black text-[0.45rem] sm:text-[8px] font-black px-1 sm:px-1.5 py-0.5 rounded shadow-[0_0_8px_rgba(0,242,234,0.5)]">FREE</span>
+                                <span class="text-[0.5rem] sm:text-[10px] text-[#7dd3d8] font-medium ml-auto">${item.time}</span>
                             </div>
-                            <img src="${item.gwpImage}" alt="${item.gwpItem}" class="gwp-thumb object-cover rounded-lg border border-[#00f2ea]/30 bg-[#0a1020] shrink-0"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/00f2ea/000000?text=GWP';">
+                            <div class="flex flex-col gap-1.5">${gwpItemsHtml}</div>
                         </div>
 
                         <div class="deal-grid">
