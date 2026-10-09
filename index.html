@@ -1466,7 +1466,10 @@
                     <div class="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
                         <img src="${gwp.image}" alt="${gwp.item}" class="w-11 h-11 sm:w-14 sm:h-14 object-cover rounded-lg border border-orange-200 bg-white shrink-0"
                              onerror="this.onerror=null; this.src='https://placehold.co/100x100/ea580c/ffffff?text=GWP';">
-                        <p class="text-[0.55rem] sm:text-[10px] font-bold text-slate-800 leading-tight min-w-0">${gwp.item}</p>
+                        <div class="min-w-0">
+                            <p class="text-[0.55rem] sm:text-[10px] font-bold text-slate-800 leading-tight">${gwp.item}</p>
+                            <p class="text-[0.5rem] sm:text-[10px] text-slate-500 font-medium leading-tight">${gwp.times.join(' · ')}</p>
+                        </div>
                     </div>
                 `).join('');
 
