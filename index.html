@@ -353,10 +353,9 @@
             <div id="shopee-tracker-content" class="p-3 sm:p-4 md:p-5"></div>
         </div>
 
-        <div class="bg-white p-6 sm:p-8 md:p-10 rounded-2xl border border-slate-200 shadow-sm text-center">
-            <i class="fa-regular fa-calendar-xmark text-3xl sm:text-4xl text-slate-300 mb-2 sm:mb-3"></i>
-            <p class="text-sm sm:text-base font-bold text-slate-700">No campaign yet</p>
-            <p class="text-xs text-slate-500">Shopee campaign details coming soon. Check back later.</p>
+        <div class="bg-white p-4 sm:p-5 rounded-2xl border border-orange-200/80 shadow-sm">
+            <p class="text-sm sm:text-base font-bold text-slate-800">Shopee Live &mdash; 24 Oct 8:00 PM &ndash; 25 Oct 11:00 PM</p>
+            <p class="text-xs text-slate-500">6 sessions &middot; Flash Sale RM39 &middot; Buy 1 Get 1 &middot; GWP Free Sock / Free Gift Bag with every order (ikut slot).</p>
         </div>
 
         <div id="shopee-grid" class="schedule-grid"></div>
@@ -673,7 +672,43 @@
             return session.gwpItem || '—';
         }
 
-        let shopeeCardsData = [];
+        let shopeeCardsData = [
+            { id: 1, date: "Oct 24", time: "8:00 PM - 11:00 PM", host: "Intan", tag: "Prime Night",
+              tagBg: "bg-white/20 text-white border-white/30",
+              gwpList: [{ item: "Free Sock with Every Order", time: "8:00 PM - 9:00 PM", image: "https://placehold.co/100x100/ee4d2d/ffffff?text=SOCK" },
+              { item: "Free Sock with Every Order", time: "10:00 PM - 11:00 PM", image: "https://placehold.co/100x100/ee4d2d/ffffff?text=SOCK" }],
+              flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
+              b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"] },
+            { id: 2, date: "Oct 24-25", time: "11:30 PM - 2:30 AM", host: "Yana", tag: "Midnight",
+              tagBg: "bg-white/20 text-white border-white/30",
+              gwpList: [{ item: "Free Gift Bag with Every Order", time: "12:00 AM - 1:00 AM", image: IMG_GIFT_BAG }],
+              flashSlots: ["11:30-11:40 PM", "12:00-12:10 AM", "1:00-1:10 AM"],
+              b1g1Slots: ["11:40-11:50 PM", "12:10-12:20 AM", "1:10-1:20 AM"] },
+            { id: 3, date: "Oct 25", time: "9:00 AM - 12:00 PM", host: "Balqis", tag: "Morning",
+              tagBg: "bg-white/20 text-white border-white/30",
+              gwpList: [{ item: "Free Gift Bag with Every Order", time: "9:00 AM - 10:00 AM", image: IMG_GIFT_BAG },
+              { item: "Free Gift Bag with Every Order", time: "11:00 AM - 12:00 PM", image: IMG_GIFT_BAG }],
+              flashSlots: ["9:00-9:10 AM", "10:00-10:10 AM", "11:00-11:10 AM"],
+              b1g1Slots: ["9:10-9:20 AM", "10:10-10:20 AM", "11:10-11:20 AM"] },
+            { id: 4, date: "Oct 25", time: "12:30 PM - 3:30 PM", host: "Balqis", tag: "Noon",
+              tagBg: "bg-white/20 text-white border-white/30",
+              gwpList: [{ item: "Free Gift Bag with Every Order", time: "12:30 PM - 1:30 PM", image: IMG_GIFT_BAG },
+              { item: "Free Gift Bag with Every Order", time: "2:00 PM - 3:00 PM", image: IMG_GIFT_BAG }],
+              flashSlots: ["12:30-12:40 PM", "2:00-2:10 PM", "3:00-3:10 PM"],
+              b1g1Slots: ["12:50-1:00 PM", "2:10-2:20 PM", "3:10-3:20 PM"] },
+            { id: 5, date: "Oct 25", time: "4:00 PM - 7:00 PM", host: "Syaz", tag: "Afternoon",
+              tagBg: "bg-white/20 text-white border-white/30",
+              gwpList: [{ item: "Free Gift Bag with Every Order", time: "4:00 PM - 5:00 PM", image: IMG_GIFT_BAG },
+              { item: "Free Gift Bag with Every Order", time: "6:00 PM - 7:00 PM", image: IMG_GIFT_BAG }],
+              flashSlots: ["4:00-4:10 PM", "5:00-5:10 PM", "6:00-6:10 PM"],
+              b1g1Slots: ["4:10-4:20 PM", "5:10-5:20 PM", "6:10-6:20 PM"] },
+            { id: 6, date: "Oct 25", time: "8:00 PM - 11:00 PM", host: "Syaz", tag: "Peak Night",
+              tagBg: "bg-white/20 text-white border-white/30",
+              gwpList: [{ item: "Free Gift Bag with Every Order", time: "8:00 PM - 9:00 PM", image: IMG_GIFT_BAG },
+              { item: "Free Gift Bag with Every Order", time: "10:00 PM - 11:00 PM", image: IMG_GIFT_BAG }],
+              flashSlots: ["8:00-8:10 PM", "9:00-9:10 PM", "10:00-10:10 PM"],
+              b1g1Slots: ["8:10-8:20 PM", "9:10-9:20 PM", "10:10-10:20 PM"] }
+        ];
 
         function renderTikTokTracker() {
             const container = document.getElementById('tiktok-tracker-content');
